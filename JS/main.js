@@ -1,16 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Xử lý Mobile Menu Toggle
+    console.log("File JS đã nhận!"); // Mở F12 -> Console lên xem có dòng này không nhé
+
+    // 1. MENU MOBILE
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
     }
 
-    // 2. Hiệu ứng Header khi cuộn trang
-    const header = document.querySelector('header');
+    // 2. HEADER CUỘN TRANG
+    const header = document.getElementById('main-header');
     if (header) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
@@ -23,30 +24,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Xử lý Chuyển đổi Ngôn ngữ (VN / EN)
-    let currentLang = 'VN'; // Mặc định là Tiếng Việt
+    // 3. ĐỔI NGÔN NGỮ VN <-> EN
+    let currentLang = 'VN';
     const langToggleBtn = document.getElementById('lang-toggle');
     const langText = document.getElementById('lang-text');
 
     if (langToggleBtn) {
         langToggleBtn.addEventListener('click', () => {
-            // Đảo ngược ngôn ngữ
             currentLang = currentLang === 'VN' ? 'EN' : 'VN';
+            console.log("Đã bấm chuyển ngôn ngữ sang: ", currentLang);
             
-            // Cập nhật chữ trên nút (VN hoặc EN)
-            if (langText) {
-                langText.textContent = currentLang;
-            }
+            if (langText) langText.textContent = currentLang;
             
-            // Tìm và thay đổi tất cả các nội dung có hỗ trợ song ngữ
             const translatableElements = document.querySelectorAll('[data-vn][data-en]');
-            
             translatableElements.forEach(el => {
-                if (currentLang === 'EN') {
-                    el.innerHTML = el.getAttribute('data-en');
-                } else {
-                    el.innerHTML = el.getAttribute('data-vn');
-                }
+                el.innerHTML = currentLang === 'EN' ? el.getAttribute('data-en') : el.getAttribute('data-vn');
             });
         });
     }
