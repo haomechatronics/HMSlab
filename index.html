@@ -19,8 +19,8 @@
                 extend: {
                     colors: {
                         brandOrange: '#ea580c', 
-                        brandDark: '#111111',   /* Xám đen cực tối, sang trọng hơn */
-                        brandLight: '#fcfcfc',  /* Trắng ngà tinh tế */
+                        brandDark: '#111111',   
+                        brandLight: '#fcfcfc',  
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -37,10 +37,10 @@
 </head>
 <body class="bg-brandLight text-zinc-800 font-sans antialiased selection:bg-brandOrange selection:text-white">
 
-    <header class="w-full fixed top-0 backdrop-blur-xl bg-brandLight/80 border-b border-zinc-200/50 z-50 transition-all duration-500" id="main-header">
+    <header class="w-full fixed top-0 backdrop-blur-xl bg-brandLight/90 border-b border-zinc-200/50 z-50 transition-all duration-500" id="main-header">
         <div class="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
             
-            <a href="#" class="flex items-center gap-3 group">
+            <a href="#" class="flex items-center gap-3 group relative z-50">
                 <span class="text-2xl font-extrabold tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
             </a>
 
@@ -51,44 +51,67 @@
             </nav>
 
             <div class="hidden md:flex items-center space-x-6">
-                <button id="lang-toggle" class="flex items-center gap-2 text-xs font-bold text-zinc-500 hover:text-brandDark transition-colors bg-zinc-100 hover:bg-zinc-200 px-3 py-1.5 rounded-full cursor-pointer border border-transparent hover:border-zinc-300 duration-300">
+                <button class="lang-toggle-btn flex items-center gap-2 text-xs font-bold text-zinc-500 hover:text-brandDark transition-colors bg-zinc-100 hover:bg-zinc-200 px-3 py-1.5 rounded-full cursor-pointer border border-transparent hover:border-zinc-300 duration-300">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
-                    <span id="lang-text" class="uppercase tracking-wider">Tiếng Việt</span>
+                    <span class="lang-text uppercase tracking-wider">Tiếng Việt</span>
                 </button>
                 <a href="#course-teaser" class="bg-brandDark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brandOrange transition-all duration-300 shadow-md hover:shadow-orange-500/25" data-vn="Tham gia Lab" data-en="Join the Lab">
                     Tham gia Lab
                 </a>
             </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-brandDark focus:outline-none relative z-50 p-2 -mr-2">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-zinc-200 absolute w-full left-0 top-20 shadow-2xl origin-top transition-all duration-300">
+            <div class="flex flex-col px-6 py-6 space-y-5">
+                <a href="#projects" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <a href="#lab-notes" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
+                <a href="#tools" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
+                
+                <div class="h-px w-full bg-zinc-100 my-2"></div>
+                
+                <button class="lang-toggle-btn flex items-center justify-center gap-2 text-sm font-bold text-zinc-600 bg-zinc-100 px-4 py-3.5 rounded-xl active:bg-zinc-200 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                    <span class="lang-text uppercase tracking-wider">Tiếng Việt</span>
+                </button>
+
+                <a href="#course-teaser" class="mobile-link bg-brandDark text-white px-4 py-3.5 rounded-xl text-center font-bold" data-vn="Tham gia Lab" data-en="Join the Lab">Tham gia Lab</a>
+            </div>
         </div>
     </header>
 
-    <main class="pt-32 pb-12">
+    <main class="pt-28 md:pt-32 pb-12">
         
-        <section class="container mx-auto px-6 lg:px-12 py-20 md:py-32 flex flex-col items-center text-center relative">
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-100/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <section class="container mx-auto px-6 lg:px-12 py-12 md:py-24 flex flex-col items-center text-center relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-orange-100/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
-            <div class="inline-block px-4 py-1.5 mb-8 rounded-full bg-white border border-zinc-200 text-zinc-600 text-xs font-mono font-medium tracking-widest uppercase shadow-sm" data-vn="Chào mừng đến với Garage" data-en="Welcome to the Garage">
+            <div class="inline-block px-4 py-1.5 mb-6 md:mb-8 rounded-full bg-white border border-zinc-200 text-zinc-600 text-xs font-mono font-medium tracking-widest uppercase shadow-sm" data-vn="Chào mừng đến với Garage" data-en="Welcome to the Garage">
                 Chào mừng đến với Garage
             </div>
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-brandDark mb-8 max-w-5xl leading-[1.1]">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-brandDark mb-6 md:mb-8 max-w-5xl leading-[1.1]">
                 <span data-vn="Khám phá. Chế tạo." data-en="Explore. Build.">Khám phá. Chế tạo.</span><br>
                 <span class="text-brandOrange" data-vn="Chia sẻ kiến thức." data-en="Share Knowledge.">Chia sẻ kiến thức.</span>
             </h1>
-            <p class="text-lg md:text-xl text-zinc-500 mb-12 max-w-2xl leading-relaxed" data-vn="Không gian tôi ghi lại quá trình tạo ra các dự án, review công cụ làm việc và chia sẻ những kinh nghiệm thực chiến nhất." data-en="The space where I document the process of building projects, reviewing tools, and sharing practical experiences.">
+            <p class="text-base md:text-xl text-zinc-500 mb-10 md:mb-12 max-w-2xl leading-relaxed px-4 md:px-0" data-vn="Không gian tôi ghi lại quá trình tạo ra các dự án, review công cụ làm việc và chia sẻ những kinh nghiệm thực chiến nhất." data-en="The space where I document the process of building projects, reviewing tools, and sharing practical experiences.">
                 Không gian tôi ghi lại quá trình tạo ra các dự án, review công cụ làm việc và chia sẻ những kinh nghiệm thực chiến nhất.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                <a href="#projects" class="bg-brandDark text-white px-8 py-4 rounded-full font-semibold hover:bg-brandOrange transition-all duration-300 w-full sm:w-auto text-center shadow-lg hover:shadow-orange-500/25" data-vn="Khám phá Dự án" data-en="Explore Projects">
+            <div class="flex flex-col w-full sm:w-auto px-4 md:px-0">
+                <a href="#projects" class="bg-brandDark text-white px-8 py-4 rounded-full font-semibold hover:bg-brandOrange transition-all duration-300 text-center shadow-lg hover:shadow-orange-500/25 w-full md:w-auto" data-vn="Khám phá Dự án" data-en="Explore Projects">
                     Khám phá Dự án
                 </a>
             </div>
         </section>
 
-        <section id="projects" class="container mx-auto px-6 lg:px-12 py-24">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <section id="projects" class="container mx-auto px-6 lg:px-12 py-16 md:py-24">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16 gap-4">
                 <div>
-                    <h2 class="text-4xl font-extrabold text-brandDark mb-4 tracking-tight" data-vn="Dự án nổi bật" data-en="Featured Projects">Dự án nổi bật</h2>
-                    <p class="text-lg text-zinc-500" data-vn="Những sản phẩm tâm huyết nhất từ Lab." data-en="The most passionate products from the Lab.">Những sản phẩm tâm huyết nhất từ Lab.</p>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brandDark mb-3 tracking-tight" data-vn="Dự án nổi bật" data-en="Featured Projects">Dự án nổi bật</h2>
+                    <p class="text-base md:text-lg text-zinc-500" data-vn="Những sản phẩm tâm huyết nhất từ Lab." data-en="The most passionate products from the Lab.">Những sản phẩm tâm huyết nhất từ Lab.</p>
                 </div>
                 <a href="#" class="inline-flex items-center text-sm font-bold text-brandDark hover:text-brandOrange transition-colors border-b-2 border-brandDark hover:border-brandOrange pb-1">
                     <span data-vn="Xem tất cả" data-en="View all">Xem tất cả</span> 
@@ -96,82 +119,82 @@
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
                 <a href="#" class="group block">
-                    <div class="relative overflow-hidden rounded-3xl bg-zinc-100 aspect-[4/3] mb-6 shadow-premium group-hover:shadow-premium-hover transition-all duration-500 border border-zinc-200/50">
+                    <div class="relative overflow-hidden rounded-3xl bg-zinc-100 aspect-[4/3] mb-5 md:mb-6 shadow-premium group-hover:shadow-premium-hover transition-all duration-500 border border-zinc-200/50">
                         <img src="https://placehold.co/800x600/111111/ea580c?text=Project+1" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"></div>
                     </div>
-                    <div class="flex gap-3 mb-4">
-                        <span class="text-xs font-mono font-medium bg-white border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full uppercase tracking-wider">ReactJS</span>
-                        <span class="text-xs font-mono font-medium bg-white border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full uppercase tracking-wider">NodeJS</span>
+                    <div class="flex gap-2 mb-3">
+                        <span class="text-[10px] md:text-xs font-mono font-medium bg-white border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full uppercase tracking-wider">ReactJS</span>
+                        <span class="text-[10px] md:text-xs font-mono font-medium bg-white border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full uppercase tracking-wider">NodeJS</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-brandDark mb-3 group-hover:text-brandOrange transition-colors duration-300" data-vn="Hệ thống quản lý Garage" data-en="Garage Management System">Hệ thống quản lý Garage</h3>
-                    <p class="text-zinc-500 text-base leading-relaxed" data-vn="Ứng dụng quản lý toàn diện cho các studio sáng tạo, tích hợp tracking tiến độ và tài chính." data-en="Comprehensive management app for creative studios, integrating progress and financial tracking.">Ứng dụng quản lý toàn diện cho các studio sáng tạo, tích hợp tracking tiến độ và tài chính.</p>
+                    <h3 class="text-xl md:text-2xl font-bold text-brandDark mb-2 md:mb-3 group-hover:text-brandOrange transition-colors duration-300" data-vn="Hệ thống quản lý Garage" data-en="Garage Management System">Hệ thống quản lý Garage</h3>
+                    <p class="text-zinc-500 text-sm md:text-base leading-relaxed line-clamp-2 md:line-clamp-none" data-vn="Ứng dụng quản lý toàn diện cho các studio sáng tạo, tích hợp tracking tiến độ và tài chính." data-en="Comprehensive management app for creative studios, integrating progress and financial tracking.">Ứng dụng quản lý toàn diện cho các studio sáng tạo, tích hợp tracking tiến độ và tài chính.</p>
                 </a>
 
-                <a href="#" class="group block md:mt-16"> <div class="relative overflow-hidden rounded-3xl bg-zinc-100 aspect-[4/3] mb-6 shadow-premium group-hover:shadow-premium-hover transition-all duration-500 border border-zinc-200/50">
+                <a href="#" class="group block md:mt-16">
+                    <div class="relative overflow-hidden rounded-3xl bg-zinc-100 aspect-[4/3] mb-5 md:mb-6 shadow-premium group-hover:shadow-premium-hover transition-all duration-500 border border-zinc-200/50">
                         <img src="https://placehold.co/800x600/111111/ea580c?text=Project+2" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
                     </div>
-                    <div class="flex gap-3 mb-4">
-                        <span class="text-xs font-mono font-medium bg-white border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full uppercase tracking-wider">Next.js</span>
-                        <span class="text-xs font-mono font-medium bg-white border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full uppercase tracking-wider">Tailwind</span>
+                    <div class="flex gap-2 mb-3">
+                        <span class="text-[10px] md:text-xs font-mono font-medium bg-white border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full uppercase tracking-wider">Next.js</span>
+                        <span class="text-[10px] md:text-xs font-mono font-medium bg-white border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full uppercase tracking-wider">Tailwind</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-brandDark mb-3 group-hover:text-brandOrange transition-colors duration-300" data-vn="HMS Portfolio Maker" data-en="HMS Portfolio Maker">HMS Portfolio Maker</h3>
-                    <p class="text-zinc-500 text-base leading-relaxed" data-vn="Công cụ tạo portfolio nhanh chóng cho developer chỉ với file JSON cấu hình đơn giản." data-en="A tool to quickly create developer portfolios with just a simple JSON config file.">Công cụ tạo portfolio nhanh chóng cho developer chỉ với file JSON cấu hình đơn giản.</p>
+                    <h3 class="text-xl md:text-2xl font-bold text-brandDark mb-2 md:mb-3 group-hover:text-brandOrange transition-colors duration-300" data-vn="HMS Portfolio Maker" data-en="HMS Portfolio Maker">HMS Portfolio Maker</h3>
+                    <p class="text-zinc-500 text-sm md:text-base leading-relaxed line-clamp-2 md:line-clamp-none" data-vn="Công cụ tạo portfolio nhanh chóng cho developer chỉ với file JSON cấu hình đơn giản." data-en="A tool to quickly create developer portfolios with just a simple JSON config file.">Công cụ tạo portfolio nhanh chóng cho developer chỉ với file JSON cấu hình đơn giản.</p>
                 </a>
             </div>
         </section>
 
-        <section id="lab-notes" class="container mx-auto px-6 lg:px-12 py-24">
-            <div class="border-t border-zinc-200 pt-20">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <section id="lab-notes" class="container mx-auto px-6 lg:px-12 py-16 md:py-24">
+            <div class="border-t border-zinc-200 pt-16 md:pt-20">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16 gap-4">
                     <div>
-                        <h2 class="text-4xl font-extrabold text-brandDark mb-4 tracking-tight" data-vn="Ghi chép từ Lab" data-en="The Lab Notes">Ghi chép từ Lab</h2>
-                        <p class="text-lg text-zinc-500" data-vn="Kiến thức, quy trình và đánh giá thiết bị." data-en="Knowledge, processes, and gear reviews.">Kiến thức, quy trình và đánh giá thiết bị.</p>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-brandDark mb-3 tracking-tight" data-vn="Ghi chép từ Lab" data-en="The Lab Notes">Ghi chép từ Lab</h2>
+                        <p class="text-base md:text-lg text-zinc-500" data-vn="Kiến thức, quy trình và đánh giá thiết bị." data-en="Knowledge, processes, and gear reviews.">Kiến thức, quy trình và đánh giá thiết bị.</p>
                     </div>
                 </div>
 
                 <div class="flex flex-col divide-y divide-zinc-200 border-y border-zinc-200">
-                    <a href="#" class="group py-8 flex flex-col md:flex-row gap-6 md:gap-12 items-start md:items-center hover:bg-white transition-colors duration-300 -mx-6 px-6 lg:-mx-12 lg:px-12">
-                        <div class="md:w-1/4">
-                            <span class="text-xs font-mono font-semibold text-brandOrange tracking-widest uppercase">Workspace</span>
-                            <p class="text-sm text-zinc-400 mt-2 font-medium">May 15, 2026</p>
+                    <a href="#" class="group py-6 md:py-8 flex flex-col md:flex-row gap-2 md:gap-12 items-start md:items-center hover:bg-white transition-colors duration-300 -mx-6 px-6 lg:-mx-12 lg:px-12">
+                        <div class="md:w-1/4 mb-2 md:mb-0">
+                            <span class="text-[10px] md:text-xs font-mono font-semibold text-brandOrange tracking-widest uppercase">Workspace</span>
+                            <p class="text-xs md:text-sm text-zinc-400 mt-1 md:mt-2 font-medium">May 15, 2026</p>
                         </div>
                         <div class="md:w-3/4">
-                            <h3 class="text-2xl md:text-3xl font-bold text-brandDark mb-3 group-hover:text-brandOrange transition-colors" data-vn="Setup góc làm việc 2026: Tối giản và Hiệu suất" data-en="Workspace Setup 2026: Minimalist & Productive">Setup góc làm việc 2026: Tối giản và Hiệu suất</h3>
-                            <p class="text-zinc-500 text-lg line-clamp-2" data-vn="Chi tiết các vật dụng tôi sử dụng hằng ngày giúp tăng 200% hiệu suất code." data-en="Details of the gear I use daily to boost coding productivity by 200%.">Chi tiết các vật dụng tôi sử dụng hằng ngày giúp tăng 200% hiệu suất code.</p>
+                            <h3 class="text-xl md:text-3xl font-bold text-brandDark mb-2 md:mb-3 group-hover:text-brandOrange transition-colors" data-vn="Setup góc làm việc 2026: Tối giản và Hiệu suất" data-en="Workspace Setup 2026: Minimalist & Productive">Setup góc làm việc 2026: Tối giản và Hiệu suất</h3>
+                            <p class="text-zinc-500 text-sm md:text-lg line-clamp-2 md:line-clamp-none" data-vn="Chi tiết các vật dụng tôi sử dụng hằng ngày giúp tăng 200% hiệu suất code." data-en="Details of the gear I use daily to boost coding productivity by 200%.">Chi tiết các vật dụng tôi sử dụng hằng ngày giúp tăng 200% hiệu suất code.</p>
                         </div>
                     </a>
 
-                    <a href="#" class="group py-8 flex flex-col md:flex-row gap-6 md:gap-12 items-start md:items-center hover:bg-white transition-colors duration-300 -mx-6 px-6 lg:-mx-12 lg:px-12">
-                        <div class="md:w-1/4">
-                            <span class="text-xs font-mono font-semibold text-brandOrange tracking-widest uppercase">Process</span>
-                            <p class="text-sm text-zinc-400 mt-2 font-medium">May 10, 2026</p>
+                    <a href="#" class="group py-6 md:py-8 flex flex-col md:flex-row gap-2 md:gap-12 items-start md:items-center hover:bg-white transition-colors duration-300 -mx-6 px-6 lg:-mx-12 lg:px-12">
+                        <div class="md:w-1/4 mb-2 md:mb-0">
+                            <span class="text-[10px] md:text-xs font-mono font-semibold text-brandOrange tracking-widest uppercase">Process</span>
+                            <p class="text-xs md:text-sm text-zinc-400 mt-1 md:mt-2 font-medium">May 10, 2026</p>
                         </div>
                         <div class="md:w-3/4">
-                            <h3 class="text-2xl md:text-3xl font-bold text-brandDark mb-3 group-hover:text-brandOrange transition-colors" data-vn="Cách quản lý dự án cá nhân không bị ngợp" data-en="How to manage side projects without burning out">Cách quản lý dự án cá nhân không bị ngợp</h3>
-                            <p class="text-zinc-500 text-lg line-clamp-2" data-vn="Hệ thống Notion tôi thiết kế riêng cho Garage để track tiến độ và ý tưởng." data-en="The custom Notion system I designed for the Garage to track progress and ideas.">Hệ thống Notion tôi thiết kế riêng cho Garage để track tiến độ và ý tưởng.</p>
+                            <h3 class="text-xl md:text-3xl font-bold text-brandDark mb-2 md:mb-3 group-hover:text-brandOrange transition-colors" data-vn="Cách quản lý dự án cá nhân không bị ngợp" data-en="How to manage side projects without burning out">Cách quản lý dự án cá nhân không bị ngợp</h3>
+                            <p class="text-zinc-500 text-sm md:text-lg line-clamp-2 md:line-clamp-none" data-vn="Hệ thống Notion tôi thiết kế riêng cho Garage để track tiến độ và ý tưởng." data-en="The custom Notion system I designed for the Garage to track progress and ideas.">Hệ thống Notion tôi thiết kế riêng cho Garage để track tiến độ và ý tưởng.</p>
                         </div>
                     </a>
                 </div>
             </div>
         </section>
 
-        <section id="course-teaser" class="container mx-auto px-6 lg:px-12 py-16">
-            <div class="bg-brandDark rounded-[40px] p-10 md:p-20 text-center md:text-left flex flex-col md:flex-row items-center justify-between relative overflow-hidden shadow-2xl">
-                <div class="absolute top-0 right-0 w-96 h-96 bg-brandOrange rounded-full mix-blend-screen filter blur-[100px] opacity-30 transform translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+        <section id="course-teaser" class="container mx-auto px-4 md:px-6 lg:px-12 py-10 md:py-16">
+            <div class="bg-brandDark rounded-[30px] md:rounded-[40px] p-8 md:p-16 lg:p-20 text-center md:text-left flex flex-col md:flex-row items-center justify-between relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-brandOrange rounded-full mix-blend-screen filter blur-[80px] md:blur-[100px] opacity-30 transform translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
                 
-                <div class="md:w-1/2 relative z-10 mb-10 md:mb-0">
-                    <span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-zinc-800 border border-zinc-700 text-brandOrange text-xs font-mono font-bold tracking-widest uppercase" data-vn="Sắp ra mắt" data-en="Coming Soon">Sắp ra mắt</span>
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight" data-vn="Masterclass: Xây dựng dự án từ con số 0" data-en="Masterclass: Build Projects from Scratch">Masterclass: Xây dựng dự án từ con số 0</h2>
-                    <p class="text-zinc-400 text-lg md:text-xl font-light leading-relaxed" data-vn="Tham gia danh sách chờ để nhận ưu đãi 50% khi ra mắt." data-en="Join the waitlist to receive a 50% discount upon launch.">Tham gia danh sách chờ để nhận ưu đãi 50% khi ra mắt.</p>
+                <div class="md:w-1/2 relative z-10 mb-8 md:mb-0">
+                    <span class="inline-block px-3 py-1.5 mb-4 md:mb-6 rounded-full bg-zinc-800 border border-zinc-700 text-brandOrange text-[10px] md:text-xs font-mono font-bold tracking-widest uppercase" data-vn="Sắp ra mắt" data-en="Coming Soon">Sắp ra mắt</span>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 md:mb-6 leading-tight" data-vn="Masterclass: Xây dựng dự án từ con số 0" data-en="Masterclass: Build Projects from Scratch">Masterclass: Xây dựng dự án từ con số 0</h2>
+                    <p class="text-zinc-400 text-sm md:text-lg lg:text-xl font-light leading-relaxed" data-vn="Tham gia danh sách chờ để nhận ưu đãi 50% khi ra mắt." data-en="Join the waitlist to receive a 50% discount upon launch.">Tham gia danh sách chờ để nhận ưu đãi 50% khi ra mắt.</p>
                 </div>
 
                 <div class="md:w-5/12 w-full relative z-10">
-                    <form class="flex flex-col gap-4">
-                        <input type="email" placeholder="Email..." class="w-full px-6 py-4 rounded-full bg-zinc-800/50 border border-zinc-700 text-white focus:outline-none focus:border-brandOrange focus:bg-zinc-800 transition-all placeholder-zinc-500 font-medium" required>
-                        <button type="submit" class="w-full bg-brandOrange text-white px-6 py-4 rounded-full font-bold hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20 text-lg" data-vn="Đăng ký Early Access" data-en="Get Early Access">
+                    <form class="flex flex-col gap-3 md:gap-4 w-full">
+                        <input type="email" placeholder="Email..." class="w-full px-5 py-3.5 md:px-6 md:py-4 rounded-2xl md:rounded-full bg-zinc-800/50 border border-zinc-700 text-white focus:outline-none focus:border-brandOrange focus:bg-zinc-800 transition-all placeholder-zinc-500 font-medium text-sm md:text-base" required>
+                        <button type="submit" class="w-full bg-brandOrange text-white px-5 py-3.5 md:px-6 md:py-4 rounded-2xl md:rounded-full font-bold hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20 text-sm md:text-lg" data-vn="Đăng ký Early Access" data-en="Get Early Access">
                             Đăng ký Early Access
                         </button>
                     </form>
@@ -181,22 +204,22 @@
 
     </main>
 
-    <footer class="bg-white border-t border-zinc-200 pt-20 pb-10">
+    <footer class="bg-white border-t border-zinc-200 pt-16 md:pt-20 pb-8 md:pb-10">
         <div class="container mx-auto px-6 lg:px-12">
-            <div class="flex flex-col md:flex-row justify-between items-start mb-16 gap-10">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start mb-12 md:mb-16 gap-10">
                 
-                <div class="md:w-1/3">
-                    <a href="#" class="flex items-center gap-2 mb-6">
-                        <img src="./assets/images/logo.png?v=2" alt="HMSlab Logo" class="h-8 w-auto grayscale opacity-90">
-                        <span class="text-2xl font-extrabold tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
+                <div class="md:w-1/3 text-center md:text-left">
+                    <a href="#" class="flex items-center justify-center md:justify-start gap-2 mb-4 md:mb-6">
+                        <img src="./assets/images/logo.png?v=2" alt="HMSlab Logo" class="h-6 md:h-8 w-auto grayscale opacity-90">
+                        <span class="text-xl md:text-2xl font-extrabold tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
                     </a>
-                    <p class="text-zinc-500 text-base leading-relaxed" data-vn="Xây dựng tại Việt Nam.<br>Làm ra bằng sự tỉ mỉ và đam mê sáng tạo." data-en="Built in Vietnam.<br>Crafted with precision and creative passion.">Xây dựng tại Việt Nam.<br>Làm ra bằng sự tỉ mỉ và đam mê sáng tạo.</p>
+                    <p class="text-zinc-500 text-sm md:text-base leading-relaxed" data-vn="Xây dựng tại Việt Nam.<br>Làm ra bằng sự tỉ mỉ và đam mê sáng tạo." data-en="Built in Vietnam.<br>Crafted with precision and creative passion.">Xây dựng tại Việt Nam.<br>Làm ra bằng sự tỉ mỉ và đam mê sáng tạo.</p>
                 </div>
 
-                <div class="md:w-1/3 flex flex-col md:items-end">
-                    <h4 class="font-bold text-brandDark mb-6 uppercase tracking-widest text-xs" data-vn="Theo dõi tôi" data-en="Follow me">Theo dõi tôi</h4>
+                <div class="md:w-1/3 flex flex-col items-center md:items-end">
+                    <h4 class="font-bold text-brandDark mb-4 md:mb-6 uppercase tracking-widest text-[10px] md:text-xs" data-vn="Theo dõi tôi" data-en="Follow me">Theo dõi tôi</h4>
                     <div class="flex space-x-6 items-center">
-                        <a href="[CHÈN LINK GITHUB VÀO ĐÂY]" class="text-zinc-400 hover:text-brandDark transition-colors transform hover:scale-110 duration-300" target="_blank" title="Github">
+                        <a href="#" class="text-zinc-400 hover:text-brandDark transition-colors transform hover:scale-110 duration-300" target="_blank" title="Github">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
                         </a>
                         <a href="https://www.youtube.com/@HMS4.0" class="text-zinc-400 hover:text-red-600 transition-colors transform hover:scale-110 duration-300" target="_blank" title="YouTube">
@@ -209,7 +232,7 @@
                 </div>
             </div>
             
-            <div class="border-t border-zinc-200 pt-8 flex justify-center text-sm font-medium text-zinc-400">
+            <div class="border-t border-zinc-200 pt-6 md:pt-8 flex justify-center text-xs md:text-sm font-medium text-zinc-400">
                 <p>&copy; 2026 HMSlab.store.</p>
             </div>
         </div>
@@ -217,40 +240,61 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Lấy nút bấm và thẻ chứa chữ ngôn ngữ
-            const toggleBtn = document.getElementById('lang-toggle');
-            const langText = document.getElementById('lang-text');
             
-            // Đặt ngôn ngữ mặc định
+            // 1. XỬ LÝ MENU MOBILE (MỞ / ĐÓNG / TỰ ĐÓNG KHI CLICK)
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            if (mobileBtn && mobileMenu) {
+                // Nút bật/tắt menu
+                mobileBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+                
+                // Tự động đóng menu khi bấm vào một mục bất kỳ
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            // 2. XỬ LÝ ĐỔI NGÔN NGỮ (ÁP DỤNG CHO CẢ NÚT DESKTOP VÀ MOBILE)
+            const langToggleBtns = document.querySelectorAll('.lang-toggle-btn');
+            const langTexts = document.querySelectorAll('.lang-text');
             let currentLang = 'vn'; 
 
-            if (toggleBtn) {
-                toggleBtn.addEventListener('click', function() {
-                    // 1. Đảo trạng thái: Nếu đang vn thì thành en, ngược lại.
+            langToggleBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Đảo ngôn ngữ
                     currentLang = (currentLang === 'vn') ? 'en' : 'vn';
                     
-                    // 2. Đổi chữ ngay trên nút bấm
-                    langText.innerText = (currentLang === 'vn') ? 'Tiếng Việt' : 'English';
+                    // Cập nhật chữ trên TẤT CẢ các nút bấm ngôn ngữ
+                    langTexts.forEach(text => {
+                        text.innerText = (currentLang === 'vn') ? 'Tiếng Việt' : 'English';
+                    });
                     
-                    // 3. Quét toàn bộ HTML tìm thẻ có data-vn và data-en để thay đổi chữ
+                    // Quét toàn trang và dịch nội dung
                     const elements = document.querySelectorAll('[data-vn][data-en]');
                     elements.forEach(function(el) {
                         el.innerHTML = el.getAttribute('data-' + currentLang);
                     });
                 });
-            }
+            });
 
-            // Script Header cuộn trang cho bóng bẩy
+            // 3. HIỆU ỨNG NAVBAR KHI CUỘN TRANG
             const header = document.getElementById('main-header');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 20) {
                     header.classList.add('shadow-sm');
-                    header.classList.replace('bg-brandLight/80', 'bg-white/90');
+                    header.classList.replace('bg-brandLight/90', 'bg-white/95');
                 } else {
                     header.classList.remove('shadow-sm');
-                    header.classList.replace('bg-white/90', 'bg-brandLight/80');
+                    header.classList.replace('bg-white/95', 'bg-brandLight/90');
                 }
             });
+            
         });
     </script>
 </body>
