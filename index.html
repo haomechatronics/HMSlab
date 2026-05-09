@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HMSlab - Không gian nghiên cứu, chia sẻ dự án công nghệ và kiến thức phát triển phần mềm.">
-    <title>HMSlab | Research & Development Space</title>
+    <meta name="description" content="HMSlab - Không gian nghiên cứu, chia sẻ dự án và kiến thức công nghệ.">
+    <title>HMSlab | Creative Garage & Development Space</title>
 
-    <!-- Google Fonts: Inter & Fira Code -->
+    <!-- Google Fonts: Inter (Cho nội dung) & Fira Code (Cho các tag/code) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
@@ -14,15 +14,15 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Cấu hình Tailwind -->
+    <!-- Cấu hình Tailwind mang gu "Garage Sáng Tạo" -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        techBlue: '#0ea5e9',
-                        darkLab: '#0f172a',
-                        lightLab: '#f8fafc',
+                        brandOrange: '#ea580c', /* Cam cháy - Màu của công cụ, sáng tạo */
+                        brandDark: '#18181b',   /* Xám than - Thay thế đen tuyền, nghệ thuật hơn */
+                        brandLight: '#fafafa',  /* Trắng ngà - Giống giấy vẽ, không chói mắt */
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -36,45 +36,45 @@
     <!-- CSS tùy chỉnh (nếu có) -->
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="bg-lightLab text-slate-800 font-sans antialiased selection:bg-techBlue selection:text-white">
+<body class="bg-brandLight text-zinc-800 font-sans antialiased selection:bg-brandOrange selection:text-white">
 
     <!-- ================= NAVBAR ================= -->
-    <header class="w-full fixed top-0 backdrop-blur-md bg-white/80 border-b border-slate-200 z-50 transition-all duration-300">
+    <header class="w-full fixed top-0 backdrop-blur-md bg-brandLight/80 border-b border-zinc-200 z-50 transition-all duration-300">
         <div class="container mx-auto px-6 h-20 flex items-center justify-between">
             <!-- Logo -->
-            <a href="#" class="text-2xl font-bold tracking-tighter text-darkLab flex items-center gap-1">
-                HMS<span class="text-techBlue">lab</span><span class="text-techBlue text-3xl leading-none">.</span>
+            <a href="#" class="text-2xl font-bold tracking-tighter text-brandDark flex items-center gap-1">
+                HMS<span class="text-brandOrange">lab</span><span class="text-brandOrange text-3xl leading-none">.</span>
             </a>
 
             <!-- Desktop Menu -->
             <nav class="hidden md:flex space-x-8 items-center">
-                <a href="#projects" class="text-sm font-medium text-slate-600 hover:text-techBlue transition-colors">Projects</a>
-                <a href="#lab-notes" class="text-sm font-medium text-slate-600 hover:text-techBlue transition-colors">Lab Notes</a>
-                <a href="#tools" class="text-sm font-medium text-slate-600 hover:text-techBlue transition-colors">Gear & Tools</a>
+                <a href="#projects" class="text-sm font-medium text-zinc-600 hover:text-brandOrange transition-colors">Projects</a>
+                <a href="#lab-notes" class="text-sm font-medium text-zinc-600 hover:text-brandOrange transition-colors">Lab Notes</a>
+                <a href="#tools" class="text-sm font-medium text-zinc-600 hover:text-brandOrange transition-colors">Gear & Tools</a>
             </nav>
 
             <!-- CTA Button (Desktop) -->
             <div class="hidden md:block">
-                <a href="#course-teaser" class="bg-darkLab text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-800 transition-all shadow-sm">
+                <a href="#course-teaser" class="bg-brandDark text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-zinc-800 transition-all shadow-sm">
                     Join the Lab
                 </a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-darkLab focus:outline-none">
+            <button id="mobile-menu-btn" class="md:hidden text-zinc-600 hover:text-brandDark focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </div>
 
-        <!-- Mobile Menu Panel (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-4 absolute w-full left-0 shadow-lg">
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brandLight border-b border-zinc-200 px-6 py-4 absolute w-full left-0 shadow-lg">
             <div class="flex flex-col space-y-4">
-                <a href="#projects" class="text-base font-medium text-slate-600">Projects</a>
-                <a href="#lab-notes" class="text-base font-medium text-slate-600">Lab Notes</a>
-                <a href="#tools" class="text-base font-medium text-slate-600">Gear & Tools</a>
-                <a href="#course-teaser" class="bg-techBlue text-white px-4 py-2 rounded-lg text-center font-medium mt-2">Join the Lab</a>
+                <a href="#projects" class="text-base font-medium text-zinc-600 hover:text-brandOrange">Projects</a>
+                <a href="#lab-notes" class="text-base font-medium text-zinc-600 hover:text-brandOrange">Lab Notes</a>
+                <a href="#tools" class="text-base font-medium text-zinc-600 hover:text-brandOrange">Gear & Tools</a>
+                <a href="#course-teaser" class="bg-brandOrange text-white px-4 py-2 rounded-lg text-center font-medium mt-2">Join the Lab</a>
             </div>
         </div>
     </header>
@@ -84,21 +84,21 @@
         
         <!-- ================= HERO SECTION ================= -->
         <section id="hero" class="container mx-auto px-6 py-20 md:py-32 flex flex-col items-center text-center">
-            <div class="inline-block px-3 py-1 mb-6 rounded-full bg-blue-50 border border-blue-100 text-techBlue text-xs font-mono font-semibold tracking-wide uppercase">
-                Welcome to my workspace
+            <div class="inline-block px-3 py-1 mb-6 rounded-full bg-orange-50 border border-orange-100 text-brandOrange text-xs font-mono font-semibold tracking-wide uppercase">
+                Welcome to the Garage
             </div>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-darkLab mb-6 max-w-4xl leading-tight">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-brandDark mb-6 max-w-4xl leading-tight">
                 Khám phá. Chế tạo.<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-techBlue to-blue-600">Chia sẻ kiến thức.</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brandOrange to-orange-500">Chia sẻ kiến thức.</span>
             </h1>
-            <p class="text-lg md:text-xl text-slate-500 mb-10 max-w-2xl">
-                HMSlab là nơi tôi ghi lại hành trình xây dựng các dự án công nghệ, review công cụ làm việc và chia sẻ những bài học thực chiến dành cho Developer.
+            <p class="text-lg md:text-xl text-zinc-500 mb-10 max-w-2xl">
+                HMSlab là không gian tôi ghi lại quá trình "nhào nặn" các dự án, review công cụ làm việc và chia sẻ những kinh nghiệm thực chiến nhất.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                <a href="#projects" class="bg-techBlue text-white px-8 py-3.5 rounded-xl font-medium hover:bg-blue-600 transition-all shadow-md shadow-blue-500/20 w-full sm:w-auto">
+                <a href="#projects" class="bg-brandOrange text-white px-8 py-3.5 rounded-xl font-medium hover:bg-orange-600 transition-all shadow-md shadow-orange-500/20 w-full sm:w-auto">
                     Khám phá Dự án
                 </a>
-                <a href="#lab-notes" class="bg-white text-slate-700 border border-slate-200 px-8 py-3.5 rounded-xl font-medium hover:bg-slate-50 hover:border-slate-300 transition-all w-full sm:w-auto">
+                <a href="#lab-notes" class="bg-white text-zinc-700 border border-zinc-200 px-8 py-3.5 rounded-xl font-medium hover:bg-zinc-50 hover:border-zinc-300 transition-all w-full sm:w-auto shadow-sm">
                     Đọc Lab Notes
                 </a>
             </div>
@@ -108,111 +108,110 @@
         <section id="projects" class="container mx-auto px-6 py-16">
             <div class="flex justify-between items-end mb-10">
                 <div>
-                    <h2 class="text-3xl font-bold text-darkLab mb-2">Featured Projects</h2>
-                    <p class="text-slate-500">Những sản phẩm tâm huyết nhất từ phòng Lab.</p>
+                    <h2 class="text-3xl font-bold text-brandDark mb-2">Featured Projects</h2>
+                    <p class="text-zinc-500">Những sản phẩm tâm huyết nhất từ Garage.</p>
                 </div>
-                <a href="#" class="hidden md:inline-flex items-center text-sm font-medium text-techBlue hover:text-blue-700">
+                <a href="#" class="hidden md:inline-flex items-center text-sm font-medium text-brandOrange hover:text-orange-700">
                     Xem tất cả <span class="ml-1">&rarr;</span>
                 </a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project Card 1 -->
-                <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300">
-                    <div class="h-48 bg-slate-200 overflow-hidden relative">
-                        <!-- Placeholder ảnh: Thay thế bằng ảnh dự án thực tế của bạn -->
-                        <img src="https://placehold.co/600x400/0f172a/ffffff?text=Project+Alpha" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="group bg-white rounded-2xl overflow-hidden border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 bg-zinc-200 overflow-hidden relative">
+                        <img src="https://placehold.co/600x400/18181b/ffffff?text=Project+Alpha" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex gap-2 mb-3">
-                            <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-1 rounded">ReactJS</span>
-                            <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-1 rounded">NodeJS</span>
+                            <span class="text-xs font-mono bg-zinc-100 text-zinc-600 px-2 py-1 rounded">ReactJS</span>
+                            <span class="text-xs font-mono bg-zinc-100 text-zinc-600 px-2 py-1 rounded">NodeJS</span>
                         </div>
-                        <h3 class="text-xl font-bold text-darkLab mb-2 group-hover:text-techBlue transition-colors">Hệ thống quản lý Garage</h3>
-                        <p class="text-slate-500 text-sm mb-4 line-clamp-2">Ứng dụng quản lý toàn diện cho các studio sáng tạo, tích hợp tracking tiến độ và tài chính.</p>
-                        <a href="#" class="text-sm font-medium text-darkLab border-b border-darkLab pb-0.5 hover:text-techBlue hover:border-techBlue transition-colors">Xem chi tiết</a>
+                        <h3 class="text-xl font-bold text-brandDark mb-2 group-hover:text-brandOrange transition-colors">Hệ thống quản lý Garage</h3>
+                        <p class="text-zinc-500 text-sm mb-4 line-clamp-2">Ứng dụng quản lý toàn diện cho các studio sáng tạo, tích hợp tracking tiến độ và tài chính.</p>
+                        <a href="#" class="text-sm font-medium text-brandDark border-b border-brandDark pb-0.5 hover:text-brandOrange hover:border-brandOrange transition-colors">Xem chi tiết</a>
                     </div>
                 </div>
 
                 <!-- Project Card 2 -->
-                <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300">
-                    <div class="h-48 bg-slate-200 overflow-hidden relative">
-                        <img src="https://placehold.co/600x400/0f172a/ffffff?text=Portfolio+Builder" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="group bg-white rounded-2xl overflow-hidden border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 bg-zinc-200 overflow-hidden relative">
+                        <img src="https://placehold.co/600x400/18181b/ffffff?text=Portfolio+Builder" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex gap-2 mb-3">
-                            <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-1 rounded">Next.js</span>
-                            <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-1 rounded">Tailwind</span>
+                            <span class="text-xs font-mono bg-zinc-100 text-zinc-600 px-2 py-1 rounded">Next.js</span>
+                            <span class="text-xs font-mono bg-zinc-100 text-zinc-600 px-2 py-1 rounded">Tailwind</span>
                         </div>
-                        <h3 class="text-xl font-bold text-darkLab mb-2 group-hover:text-techBlue transition-colors">HMS Portfolio Maker</h3>
-                        <p class="text-slate-500 text-sm mb-4 line-clamp-2">Công cụ tạo portfolio nhanh chóng cho developer chỉ với file JSON cấu hình đơn giản.</p>
-                        <a href="#" class="text-sm font-medium text-darkLab border-b border-darkLab pb-0.5 hover:text-techBlue hover:border-techBlue transition-colors">Xem chi tiết</a>
+                        <h3 class="text-xl font-bold text-brandDark mb-2 group-hover:text-brandOrange transition-colors">HMS Portfolio Maker</h3>
+                        <p class="text-zinc-500 text-sm mb-4 line-clamp-2">Công cụ tạo portfolio nhanh chóng cho creator chỉ với file JSON cấu hình đơn giản.</p>
+                        <a href="#" class="text-sm font-medium text-brandDark border-b border-brandDark pb-0.5 hover:text-brandOrange hover:border-brandOrange transition-colors">Xem chi tiết</a>
                     </div>
                 </div>
 
                 <!-- Project Card 3 -->
-                <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 md:hidden lg:block">
-                    <div class="h-48 bg-slate-200 overflow-hidden relative">
-                        <img src="https://placehold.co/600x400/0f172a/ffffff?text=IoT+Monitor" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="group bg-white rounded-2xl overflow-hidden border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-300 md:hidden lg:block">
+                    <div class="h-48 bg-zinc-200 overflow-hidden relative">
+                        <img src="https://placehold.co/600x400/18181b/ffffff?text=IoT+Monitor" alt="Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="p-6">
                         <div class="flex gap-2 mb-3">
-                            <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-1 rounded">Python</span>
-                            <span class="text-xs font-mono bg-slate-100 text-slate-600 px-2 py-1 rounded">AWS</span>
+                            <span class="text-xs font-mono bg-zinc-100 text-zinc-600 px-2 py-1 rounded">Python</span>
+                            <span class="text-xs font-mono bg-zinc-100 text-zinc-600 px-2 py-1 rounded">Hardware</span>
                         </div>
-                        <h3 class="text-xl font-bold text-darkLab mb-2 group-hover:text-techBlue transition-colors">Smart Lab Monitor</h3>
-                        <p class="text-slate-500 text-sm mb-4 line-clamp-2">Hệ thống IoT theo dõi nhiệt độ, độ ẩm và cảnh báo an toàn cho phòng nghiên cứu.</p>
-                        <a href="#" class="text-sm font-medium text-darkLab border-b border-darkLab pb-0.5 hover:text-techBlue hover:border-techBlue transition-colors">Xem chi tiết</a>
+                        <h3 class="text-xl font-bold text-brandDark mb-2 group-hover:text-brandOrange transition-colors">Smart Studio Monitor</h3>
+                        <p class="text-zinc-500 text-sm mb-4 line-clamp-2">Hệ thống IoT theo dõi nhiệt độ, độ ẩm và cảnh báo an toàn cho không gian làm việc.</p>
+                        <a href="#" class="text-sm font-medium text-brandDark border-b border-brandDark pb-0.5 hover:text-brandOrange hover:border-brandOrange transition-colors">Xem chi tiết</a>
                     </div>
                 </div>
             </div>
             <div class="mt-8 text-center md:hidden">
-                <a href="#" class="inline-flex items-center text-sm font-medium text-techBlue hover:text-blue-700">Xem tất cả dự án &rarr;</a>
+                <a href="#" class="inline-flex items-center text-sm font-medium text-brandOrange hover:text-orange-700">Xem tất cả dự án &rarr;</a>
             </div>
         </section>
 
         <!-- ================= LAB NOTES (BLOG & AFFILIATE) ================= -->
         <section id="lab-notes" class="container mx-auto px-6 py-16">
-            <div class="bg-white rounded-3xl p-8 md:p-12 border border-slate-100 shadow-sm">
+            <div class="bg-white rounded-3xl p-8 md:p-12 border border-zinc-200 shadow-sm">
                 <div class="flex justify-between items-end mb-10">
                     <div>
-                        <h2 class="text-3xl font-bold text-darkLab mb-2">The Lab Notes</h2>
-                        <p class="text-slate-500">Chia sẻ kiến thức, review công cụ và quy trình làm việc.</p>
+                        <h2 class="text-3xl font-bold text-brandDark mb-2">The Lab Notes</h2>
+                        <p class="text-zinc-500">Ghi chép từ quá trình làm việc, review công cụ và chia sẻ kỹ năng.</p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                    <!-- Article 1 (Affiliate Target) -->
+                    <!-- Article 1 -->
                     <article class="group cursor-pointer">
                         <div class="flex items-center gap-3 mb-3">
-                            <span class="text-xs font-bold uppercase tracking-wider text-techBlue">Workspace</span>
-                            <span class="text-xs text-slate-400">May 15, 2026</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-brandOrange">Workspace</span>
+                            <span class="text-xs text-zinc-400">May 15, 2026</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-darkLab mb-3 group-hover:text-techBlue transition-colors">Setup góc làm việc Dev 2026: Tối giản và Hiệu suất</h3>
-                        <p class="text-slate-500 mb-4">Chi tiết các vật dụng tôi sử dụng hằng ngày, từ bàn phím cơ custom đến màn hình phụ, giúp tăng 200% hiệu suất code.</p>
-                        <a href="#" class="text-sm font-medium text-techBlue group-hover:underline">Đọc bài viết</a>
+                        <h3 class="text-2xl font-bold text-brandDark mb-3 group-hover:text-brandOrange transition-colors">Setup góc làm việc 2026: Tối giản và Hiệu suất</h3>
+                        <p class="text-zinc-500 mb-4">Chi tiết các vật dụng tôi sử dụng hằng ngày, từ bàn phím cơ custom đến màn hình phụ, giúp tăng 200% hiệu suất.</p>
+                        <a href="#" class="text-sm font-medium text-brandOrange group-hover:underline">Đọc bài viết</a>
                     </article>
 
                     <!-- Article 2 -->
                     <article class="group cursor-pointer">
                         <div class="flex items-center gap-3 mb-3">
-                            <span class="text-xs font-bold uppercase tracking-wider text-techBlue">Coding</span>
-                            <span class="text-xs text-slate-400">May 10, 2026</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-brandOrange">Process</span>
+                            <span class="text-xs text-zinc-400">May 10, 2026</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-darkLab mb-3 group-hover:text-techBlue transition-colors">Đừng dùng `any` trong TypeScript nữa, đây là giải pháp</h3>
-                        <p class="text-slate-500 mb-4">Hướng dẫn cách define types chặt chẽ để dự án lớn không biến thành mớ hỗn độn khó bảo trì.</p>
-                        <a href="#" class="text-sm font-medium text-techBlue group-hover:underline">Đọc bài viết</a>
+                        <h3 class="text-2xl font-bold text-brandDark mb-3 group-hover:text-brandOrange transition-colors">Cách tôi quản lý các dự án cá nhân mà không bị ngợp</h3>
+                        <p class="text-zinc-500 mb-4">Hệ thống Notion tôi thiết kế riêng cho "Garage" để track tiến độ, ý tưởng và ngân sách.</p>
+                        <a href="#" class="text-sm font-medium text-brandOrange group-hover:underline">Đọc bài viết</a>
                     </article>
 
                     <!-- Article 3 -->
                     <article class="group cursor-pointer">
                         <div class="flex items-center gap-3 mb-3">
-                            <span class="text-xs font-bold uppercase tracking-wider text-techBlue">Career</span>
-                            <span class="text-xs text-slate-400">May 02, 2026</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-brandOrange">Mindset</span>
+                            <span class="text-xs text-zinc-400">May 02, 2026</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-darkLab mb-3 group-hover:text-techBlue transition-colors">Hành trình từ một ý tưởng đến lúc deploy lên Production</h3>
-                        <p class="text-slate-500 mb-4">Quy trình 5 bước tôi áp dụng cho mọi side-project tại HMSlab, tránh việc bỏ cuộc giữa chừng.</p>
-                        <a href="#" class="text-sm font-medium text-techBlue group-hover:underline">Đọc bài viết</a>
+                        <h3 class="text-2xl font-bold text-brandDark mb-3 group-hover:text-brandOrange transition-colors">Hành trình từ một ý tưởng đến lúc hoàn thiện sản phẩm</h3>
+                        <p class="text-zinc-500 mb-4">Quy trình 5 bước tôi áp dụng cho mọi side-project tại HMSlab, tránh việc bỏ cuộc giữa chừng.</p>
+                        <a href="#" class="text-sm font-medium text-brandOrange group-hover:underline">Đọc bài viết</a>
                     </article>
                 </div>
             </div>
@@ -220,23 +219,23 @@
 
         <!-- ================= COURSE TEASER (CHUYỂN ĐỔI) ================= -->
         <section id="course-teaser" class="container mx-auto px-6 py-8">
-            <div class="bg-darkLab rounded-3xl p-10 md:p-16 text-center md:text-left flex flex-col md:flex-row items-center justify-between relative overflow-hidden">
-                <!-- Hiệu ứng background mờ -->
-                <div class="absolute top-0 right-0 w-64 h-64 bg-techBlue rounded-full mix-blend-multiply filter blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2"></div>
+            <div class="bg-brandDark rounded-3xl p-10 md:p-16 text-center md:text-left flex flex-col md:flex-row items-center justify-between relative overflow-hidden">
+                <!-- Hiệu ứng background mờ tone cam -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brandOrange rounded-full mix-blend-multiply filter blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2"></div>
                 
                 <div class="md:w-3/5 relative z-10 mb-8 md:mb-0">
-                    <span class="inline-block px-3 py-1 mb-4 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-mono font-semibold uppercase">Sắp ra mắt</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Fullstack Masterclass: Xây dựng dự án thực tế</h2>
-                    <p class="text-slate-400 text-lg">Học cách code, cấu trúc và deploy một dự án hoàn chỉnh từ A-Z. Tham gia danh sách chờ để nhận ưu đãi 50% khi ra mắt.</p>
+                    <span class="inline-block px-3 py-1 mb-4 rounded-full bg-zinc-800 border border-zinc-700 text-zinc-300 text-xs font-mono font-semibold uppercase">Sắp ra mắt</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-brandLight mb-4">Masterclass: Xây dựng dự án từ con số 0</h2>
+                    <p class="text-zinc-400 text-lg">Học cách lên ý tưởng, cấu trúc code và deploy một dự án hoàn chỉnh. Tham gia danh sách chờ để nhận ưu đãi 50% khi ra mắt.</p>
                 </div>
 
                 <div class="md:w-2/5 w-full relative z-10 flex flex-col items-end">
                     <form class="w-full max-w-sm flex flex-col gap-3">
-                        <input type="email" placeholder="Nhập email của bạn..." class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white focus:outline-none focus:border-techBlue placeholder-slate-500" required>
-                        <button type="submit" class="w-full bg-techBlue text-white px-4 py-3 rounded-xl font-medium hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/25">
+                        <input type="email" placeholder="Nhập email của bạn..." class="w-full px-4 py-3 rounded-xl bg-zinc-800 border border-zinc-700 text-white focus:outline-none focus:border-brandOrange placeholder-zinc-500" required>
+                        <button type="submit" class="w-full bg-brandOrange text-white px-4 py-3 rounded-xl font-medium hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/25">
                             Đăng ký Early Access
                         </button>
-                        <p class="text-xs text-slate-500 text-center mt-2">Không spam. Hủy đăng ký bất cứ lúc nào.</p>
+                        <p class="text-xs text-zinc-500 text-center mt-2">Không spam. Hủy đăng ký bất cứ lúc nào.</p>
                     </form>
                 </div>
             </div>
@@ -245,41 +244,41 @@
     </main>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="bg-white border-t border-slate-200 pt-16 pb-8">
+    <footer class="bg-brandLight border-t border-zinc-200 pt-16 pb-8">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center md:items-start mb-12">
                 <div class="mb-8 md:mb-0 text-center md:text-left">
-                    <a href="#" class="text-2xl font-bold tracking-tighter text-darkLab flex items-center justify-center md:justify-start gap-1 mb-4">
-                        HMS<span class="text-techBlue">lab</span><span class="text-techBlue text-3xl leading-none">.</span>
+                    <a href="#" class="text-2xl font-bold tracking-tighter text-brandDark flex items-center justify-center md:justify-start gap-1 mb-4">
+                        HMS<span class="text-brandOrange">lab</span><span class="text-brandOrange text-3xl leading-none">.</span>
                     </a>
-                    <p class="text-slate-500 text-sm max-w-xs">Xây dựng tại Việt Nam.<br>Thiết kế bằng đam mê và một đống cà phê.</p>
+                    <p class="text-zinc-500 text-sm max-w-xs">Xây dựng tại Việt Nam.<br>Làm ra bằng sự tỉ mỉ và đam mê sáng tạo.</p>
                 </div>
 
                 <div class="flex gap-12 text-center md:text-left">
                     <div>
-                        <h4 class="font-bold text-darkLab mb-4">Khám phá</h4>
-                        <ul class="space-y-2 text-sm text-slate-500">
-                            <li><a href="#projects" class="hover:text-techBlue transition-colors">Dự án</a></li>
-                            <li><a href="#lab-notes" class="hover:text-techBlue transition-colors">Bài viết</a></li>
-                            <li><a href="#" class="hover:text-techBlue transition-colors">Khóa học</a></li>
+                        <h4 class="font-bold text-brandDark mb-4">Khám phá</h4>
+                        <ul class="space-y-2 text-sm text-zinc-500">
+                            <li><a href="#projects" class="hover:text-brandOrange transition-colors">Dự án</a></li>
+                            <li><a href="#lab-notes" class="hover:text-brandOrange transition-colors">Bài viết</a></li>
+                            <li><a href="#" class="hover:text-brandOrange transition-colors">Khóa học</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="font-bold text-darkLab mb-4">Kết nối</h4>
-                        <ul class="space-y-2 text-sm text-slate-500">
-                            <li><a href="#" class="hover:text-techBlue transition-colors">Github</a></li>
-                            <li><a href="#" class="hover:text-techBlue transition-colors">YouTube</a></li>
-                            <li><a href="#" class="hover:text-techBlue transition-colors">Email</a></li>
+                        <h4 class="font-bold text-brandDark mb-4">Kết nối</h4>
+                        <ul class="space-y-2 text-sm text-zinc-500">
+                            <li><a href="#" class="hover:text-brandOrange transition-colors">Github</a></li>
+                            <li><a href="#" class="hover:text-brandOrange transition-colors">YouTube</a></li>
+                            <li><a href="#" class="hover:text-brandOrange transition-colors">Email</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-400">
+            <div class="border-t border-zinc-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-zinc-400">
                 <p>&copy; 2026 HMSlab.store. All rights reserved.</p>
                 <div class="mt-4 md:mt-0 flex gap-4">
-                    <a href="#" class="hover:text-darkLab transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-darkLab transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-brandDark transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-brandDark transition-colors">Terms of Service</a>
                 </div>
             </div>
         </div>
