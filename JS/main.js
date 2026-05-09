@@ -1,53 +1,114 @@
-// Đợi HTML tải xong hoàn toàn mới chạy JS
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // 1. CHUYỂN ĐỔI NGÔN NGỮ (TIẾNG VIỆT / ENGLISH)
+document.addEventListener('DOMContentLoaded', () => {
+
+    // =====================================================
+    // MOBILE MENU
+    // =====================================================
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuBtn && mobileMenu) {
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+
+    // =====================================================
+    // HEADER EFFECT
+    // =====================================================
+    const header = document.getElementById('main-header');
+
+    window.addEventListener('scroll', () => {
+
+        if (window.scrollY > 20) {
+
+            header.classList.add('shadow-sm');
+
+            header.classList.remove('bg-brandLight/80');
+            header.classList.add('bg-brandLight/95');
+
+        } else {
+
+            header.classList.remove('shadow-sm');
+
+            header.classList.remove('bg-brandLight/95');
+            header.classList.add('bg-brandLight/80');
+        }
+    });
+
+
+    // =====================================================
+    // LANGUAGE TOGGLE
+    // =====================================================
     const langToggleBtn = document.getElementById('lang-toggle');
     const langText = document.getElementById('lang-text');
-    let isVietnamese = true; // Cờ theo dõi trạng thái ngôn ngữ
 
+    // Mặc định tiếng Việt
+    let currentLang = 'vn';
+
+    // Hàm đổi ngôn ngữ
+    function changeLanguage(lang) {
+
+        // Lấy tất cả phần tử có data-vn và data-en
+        const elements = document.querySelectorAll('[data-vn][data-en]');
+
+        elements.forEach(element => {
+
+            // Chuyển sang tiếng Anh
+            if (lang === 'en') {
+
+                element.innerHTML = element.getAttribute('data-en');
+
+            }
+
+            // Chuyển sang tiếng Việt
+            else {
+
+                element.innerHTML = element.getAttribute('data-vn');
+            }
+        });
+
+        // Đổi chữ trên nút
+        if (lang === 'en') {
+
+            langText.textContent = 'English';
+
+        } else {
+
+            langText.textContent = 'Tiếng Việt';
+        }
+
+        // Lưu ngôn ngữ
+        localStorage.setItem('language', lang);
+    }
+
+
+    // =====================================================
+    // LOAD LANGUAGE SAVED
+    // =====================================================
+    const savedLanguage = localStorage.getItem('language');
+
+    if (savedLanguage) {
+
+        currentLang = savedLanguage;
+
+        changeLanguage(currentLang);
+    }
+
+
+    // =====================================================
+    // BUTTON CLICK
+    // =====================================================
     if (langToggleBtn) {
-        langToggleBtn.addEventListener('click', function() {
-            // Đổi cờ trạng thái
-            isVietnamese = !isVietnamese;
-            
-            // Cập nhật chữ trên nút
-            if (langText) {
-                langText.innerText = isVietnamese ? 'Tiếng Việt' : 'English';
-            }
-            
-            // Tìm và thay đổi tất cả các thẻ có chứa data-vn và data-en
-            const elements = document.querySelectorAll('[data-vn][data-en]');
-            elements.forEach(function(el) {
-                if (isVietnamese) {
-                    el.innerHTML = el.getAttribute('data-vn');
-                } else {
-                    el.innerHTML = el.getAttribute('data-en');
-                }
-            });
-        });
-    }
 
-    // 2. HIỆU ỨNG NAVBAR KHI CUỘN TRANG
-    const header = document.getElementById('main-header');
-    if (header) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 20) {
-                header.classList.add('shadow-sm');
-                header.classList.replace('bg-brandLight/80', 'bg-brandLight/95');
-            } else {
-                header.classList.remove('shadow-sm');
-                header.classList.replace('bg-brandLight/95', 'bg-brandLight/80');
-            }
-        });
-    }
+        langToggleBtn.addEventListener('click', () => {
 
-    // 3. MENU ĐIỆN THOẠI
-    const mobileBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileBtn && mobileMenu) {
-        mobileBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
+            // Đổi ngôn ngữ
+            currentLang = currentLang === 'vn' ? 'en' : 'vn';
+
+            // Áp dụng
+            changeLanguage(currentLang);
         });
     }
 
