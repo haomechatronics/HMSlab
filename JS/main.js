@@ -1,114 +1,86 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-    // =====================================================
+    // =========================================
     // MOBILE MENU
-    // =====================================================
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    // =========================================
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
 
     if (mobileMenuBtn && mobileMenu) {
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
         });
     }
 
 
-    // =====================================================
+    // =========================================
     // HEADER EFFECT
-    // =====================================================
-    const header = document.getElementById('main-header');
+    // =========================================
+    const header = document.getElementById("main-header");
 
-    window.addEventListener('scroll', () => {
+    window.addEventListener("scroll", () => {
 
         if (window.scrollY > 20) {
 
-            header.classList.add('shadow-sm');
-
-            header.classList.remove('bg-brandLight/80');
-            header.classList.add('bg-brandLight/95');
+            header.classList.add("shadow-sm");
+            header.classList.remove("bg-brandLight/80");
+            header.classList.add("bg-brandLight/95");
 
         } else {
 
-            header.classList.remove('shadow-sm');
-
-            header.classList.remove('bg-brandLight/95');
-            header.classList.add('bg-brandLight/80');
+            header.classList.remove("shadow-sm");
+            header.classList.remove("bg-brandLight/95");
+            header.classList.add("bg-brandLight/80");
         }
     });
 
 
-    // =====================================================
+    // =========================================
     // LANGUAGE TOGGLE
-    // =====================================================
-    const langToggleBtn = document.getElementById('lang-toggle');
-    const langText = document.getElementById('lang-text');
+    // =========================================
+    const langBtn = document.getElementById("lang-toggle");
+    const langText = document.getElementById("lang-text");
 
-    // Mặc định tiếng Việt
-    let currentLang = 'vn';
+    let currentLang = "vn";
 
-    // Hàm đổi ngôn ngữ
-    function changeLanguage(lang) {
+    function updateLanguage(lang) {
 
-        // Lấy tất cả phần tử có data-vn và data-en
-        const elements = document.querySelectorAll('[data-vn][data-en]');
+        const elements = document.querySelectorAll("[data-vn]");
 
-        elements.forEach(element => {
+        elements.forEach((element) => {
 
-            // Chuyển sang tiếng Anh
-            if (lang === 'en') {
+            if (lang === "en") {
 
-                element.innerHTML = element.getAttribute('data-en');
+                element.innerHTML = element.dataset.en;
 
-            }
+            } else {
 
-            // Chuyển sang tiếng Việt
-            else {
-
-                element.innerHTML = element.getAttribute('data-vn');
+                element.innerHTML = element.dataset.vn;
             }
         });
 
-        // Đổi chữ trên nút
-        if (lang === 'en') {
 
-            langText.textContent = 'English';
+        // đổi chữ nút
+        if (lang === "en") {
+
+            langText.textContent = "English";
 
         } else {
 
-            langText.textContent = 'Tiếng Việt';
+            langText.textContent = "Tiếng Việt";
         }
-
-        // Lưu ngôn ngữ
-        localStorage.setItem('language', lang);
     }
 
 
-    // =====================================================
-    // LOAD LANGUAGE SAVED
-    // =====================================================
-    const savedLanguage = localStorage.getItem('language');
+    // CLICK BUTTON
+    if (langBtn) {
 
-    if (savedLanguage) {
+        langBtn.addEventListener("click", () => {
 
-        currentLang = savedLanguage;
+            currentLang = currentLang === "vn" ? "en" : "vn";
 
-        changeLanguage(currentLang);
-    }
-
-
-    // =====================================================
-    // BUTTON CLICK
-    // =====================================================
-    if (langToggleBtn) {
-
-        langToggleBtn.addEventListener('click', () => {
-
-            // Đổi ngôn ngữ
-            currentLang = currentLang === 'vn' ? 'en' : 'vn';
-
-            // Áp dụng
-            changeLanguage(currentLang);
+            updateLanguage(currentLang);
         });
     }
 
