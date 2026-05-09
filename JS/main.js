@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("File JS đã nhận!"); // Mở F12 -> Console lên xem có dòng này không nhé
-
     // 1. MENU MOBILE
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -24,18 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. ĐỔI NGÔN NGỮ VN <-> EN
+    // 3. ĐỔI NGÔN NGỮ VN <-> EN (Tiếng Việt / English)
     let currentLang = 'VN';
     const langToggleBtn = document.getElementById('lang-toggle');
     const langText = document.getElementById('lang-text');
 
     if (langToggleBtn) {
         langToggleBtn.addEventListener('click', () => {
+            // Đảo trạng thái ngôn ngữ
             currentLang = currentLang === 'VN' ? 'EN' : 'VN';
-            console.log("Đã bấm chuyển ngôn ngữ sang: ", currentLang);
             
-            if (langText) langText.textContent = currentLang;
+            // Thay đổi text trên nút bấm
+            if (langText) {
+                langText.textContent = currentLang === 'VN' ? 'Tiếng Việt' : 'English';
+            }
             
+            // Tìm và dịch các đoạn text có chứa data-vn và data-en
             const translatableElements = document.querySelectorAll('[data-vn][data-en]');
             translatableElements.forEach(el => {
                 el.innerHTML = currentLang === 'EN' ? el.getAttribute('data-en') : el.getAttribute('data-vn');
