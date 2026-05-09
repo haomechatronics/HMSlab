@@ -1,34 +1,216 @@
 :root {
     --bg: #ffffff;
-    --text: #1a1a1a;
-    --accent: #d4af37;
-    --gray: #f9f9f9;
+    --text: #000000; /* Dùng màu đen tuyền để tạo sự sắc nét */
+    --text-light: #555555;
+    --border: #e0e0e0;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
-/* Navigation */
-nav { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); z-index: 1000; }
-.logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; }
-.nav-links a { text-decoration: none; color: var(--text); margin-left: 30px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-.nav-links a:hover { color: var(--accent); }
+html { 
+    scroll-behavior: smooth; /* Cuộn trang mượt mà */
+}
 
-/* Hero Section */
-.hero { height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 10%; background: var(--gray); }
-.hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin-bottom: 20px; font-style: italic; }
-.hero p { max-width: 600px; font-size: 1.1rem; color: #666; margin-bottom: 30px; font-weight: 300; }
-.cta { padding: 15px 40px; border: 1px solid var(--text); text-decoration: none; color: var(--text); transition: 0.4s; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
-.cta:hover { background: var(--text); color: white; }
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: var(--bg); 
+    color: var(--text); 
+    line-height: 1.6; 
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased; /* Làm nét chữ trên Mac/iPhone */
+}
 
-/* Grid */
-.section-title { text-align: center; padding: 100px 0 50px; font-family: 'Playfair Display', serif; font-size: 2.5rem; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; padding: 0 5%; margin-bottom: 100px; }
-.grid-item { position: relative; overflow: hidden; aspect-ratio: 4/5; background: #eee; }
-.grid-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; filter: grayscale(100%); }
-.grid-item:hover img { transform: scale(1.05); filter: grayscale(0%); }
-.grid-item-info { position: absolute; bottom: 20px; left: 20px; color: white; z-index: 2; opacity: 0; transition: 0.3s; }
-.grid-item:hover .grid-item-info { opacity: 1; }
+/* Typography (Chỉnh lại font giống Ariel Studio) */
+h1, h2, h3, .logo {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
 
-footer { padding: 80px 5%; background: var(--gray); border-top: 1px solid #eee; text-align: center; }
-@media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .nav-links { display: none; } }
+/* Menu (Navigation) */
+nav { 
+    padding: 25px 5%; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    position: fixed; /* Cố định thanh menu ở trên cùng */
+    width: 100%;
+    top: 0; 
+    background: rgba(255,255,255,0.95); 
+    backdrop-filter: blur(5px); 
+    z-index: 1000; 
+    border-bottom: 1px solid var(--border);
+}
+
+.logo { 
+    font-size: 1.2rem; 
+    font-weight: 900; 
+    letter-spacing: 3px; 
+    text-decoration: none;
+    color: var(--text);
+}
+
+.nav-links { 
+    display: flex; 
+    gap: 40px; 
+}
+
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--text); 
+    font-size: 0.85rem; 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    position: relative;
+    padding-bottom: 4px;
+}
+
+/* Hiệu ứng gạch chân chạy ra khi di chuột vào Menu */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text);
+    transition: width 0.3s ease;
+}
+.nav-links a:hover::after { 
+    width: 100%; 
+}
+
+/* Hero Section (Khối ấn tượng đầu tiên) */
+.hero { 
+    height: 100vh; /* Cao bằng 100% màn hình */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    padding: 0 5%; 
+}
+
+.hero h1 { 
+    font-size: clamp(3rem, 7vw, 7rem); /* Chữ tự to nhỏ theo màn hình */
+    font-weight: 900; 
+    line-height: 1.1; 
+    letter-spacing: -2px;
+    margin-bottom: 20px; 
+}
+
+.hero p { 
+    max-width: 600px; 
+    font-size: 1.1rem; 
+    color: var(--text-light); 
+    margin-bottom: 40px; 
+}
+
+/* Nút bấm (Call to action) */
+.cta { 
+    padding: 16px 45px; 
+    background: var(--text); 
+    color: var(--bg); 
+    text-decoration: none; 
+    font-size: 0.85rem; 
+    font-weight: 700;
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    transition: all 0.3s ease; 
+}
+
+.cta:hover { 
+    background: transparent; 
+    color: var(--text); 
+    box-shadow: inset 0 0 0 1px var(--text); /* Hiệu ứng viền chạy vào trong */
+}
+
+/* Lưới Dự án (Grid) */
+.section-title { 
+    text-align: center; 
+    padding: 100px 0 50px; 
+    font-size: 2rem; 
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+    gap: 30px; 
+    padding: 0 5%; 
+    margin-bottom: 120px; 
+}
+
+.grid-item { 
+    position: relative; 
+    overflow: hidden; 
+    aspect-ratio: 4/5; 
+    background: #000;
+    cursor: pointer;
+}
+
+.grid-item img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+/* Lớp phủ màu đen xuất hiện khi hover */
+.grid-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+
+.grid-item:hover img { 
+    transform: scale(1.05); /* Phóng to ảnh chậm rãi */
+}
+.grid-item:hover::before { 
+    opacity: 1; 
+}
+
+/* Chữ trong dự án trượt từ dưới lên */
+.grid-item-info { 
+    position: absolute; 
+    bottom: 30px; 
+    left: 30px; 
+    color: white; 
+    z-index: 2; 
+    transform: translateY(20px);
+    opacity: 0; 
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.grid-item:hover .grid-item-info { 
+    transform: translateY(0);
+    opacity: 1; 
+}
+
+.grid-item-info h3 { 
+    font-size: 1.6rem; 
+    letter-spacing: 1px; 
+    margin-bottom: 5px; 
+}
+
+.grid-item-info p { 
+    font-family: 'Inter', sans-serif; 
+    font-size: 0.9rem; 
+    opacity: 0.8; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Footer */
+footer { 
+    padding: 60px 5%; 
+    border-top: 1px solid var(--
