@@ -7,14 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobile-menu');
 
     if (mobileMenuBtn && mobileMenu) {
-
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Tự đóng menu khi bấm vào link
         const mobileLinks = mobileMenu.querySelectorAll('a');
-
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -22,168 +19,97 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     // =========================================================
     // 2. HEADER EFFECT WHEN SCROLL
     // =========================================================
     const header = document.querySelector('header');
-
     if (header) {
-
         window.addEventListener('scroll', () => {
-
             if (window.scrollY > 20) {
-
-                header.classList.add('shadow-sm');
-
+                header.classList.add('shadow-sm', 'bg-brandLight/95');
                 header.classList.remove('bg-brandLight/80');
-                header.classList.add('bg-brandLight/95');
-
             } else {
-
-                header.classList.remove('shadow-sm');
-
-                header.classList.remove('bg-brandLight/95');
+                header.classList.remove('shadow-sm', 'bg-brandLight/95');
                 header.classList.add('bg-brandLight/80');
             }
         });
     }
 
-
     // =========================================================
-    // 3. LANGUAGE TOGGLE (VN / EN)
+    // 3. LANGUAGE TOGGLE (VN / EN) - ĐÃ FIX
     // =========================================================
     const langToggleBtn = document.getElementById('lang-toggle');
     const langText = document.getElementById('lang-text');
+    
+    // Kiểm tra ngôn ngữ đã lưu, nếu chưa có thì mặc định là 'vn'
+    let currentLang = localStorage.getItem('hmslab-language') || 'vn';
 
-    // Ngôn ngữ mặc định
-    let currentLang = 'vn';
-
-    // Hàm đổi ngôn ngữ
     function switchLanguage(lang) {
-
-        // Lấy tất cả phần tử có data-vn và data-en
-        const elements = document.querySelectorAll('[data-vn][data-en]');
+        // Tìm tất cả phần tử có thuộc tính data-vn và data-en
+        const elements = document.querySelectorAll('[data-vn]');
 
         elements.forEach(element => {
-
-            // Nếu là tiếng Anh
-            if (lang === 'en') {
-
-                const englishText = element.getAttribute('data-en');
-
-                if (englishText) {
-                    element.innerHTML = englishText;
-                }
-
-            }
-
-            // Nếu là tiếng Việt
-            else {
-
-                const vietnameseText = element.getAttribute('data-vn');
-
-                if (vietnameseText) {
-                    element.innerHTML = vietnameseText;
-                }
+            const translation = element.getAttribute(`data-${lang}`);
+            if (translation) {
+                element.innerHTML = translation;
             }
         });
 
-        // Đổi text trên nút
+        // Cập nhật chữ trên nút (VN hoặc EN)
         if (langText) {
             langText.textContent = lang.toUpperCase();
         }
 
-        // Lưu ngôn ngữ vào trình duyệt
+        // Lưu lựa chọn vào máy người dùng
         localStorage.setItem('hmslab-language', lang);
     }
 
-    // Kiểm tra ngôn ngữ đã lưu
-    const savedLanguage = localStorage.getItem('hmslab-language');
+    // Chạy hàm switchLanguage ngay khi load trang để áp dụng ngôn ngữ đúng
+    switchLanguage(currentLang);
 
-    if (savedLanguage) {
-        currentLang = savedLanguage;
-        switchLanguage(currentLang);
-    }
-
-    // Sự kiện click đổi ngôn ngữ
     if (langToggleBtn) {
-
-        langToggleBtn.addEventListener('click', () => {
-
-            currentLang = currentLang === 'vn' ? 'en' : 'vn';
-
+        langToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Ngăn chặn hành vi mặc định nếu là thẻ link
+            currentLang = (currentLang === 'vn') ? 'en' : 'vn';
             switchLanguage(currentLang);
         });
     }
 
-
     // =========================================================
     // 4. SMOOTH SCROLL
     // =========================================================
-    const internalLinks = document.querySelectorAll('a[href^="#"]');
-
-    internalLinks.forEach(link => {
-
-        link.addEventListener('click', function (e) {
-
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
-
-            // Bỏ qua nếu href chỉ là #
             if (targetId === '#') return;
-
-            const targetSection = document.querySelector(targetId);
-
-            if (targetSection) {
-
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
                 e.preventDefault();
-
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
                 });
             }
         });
     });
 
-
     // =========================================================
     // 5. SIMPLE FADE-IN ANIMATION
     // =========================================================
     const animatedElements = document.querySelectorAll('section');
+    const observerOptions = { threshold: 0.1 };
 
     const observer = new IntersectionObserver((entries) => {
-
         entries.forEach(entry => {
-
             if (entry.isIntersecting) {
-
-                entry.target.classList.add(
-                    'opacity-100',
-                    'translate-y-0'
-                );
-
-                entry.target.classList.remove(
-                    'opacity-0',
-                    'translate-y-8'
-                );
+                entry.target.classList.remove('opacity-0', 'translate-y-8');
+                entry.target.classList.add('opacity-100', 'translate-y-0');
             }
         });
-
-    }, {
-        threshold: 0.1
-    });
+    }, observerOptions);
 
     animatedElements.forEach(section => {
-
-        section.classList.add(
-            'transition-all',
-            'duration-700',
-            'opacity-0',
-            'translate-y-8'
-        );
-
+        section.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
         observer.observe(section);
     });
-
 });
