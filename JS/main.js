@@ -1,17 +1,37 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. MENU MOBILE
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+// Đợi HTML tải xong hoàn toàn mới chạy JS
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. CHUYỂN ĐỔI NGÔN NGỮ (TIẾNG VIỆT / ENGLISH)
+    const langToggleBtn = document.getElementById('lang-toggle');
+    const langText = document.getElementById('lang-text');
+    let isVietnamese = true; // Cờ theo dõi trạng thái ngôn ngữ
+
+    if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', function() {
+            // Đổi cờ trạng thái
+            isVietnamese = !isVietnamese;
+            
+            // Cập nhật chữ trên nút
+            if (langText) {
+                langText.innerText = isVietnamese ? 'Tiếng Việt' : 'English';
+            }
+            
+            // Tìm và thay đổi tất cả các thẻ có chứa data-vn và data-en
+            const elements = document.querySelectorAll('[data-vn][data-en]');
+            elements.forEach(function(el) {
+                if (isVietnamese) {
+                    el.innerHTML = el.getAttribute('data-vn');
+                } else {
+                    el.innerHTML = el.getAttribute('data-en');
+                }
+            });
         });
     }
 
-    // 2. HEADER CUỘN TRANG
+    // 2. HIỆU ỨNG NAVBAR KHI CUỘN TRANG
     const header = document.getElementById('main-header');
     if (header) {
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', function() {
             if (window.scrollY > 20) {
                 header.classList.add('shadow-sm');
                 header.classList.replace('bg-brandLight/80', 'bg-brandLight/95');
@@ -22,26 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. ĐỔI NGÔN NGỮ VN <-> EN (Tiếng Việt / English)
-    let currentLang = 'VN';
-    const langToggleBtn = document.getElementById('lang-toggle');
-    const langText = document.getElementById('lang-text');
-
-    if (langToggleBtn) {
-        langToggleBtn.addEventListener('click', () => {
-            // Đảo trạng thái ngôn ngữ
-            currentLang = currentLang === 'VN' ? 'EN' : 'VN';
-            
-            // Thay đổi text trên nút bấm
-            if (langText) {
-                langText.textContent = currentLang === 'VN' ? 'Tiếng Việt' : 'English';
-            }
-            
-            // Tìm và dịch các đoạn text có chứa data-vn và data-en
-            const translatableElements = document.querySelectorAll('[data-vn][data-en]');
-            translatableElements.forEach(el => {
-                el.innerHTML = currentLang === 'EN' ? el.getAttribute('data-en') : el.getAttribute('data-vn');
-            });
+    // 3. MENU ĐIỆN THOẠI
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
         });
     }
+
 });
