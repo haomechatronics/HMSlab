@@ -1,4 +1,3 @@
-// File: js/main.js
 document.addEventListener('DOMContentLoaded', function() {
     
     // 1. XỬ LÝ MENU MOBILE
@@ -15,11 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 2. XỬ LÝ ĐỔI NGÔN NGỮ 
+    // 2. XỬ LÝ ĐỔI NGÔN NGỮ (Có lưu vào bộ nhớ trình duyệt)
     const langToggleBtns = document.querySelectorAll('.lang-toggle-btn');
     const langTexts = document.querySelectorAll('.lang-text');
     
-    // Kiểm tra ngôn ngữ đã lưu trong trình duyệt (Tùy chọn nâng cao)
     let currentLang = localStorage.getItem('hms_lang') || 'vn'; 
 
     function updateLanguage(lang) {
@@ -32,13 +30,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Cập nhật ngay khi load trang
     updateLanguage(currentLang);
 
     langToggleBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             currentLang = (currentLang === 'vn') ? 'en' : 'vn';
-            localStorage.setItem('hms_lang', currentLang); // Lưu lại lựa chọn
+            localStorage.setItem('hms_lang', currentLang); 
             updateLanguage(currentLang);
         });
     });
