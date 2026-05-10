@@ -113,3 +113,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+// ==========================================
+    // 5. CHỐNG COPY VÀ F12 (CƠ BẢN)
+    // ==========================================
+    
+    // Chặn click chuột phải
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // Chặn các phím tắt F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+    document.addEventListener('keydown', function(e) {
+        if (
+            e.key === 'F12' || 
+            (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+            (e.ctrlKey && e.shiftKey && e.key === 'J') || 
+            (e.ctrlKey && e.key === 'U') ||
+            (e.ctrlKey && e.key === 'S')
+        ) {
+            e.preventDefault();
+            return false;
+        }
+    });
