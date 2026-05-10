@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết Dự Án | HMSlab</title>
+    <link rel="icon" type="image/png" href="../assets/images/Logonho.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { brandOrange: '#ea580c', brandDark: '#111111', brandLight: '#fcfcfc' }, fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Fira Code', 'monospace'] } } } }
+    </script>
+</head>
+<body class="bg-brandLight text-zinc-800 font-sans antialiased selection:bg-brandOrange selection:text-white">
+
+    <main class="pt-32 pb-24">
+        <div class="container mx-auto px-6 lg:px-12 mb-16">
+            <nav class="flex text-sm text-zinc-500 mb-8 font-medium">
+                <a href="../index.html" class="hover:text-brandOrange transition-colors" data-vn="Trang chủ" data-en="Home">Trang chủ</a>
+                <span class="mx-3">/</span>
+                <a href="./index.html" class="hover:text-brandOrange transition-colors" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <span class="mx-3">/</span>
+                <span class="text-brandDark">Tên Dự Án Của Bạn</span>
+            </nav>
+
+            <div class="flex flex-col lg:flex-row gap-12 lg:items-end">
+                <div class="lg:w-2/3">
+                    <div class="flex gap-3 mb-6">
+                        <span class="text-xs font-mono font-medium bg-orange-100 text-brandOrange px-3 py-1 rounded-full uppercase tracking-wider">Web App</span>
+                        <span class="text-xs font-mono font-medium bg-zinc-200 text-zinc-700 px-3 py-1 rounded-full uppercase tracking-wider">ReactJS</span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-brandDark tracking-tight mb-6">Hệ thống quản lý Garage Sáng tạo</h1>
+                    <p class="text-xl text-zinc-500 leading-relaxed">Một nền tảng toàn diện giúp theo dõi tiến độ công việc, quản lý kho thiết bị và tự động hóa quy trình cho các Creator.</p>
+                </div>
+                <div class="lg:w-1/3 flex gap-4">
+                    <a href="#" target="_blank" class="flex-1 bg-brandDark text-white px-6 py-4 rounded-full font-bold hover:bg-brandOrange transition-colors text-center shadow-lg">Live Demo</a>
+                    <a href="#" target="_blank" class="flex-1 bg-white border-2 border-zinc-200 text-brandDark px-6 py-4 rounded-full font-bold hover:border-brandDark transition-colors text-center">Github</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 lg:px-12 mb-20">
+            <div class="w-full aspect-video bg-zinc-200 rounded-[40px] overflow-hidden shadow-2xl">
+                <img src="https://placehold.co/1920x1080/111111/ea580c?text=Project+Cover+Image" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 max-w-4xl prose prose-lg prose-zinc marker:text-brandOrange">
+            <h2 class="text-3xl font-bold text-brandDark mb-6 mt-12">Bài toán đặt ra</h2>
+            <p class="text-zinc-600 mb-6">Phân tích vấn đề bạn gặp phải trước khi xây dựng dự án này. Tại sao bạn lại làm nó?</p>
+            
+            <h2 class="text-3xl font-bold text-brandDark mb-6 mt-12">Giải pháp Công nghệ</h2>
+            <ul class="list-disc pl-6 text-zinc-600 mb-6 space-y-2">
+                <li><strong>Frontend:</strong> ReactJS với Tailwind CSS giúp thiết kế UI/UX theo hướng tối giản.</li>
+                <li><strong>Backend:</strong> NodeJS và Express cho API.</li>
+                <li><strong>Database:</strong> MongoDB lưu trữ dữ liệu phi cấu trúc.</li>
+            </ul>
+
+            <div class="bg-zinc-100 p-8 rounded-3xl my-10 border border-zinc-200 text-center">
+                <h3 class="text-xl font-bold text-brandDark mb-2">Bạn muốn xây dựng dự án tương tự?</h3>
+                <p class="text-zinc-500 text-sm mb-6">Tham khảo các đồ nghề tôi đã sử dụng để code ra dự án này.</p>
+                <a href="../index.html#tools" class="text-brandOrange font-bold hover:underline">Xem Công cụ của Lab &rarr;</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
