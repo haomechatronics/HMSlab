@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMS Portfolio Maker | HMSlab</title>
+    
+    <link rel="icon" type="image/png" href="../assets/images/logonho.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { brandOrange: '#ea580c', brandDark: '#111111', brandLight: '#fcfcfc' }, fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Fira Code', 'monospace'] } } } }
+    </script>
+</head>
+<body class="bg-brandLight text-zinc-800 font-sans antialiased selection:bg-brandOrange selection:text-white">
+
+    <header class="w-full fixed top-0 backdrop-blur-xl bg-brandLight/90 border-b border-zinc-200/50 z-50 transition-all duration-500" id="main-header">
+        <div class="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-2 md:gap-3 group relative z-50">
+                <img src="../assets/images/logo.png" alt="HMSlab Logo" class="h-8 md:h-10 w-auto group-hover:scale-105 transition-transform duration-300">
+                <span class="text-2xl font-extrabold tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
+            </a>
+
+            <nav class="hidden md:flex space-x-10 items-center">
+                <a href="../index.html#projects" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <a href="../index.html#lab-notes" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
+                <a href="../index.html#tools" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <button class="lang-toggle-btn flex items-center gap-2 text-xs font-bold text-zinc-500 hover:text-brandDark transition-colors bg-zinc-100 hover:bg-zinc-200 px-3 py-1.5 rounded-full cursor-pointer border border-transparent hover:border-zinc-300 duration-300">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                    <span class="lang-text uppercase tracking-wider">English</span>
+                </button>
+                <a href="../index.html#course-teaser" class="bg-brandDark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brandOrange transition-all duration-300 shadow-md" data-vn="Tham gia Lab" data-en="Join the Lab">
+                    Tham gia Lab
+                </a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-brandDark focus:outline-none relative z-50 p-2 -mr-2">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-zinc-200 absolute w-full left-0 top-20 shadow-2xl origin-top transition-all duration-300">
+            <div class="flex flex-col px-6 py-6 space-y-5">
+                <a href="../index.html#projects" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <a href="../index.html#lab-notes" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
+                <a href="../index.html#tools" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
+                <div class="h-px w-full bg-zinc-100 my-2"></div>
+                <button class="lang-toggle-btn flex items-center justify-center gap-2 text-sm font-bold text-zinc-600 bg-zinc-100 px-4 py-3.5 rounded-xl active:bg-zinc-200 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                    <span class="lang-text uppercase tracking-wider">English</span>
+                </button>
+                <a href="../index.html#course-teaser" class="mobile-link bg-brandDark text-white px-4 py-3.5 rounded-xl text-center font-bold" data-vn="Tham gia Lab" data-en="Join the Lab">Tham gia Lab</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24">
+        <div class="container mx-auto px-6 lg:px-12 mb-16">
+            <nav class="flex text-sm text-zinc-500 mb-8 font-medium">
+                <a href="../index.html" class="hover:text-brandOrange transition-colors" data-vn="Trang chủ" data-en="Home">Trang chủ</a>
+                <span class="mx-3">/</span>
+                <a href="./index.html" class="hover:text-brandOrange transition-colors" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <span class="mx-3">/</span>
+                <span class="text-brandDark" data-vn="HMS Portfolio Maker" data-en="HMS Portfolio Maker">HMS Portfolio Maker</span>
+            </nav>
+
+            <div class="flex flex-col lg:flex-row gap-12 lg:items-end">
+                <div class="lg:w-2/3">
+                    <div class="flex gap-3 mb-6">
+                        <span class="text-xs font-mono font-medium bg-orange-100 text-brandOrange px-3 py-1 rounded-full uppercase tracking-wider">Web App</span>
+                        <span class="text-xs font-mono font-medium bg-zinc-200 text-zinc-700 px-3 py-1 rounded-full uppercase tracking-wider">Next.js</span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-brandDark tracking-tight mb-6" data-vn="HMS Portfolio Maker" data-en="HMS Portfolio Maker">HMS Portfolio Maker</h1>
+                    <p class="text-xl text-zinc-500 leading-relaxed" data-vn="Công cụ tạo portfolio nhanh chóng cho developer chỉ với một file JSON cấu hình đơn giản." data-en="A tool to quickly create developer portfolios with just a simple JSON config file.">Công cụ tạo portfolio nhanh chóng cho developer chỉ với một file JSON cấu hình đơn giản.</p>
+                </div>
+                <div class="lg:w-1/3 flex gap-4">
+                    <a href="#" target="_blank" class="flex-1 bg-brandDark text-white px-6 py-4 rounded-full font-bold hover:bg-brandOrange transition-colors text-center shadow-lg" data-vn="Live Demo" data-en="Live Demo">Live Demo</a>
+                    <a href="#" target="_blank" class="flex-1 bg-white border-2 border-zinc-200 text-brandDark px-6 py-4 rounded-full font-bold hover:border-brandDark transition-colors text-center" data-vn="Github" data-en="Github">Github</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 lg:px-12 mb-20">
+            <div class="w-full aspect-video bg-zinc-200 rounded-[40px] overflow-hidden shadow-2xl">
+                <img src="../assets/images/projects/p2-portfolio/cover.png" onerror="this.src='https://placehold.co/1920x1080/111111/ea580c?text=Hinh+Anh+Du+An+2'" class="w-full h-full object-cover" alt="Cover HMS Portfolio Maker">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 max-w-4xl prose prose-lg prose-zinc marker:text-brandOrange">
+            <h2 class="text-3xl font-bold text-brandDark mb-6 mt-12" data-vn="Vấn đề gặp phải" data-en="The Problem">Vấn đề gặp phải</h2>
+            <p class="text-zinc-600 mb-6" data-vn="Các lập trình viên thường mất quá nhiều thời gian để code lại một trang web cá nhân từ đầu. Mỗi lần muốn cập nhật thêm 1 dự án mới, họ lại phải mò mẫm mở file code ra sửa rất tốn công." data-en="Developers often spend too much time coding a personal website from scratch. Every time they want to add a new project, they have to open the code files and edit them, which is time-consuming.">Các lập trình viên thường mất quá nhiều thời gian để code lại một trang web cá nhân từ đầu. Mỗi lần muốn cập nhật thêm 1 dự án mới, họ lại phải mò mẫm mở file code ra sửa rất tốn công.</p>
+            
+            <h2 class="text-3xl font-bold text-brandDark mb-6 mt-12" data-vn="Giải pháp" data-en="The Solution">Giải pháp</h2>
+            <p class="text-zinc-600 mb-6" data-vn="HMS Portfolio Maker ra đời. Bạn chỉ cần sửa thông tin trong 1 file data.json duy nhất, toàn bộ giao diện trang web sẽ tự động cập nhật lại mà không cần đụng đến code HTML/CSS." data-en="HMS Portfolio Maker was born. You only need to edit information in a single data.json file, and the entire website interface will automatically update without touching HTML/CSS code.">HMS Portfolio Maker ra đời. Bạn chỉ cần sửa thông tin trong 1 file data.json duy nhất, toàn bộ giao diện trang web sẽ tự động cập nhật lại mà không cần đụng đến code HTML/CSS.</p>
+
+            <ul class="list-disc pl-6 text-zinc-600 mb-6 space-y-2">
+                <li><strong data-vn="Tốc độ cao:" data-en="High Speed:">Tốc độ cao:</strong> <span data-vn="Sử dụng Next.js để tối ưu SEO và load trang cực nhanh." data-en="Uses Next.js to optimize SEO and load pages extremely fast.">Sử dụng Next.js để tối ưu SEO và load trang cực nhanh.</span></li>
+                <li><strong data-vn="Giao diện đẹp:" data-en="Beautiful UI:">Giao diện đẹp:</strong> <span data-vn="Tích hợp sẵn Tailwind CSS với Dark/Light mode." data-en="Built-in Tailwind CSS with Dark/Light mode.">Tích hợp sẵn Tailwind CSS với Dark/Light mode.</span></li>
+            </ul>
+
+            <div class="bg-zinc-100 p-8 rounded-3xl my-10 border border-zinc-200 text-center">
+                <h3 class="text-xl font-bold text-brandDark mb-2" data-vn="Bạn muốn xây dựng dự án tương tự?" data-en="Want to build a similar project?">Bạn muốn xây dựng dự án tương tự?</h3>
+                <p class="text-zinc-500 text-sm mb-6" data-vn="Tham khảo các đồ nghề tôi đã sử dụng để code ra dự án này." data-en="Check out the tools I used to code this project.">Tham khảo các đồ nghề tôi đã sử dụng để code ra dự án này.</p>
+                <a href="../index.html#tools" class="text-brandOrange font-bold hover:underline" data-vn="Xem Công cụ của Lab &rarr;" data-en="View Lab Tools &rarr;">Xem Công cụ của Lab &rarr;</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-zinc-200 pt-16 md:pt-20 pb-8 md:pb-10">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start mb-12 md:mb-16 gap-10">
+                <div class="md:w-1/3 text-center md:text-left">
+                    <a href="../index.html" class="flex items-center justify-center md:justify-start gap-2 mb-4 md:mb-6">
+                        <img src="../assets/images/logo.png" alt="HMSlab Logo" class="h-6 md:h-8 w-auto grayscale opacity-90">
+                        <span class="text-xl md:text-2xl font-extrabold tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
+                    </a>
+                    <p class="text-zinc-500 text-sm md:text-base leading-relaxed" data-vn="Xây dựng tại Việt Nam.<br>Làm ra bằng sự tỉ mỉ và đam mê sáng tạo." data-en="Built in Vietnam.<br>Crafted with precision and creative passion.">Xây dựng tại Việt Nam.<br>Làm ra bằng sự tỉ mỉ và đam mê sáng tạo.</p>
+                </div>
+            </div>
+            <div class="border-t border-zinc-200 pt-6 md:pt-8 flex justify-center text-xs md:text-sm font-medium text-zinc-400">
+                <p>&copy; 2026 HMSlab.store.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
