@@ -8,11 +8,18 @@
 <body>
     <script>
         const cleanRoutes = ['/home', '/lab-notes', '/tools', '/join'];
+        const projectRoutes = {
+            '/garage': '/projects/he-thong-quan-ly.html',
+            '/builder': '/projects/portfolio-maker.html'
+        };
         const path = window.location.pathname.replace(/\/$/, '');
 
         if (cleanRoutes.includes(path)) {
             sessionStorage.setItem('hms_pending_route', path);
             window.location.replace('/index.html');
+        } else if (projectRoutes[path]) {
+            sessionStorage.setItem('hms_pending_project_route', path);
+            window.location.replace(projectRoutes[path]);
         } else {
             document.body.innerHTML = '<main style="font-family: sans-serif; padding: 48px;"><h1>404</h1><p>Trang không tồn tại.</p><a href="/home">Về trang chủ</a></main>';
         }
