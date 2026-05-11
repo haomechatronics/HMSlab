@@ -7,9 +7,8 @@
 </head>
 <body>
     <script>
-        const cleanRoutes = ['/home', '/lab-notes', '/tools', '/join'];
+        const cleanRoutes = ['/home', '/lab-notes', '/join'];
         const projectRoutes = {
-            '/garage': '/projects/he-thong-quan-ly.html',
             '/builder': '/projects/portfolio-maker.html'
         };
         const path = window.location.pathname.replace(/\/$/, '');
@@ -17,7 +16,7 @@
         if (cleanRoutes.includes(path)) {
             sessionStorage.setItem('hms_pending_route', path);
             window.location.replace('/index.html');
-        } else if (path === '/coming-soon') {
+        } else if (path === '/coming-soon' || path === '/tools' || path === '/garage') {
             window.location.replace('/coming-soon.html');
         } else if (projectRoutes[path]) {
             sessionStorage.setItem('hms_pending_project_route', path);

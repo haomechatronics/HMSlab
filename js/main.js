@@ -4,7 +4,7 @@
 const projectsDatabase = [
     {
         id: "p1",
-        slug: "/garage",
+        slug: "/coming-soon",
         file: "he-thong-quan-ly.html",
         imgFolder: "p1-garage",
         imgName: "cover.jpg",
@@ -75,11 +75,11 @@ document.addEventListener('DOMContentLoaded', function() {
         '/home': 'top',
         '/projects': 'projects',
         '/lab-notes': 'lab-notes',
-        '/tools': 'tools',
         '/join': 'course-teaser'
     };
+    const comingSoonRoutes = ['/tools', '/garage'];
     const cleanProjectRoutes = {
-        '/projects/he-thong-quan-ly.html': '/garage',
+        '/projects/he-thong-quan-ly.html': '/coming-soon',
         '/projects/portfolio-maker.html': '/builder'
     };
 
@@ -119,7 +119,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const pendingRoute = sessionStorage.getItem('hms_pending_route');
     const pendingProjectRoute = sessionStorage.getItem('hms_pending_project_route');
-    if (pendingRoute && cleanRouteTargets[pendingRoute]) {
+    if (window.location.protocol !== 'file:' && comingSoonRoutes.includes(window.location.pathname)) {
+        window.location.replace(`${window.location.origin}/coming-soon`);
+    } else if (pendingRoute && cleanRouteTargets[pendingRoute]) {
         sessionStorage.removeItem('hms_pending_route');
         window.setTimeout(() => setCleanRoute(pendingRoute, cleanRouteTargets[pendingRoute], true), 50);
     } else if (pendingProjectRoute && window.location.protocol !== 'file:') {
