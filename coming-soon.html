@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tính năng sắp ra mắt | HMSlab</title>
+    <title data-vn="Tính năng sắp ra mắt | HMSlab" data-en="Coming Soon | HMSlab">Tính năng sắp ra mắt | HMSlab</title>
     
     <link rel="icon" type="image/png" href="./assets/images/logonho.png">
     
@@ -23,23 +23,34 @@
                     <img src="./assets/images/logonho.png" alt="HMSlab Logo" class="h-8 w-auto">
                     <span class="text-2xl font-extrabold leading-none tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
                 </a>
-                <div class="inline-flex h-10 items-center px-4 rounded-full bg-white border border-zinc-200 text-zinc-600 text-xs font-mono font-medium tracking-widest uppercase shadow-sm">
+                <div class="inline-flex h-10 items-center px-4 rounded-full bg-white border border-zinc-200 text-zinc-600 text-xs font-mono font-medium tracking-widest uppercase shadow-sm" data-vn="Sắp ra mắt" data-en="Coming Soon">
                     Coming Soon
                 </div>
             </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold text-brandDark tracking-tight mb-6">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-brandDark tracking-tight mb-6" data-vn="Tính năng sắp ra mắt" data-en="Coming Soon">
                 Tính năng sắp ra mắt
             </h1>
-            <p class="text-lg md:text-xl text-zinc-500 leading-relaxed mb-10">
+            <p class="text-lg md:text-xl text-zinc-500 leading-relaxed mb-10" data-vn="Phần này đang được HMSlab hoàn thiện. Quay lại sau một chút nhé, mình đang cố gắng hoàn thiện cảm ơn bạn đã ghé qua!" data-en="This feature is being polished by HMSlab. Please check back soon, we are making it cleaner and more useful. Thanks for stopping by!">
                 Phần này đang được HMSlab hoàn thiện. Quay lại sau một chút nhé, mình đang cố gắng hoàn thiện cảm ơn bạn đã ghé qua!
             </p>
-            <a href="/home" class="inline-flex items-center justify-center bg-brandDark text-white px-8 py-4 rounded-full font-bold hover:bg-brandOrange transition-colors shadow-lg">
+            <a href="/home" class="inline-flex items-center justify-center bg-brandDark text-white px-8 py-4 rounded-full font-bold hover:bg-brandOrange transition-colors shadow-lg" data-vn="Về trang chủ" data-en="Back Home">
                 Về trang chủ
             </a>
         </section>
     </main>
 
     <script>
+        const currentLang = localStorage.getItem('hms_lang') || 'vn';
+        document.documentElement.lang = currentLang === 'en' ? 'en' : 'vi';
+        document.querySelectorAll('[data-vn][data-en]').forEach(el => {
+            const value = el.getAttribute(`data-${currentLang}`);
+            if (el.tagName === 'TITLE') {
+                document.title = value;
+            } else {
+                el.textContent = value;
+            }
+        });
+
         if (window.location.protocol !== 'file:' && window.location.pathname === '/coming-soon.html') {
             window.history.replaceState({}, '', `${window.location.origin}/coming-soon`);
         }
