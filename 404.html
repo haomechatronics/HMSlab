@@ -17,6 +17,8 @@
         if (cleanRoutes.includes(path)) {
             sessionStorage.setItem('hms_pending_route', path);
             window.location.replace('/index.html');
+        } else if (path === '/coming-soon') {
+            window.location.replace('/coming-soon.html');
         } else if (projectRoutes[path]) {
             sessionStorage.setItem('hms_pending_project_route', path);
             window.location.replace(projectRoutes[path]);
