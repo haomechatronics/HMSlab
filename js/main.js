@@ -1,5 +1,5 @@
 // ==========================================
-// 1. CƠ SỞ DỮ LIỆU DỰ ÁN
+// 1. CO SO DU LIEU DU AN
 // ==========================================
 const projectsDatabase = [
     {
@@ -29,7 +29,7 @@ const projectsDatabase = [
 document.addEventListener('DOMContentLoaded', function() {
     
     // ==========================================
-    // 2. LOGIC RENDER DỰ ÁN
+    // 2. LOGIC RENDER DU AN
     // ==========================================
     const featuredContainer = document.getElementById('featured-projects-container');
     const allContainer = document.getElementById('all-projects-container');
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function createProjectCard(p) {
         const tagsHTML = p.tags.map(t => `<span class="text-[10px] md:text-xs font-mono font-medium bg-white border border-zinc-200 text-zinc-600 px-3 py-1 rounded-full uppercase tracking-wider">${t}</span>`).join('');
         
-        // Đã xóa phần làm lệch, giờ 2 dự án sẽ luôn thẳng hàng ngang nhau
+        // Giu cac card du an thang hang ngang nhau.
         return `
         <a href="${linkBasePath}${p.slug}" class="group block">
             <div class="relative overflow-hidden rounded-3xl bg-zinc-100 aspect-[4/3] mb-5 md:mb-6 shadow-premium group-hover:shadow-premium-hover transition-all duration-500 border border-zinc-200/50">
@@ -66,7 +66,65 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================================
-    // 3. LOGIC NGÔN NGỮ
+    // 2.1. CLEAN URL ROUTING CHO TRANG CHU
+    // ==========================================
+    const cleanRouteTargets = {
+        '/home': 'top',
+        '/projects': 'projects',
+        '/lab-notes': 'lab-notes',
+        '/tools': 'tools',
+        '/join': 'course-teaser'
+    };
+
+    function scrollToTarget(targetId) {
+        if (targetId === 'top') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+
+        const target = document.getElementById(targetId);
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    function setCleanRoute(route, targetId, replace = false) {
+        scrollToTarget(targetId);
+
+        if (window.location.protocol === 'file:') {
+            return;
+        }
+
+        const nextUrl = `${window.location.origin}${route}`;
+        if (replace) {
+            window.history.replaceState({ targetId }, '', nextUrl);
+        } else {
+            window.history.pushState({ targetId }, '', nextUrl);
+        }
+    }
+
+    document.querySelectorAll('[data-route][data-target]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            setCleanRoute(this.dataset.route, this.dataset.target);
+        });
+    });
+
+    const pendingRoute = sessionStorage.getItem('hms_pending_route');
+    if (pendingRoute && cleanRouteTargets[pendingRoute]) {
+        sessionStorage.removeItem('hms_pending_route');
+        window.setTimeout(() => setCleanRoute(pendingRoute, cleanRouteTargets[pendingRoute], true), 50);
+    } else if (window.location.protocol !== 'file:' && cleanRouteTargets[window.location.pathname]) {
+        window.setTimeout(() => scrollToTarget(cleanRouteTargets[window.location.pathname]), 50);
+    }
+
+    window.addEventListener('popstate', function() {
+        const targetId = cleanRouteTargets[window.location.pathname] || 'top';
+        scrollToTarget(targetId);
+    });
+
+    // ==========================================
+    // 3. LOGIC NGON NGU
     // ==========================================
     const langToggleBtns = document.querySelectorAll('.lang-toggle-btn');
     const langTexts = document.querySelectorAll('.lang-text');
@@ -75,7 +133,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateLanguage(lang) {
         langTexts.forEach(text => text.innerText = (lang === 'vn') ? 'English' : 'Tiếng Việt');
         const elements = document.querySelectorAll('[data-vn][data-en]');
-        elements.forEach(el => el.innerHTML = el.getAttribute('data-' + lang));
+        elements.forEach(el => {
+            const value = el.getAttribute('data-' + lang);
+            if (/<\/?[a-z][\s\S]*>/i.test(value)) {
+                el.innerHTML = value;
+            } else {
+                el.textContent = value;
+            }
+        });
     }
 
     updateLanguage(currentLang);
@@ -113,25 +178,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-// ==========================================
-    // 5. CHỐNG COPY VÀ F12 (CƠ BẢN)
-    // ==========================================
-    
-    // Chặn click chuột phải
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    });
 
-    // Chặn các phím tắt F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
-    document.addEventListener('keydown', function(e) {
-        if (
-            e.key === 'F12' || 
-            (e.ctrlKey && e.shiftKey && e.key === 'I') || 
-            (e.ctrlKey && e.shiftKey && e.key === 'J') || 
-            (e.ctrlKey && e.key === 'U') ||
-            (e.ctrlKey && e.key === 'S')
-        ) {
-            e.preventDefault();
-            return false;
-        }
-    });
+// ==========================================
+// 5. CHONG COPY VA F12 (CO BAN)
+// ==========================================
+
+// Chan click chuot phai
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+
+// Chan cac phim tat F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S
+document.addEventListener('keydown', function(e) {
+    if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+        (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+        (e.ctrlKey && e.key === 'U') ||
+        (e.ctrlKey && e.key === 'S')
+    ) {
+        e.preventDefault();
+        return false;
+    }
+});

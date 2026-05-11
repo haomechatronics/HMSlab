@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting | HMSlab</title>
+</head>
+<body>
+    <script>
+        const cleanRoutes = ['/home', '/lab-notes', '/tools', '/join'];
+        const path = window.location.pathname.replace(/\/$/, '');
+
+        if (cleanRoutes.includes(path)) {
+            sessionStorage.setItem('hms_pending_route', path);
+            window.location.replace('/index.html');
+        } else {
+            document.body.innerHTML = '<main style="font-family: sans-serif; padding: 48px;"><h1>404</h1><p>Trang không tồn tại.</p><a href="/home">Về trang chủ</a></main>';
+        }
+    </script>
+</body>
+</html>

@@ -40,15 +40,15 @@
     <header class="w-full fixed top-0 backdrop-blur-xl bg-brandLight/90 border-b border-zinc-200/50 z-50 transition-all duration-500" id="main-header">
         <div class="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
             
-            <a href="#" class="flex items-center gap-2 md:gap-3 group relative z-50">
+            <a href="/home" data-route="/home" data-target="top" class="flex items-center gap-2 md:gap-3 group relative z-50">
                 <img src="./assets/images/logo.png" alt="HMSlab Logo" class="h-8 md:h-10 w-auto group-hover:scale-105 transition-transform duration-300">
                 <span class="text-2xl font-extrabold tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
             </a>
 
             <nav class="hidden md:flex space-x-10 items-center">
-                <a href="#projects" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Dự án" data-en="Projects">Dự án</a>
-                <a href="#lab-notes" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
-                <a href="#tools" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
+                <a href="/projects" data-route="/projects" data-target="projects" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <a href="/lab-notes" data-route="/lab-notes" data-target="lab-notes" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
+                <a href="/tools" data-route="/tools" data-target="tools" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
             </nav>
 
             <div class="hidden md:flex items-center space-x-6">
@@ -56,7 +56,7 @@
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
                     <span class="lang-text uppercase tracking-wider">English</span>
                 </button>
-                <a href="#course-teaser" class="bg-brandDark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brandOrange transition-all duration-300 shadow-md hover:shadow-orange-500/25" data-vn="Tham gia Lab" data-en="Join the Lab">
+                <a href="/join" data-route="/join" data-target="course-teaser" class="bg-brandDark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brandOrange transition-all duration-300 shadow-md hover:shadow-orange-500/25" data-vn="Tham gia Lab" data-en="Join the Lab">
                     Tham gia Lab
                 </a>
             </div>
@@ -70,9 +70,9 @@
 
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-zinc-200 absolute w-full left-0 top-20 shadow-2xl origin-top transition-all duration-300">
             <div class="flex flex-col px-6 py-6 space-y-5">
-                <a href="#projects" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Dự án" data-en="Projects">Dự án</a>
-                <a href="#lab-notes" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
-                <a href="#tools" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
+                <a href="/projects" data-route="/projects" data-target="projects" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <a href="/lab-notes" data-route="/lab-notes" data-target="lab-notes" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
+                <a href="/tools" data-route="/tools" data-target="tools" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
                 
                 <div class="h-px w-full bg-zinc-100 my-2"></div>
                 
@@ -81,7 +81,7 @@
                     <span class="lang-text uppercase tracking-wider">English</span>
                 </button>
 
-                <a href="#course-teaser" class="mobile-link bg-brandDark text-white px-4 py-3.5 rounded-xl text-center font-bold" data-vn="Tham gia Lab" data-en="Join the Lab">Tham gia Lab</a>
+                <a href="/join" data-route="/join" data-target="course-teaser" class="mobile-link bg-brandDark text-white px-4 py-3.5 rounded-xl text-center font-bold" data-vn="Tham gia Lab" data-en="Join the Lab">Tham gia Lab</a>
             </div>
         </div>
     </header>
@@ -102,7 +102,7 @@
                 Không gian tôi ghi lại quá trình tạo ra các dự án, review công cụ làm việc và chia sẻ những kinh nghiệm thực chiến nhất.
             </p>
             <div class="flex flex-col w-full sm:w-auto px-4 md:px-0">
-                <a href="#projects" class="bg-brandDark text-white px-8 py-4 rounded-full font-semibold hover:bg-brandOrange transition-all duration-300 text-center shadow-lg hover:shadow-orange-500/25 w-full md:w-auto" data-vn="Khám phá Dự án" data-en="Explore Projects">
+                <a href="/projects" data-route="/projects" data-target="projects" class="bg-brandDark text-white px-8 py-4 rounded-full font-semibold hover:bg-brandOrange transition-all duration-300 text-center shadow-lg hover:shadow-orange-500/25 w-full md:w-auto" data-vn="Khám phá Dự án" data-en="Explore Projects">
                     Khám phá Dự án
                 </a>
             </div>
@@ -190,7 +190,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center md:items-start mb-12 md:mb-16 gap-10">
                 
                 <div class="md:w-1/3 text-center md:text-left">
-                    <a href="#" class="flex items-center justify-center md:justify-start gap-2 mb-4 md:mb-6">
+                    <a href="/home" data-route="/home" data-target="top" class="flex items-center justify-center md:justify-start gap-2 mb-4 md:mb-6">
                         <img src="./assets/images/logo.png" alt="HMSlab Logo" class="h-6 md:h-8 w-auto grayscale opacity-90">
                         <span class="text-xl md:text-2xl font-extrabold tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
                     </a>
