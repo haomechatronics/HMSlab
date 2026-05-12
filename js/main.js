@@ -95,8 +95,8 @@ document.addEventListener('DOMContentLoaded', function() {
         '/projects/he-thong-quan-ly.html': '/coming-soon',
         '/projects/portfolio-maker.html': '/builder',
         '/projects/ai-robot.html': '/ai-robot',
-        '/courses/index.html': '/courses',
-        '/courses/register.html': '/dang-ky-khoa-hoc'
+        '/courses/index.html': '/coming-soon',
+        '/courses/register.html': '/coming-soon'
     };
 
     function scrollToTarget(targetId) {
