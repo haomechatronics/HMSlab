@@ -25,6 +25,18 @@ const projectsDatabase = [
         title_en: "HMS Portfolio Maker",
         desc_vn: "Công cụ tạo portfolio nhanh chóng cho developer chỉ với file JSON cấu hình đơn giản.",
         desc_en: "A tool to quickly create developer portfolios with just a simple JSON config file."
+    },
+    {
+        id: "p3",
+        slug: "/projects/ai-robot.html",
+        file: "ai-robot.html",
+        imgFolder: "p3-ai-robot",
+        imgName: "cover.png",
+        tags: ["AI", "Robot", "3D Print"],
+        title_vn: "Robot AI DIY",
+        title_en: "DIY AI Robot",
+        desc_vn: "Dự án robot AI tự làm với thân vỏ in 3D, cảm biến, camera và khả năng tương tác thông minh.",
+        desc_en: "A DIY AI robot project with a 3D printed body, sensors, camera, and intelligent interaction features."
     }
 ];
 

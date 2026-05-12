@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot AI DIY | HMSlab</title>
+    <link rel="icon" type="image/png" href="../assets/images/logonho.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { brandOrange: '#ea580c', brandDark: '#111111', brandLight: '#fcfcfc' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Fira Code', 'monospace'] },
+                    boxShadow: { 'premium': '0 4px 20px -2px rgba(0, 0, 0, 0.05)', 'premium-hover': '0 20px 40px -4px rgba(0, 0, 0, 0.1)' }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../assets/css/studio-effects.css">
+</head>
+<body class="bg-brandLight text-zinc-800 font-sans antialiased selection:bg-brandOrange selection:text-white">
+
+    <header class="w-full fixed top-0 backdrop-blur-xl bg-brandLight/90 border-b border-zinc-200/50 z-50 transition-all duration-500" id="main-header">
+        <div class="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <a href="/home" class="flex items-center gap-2 md:gap-3 group relative z-50">
+                <img src="/assets/images/logonho.png" onerror="this.onerror=null;this.src='../assets/images/logonho.png';" alt="HMSlab Logo" class="h-8 md:h-10 w-auto group-hover:scale-105 transition-transform duration-300">
+                <span class="text-2xl font-extrabold tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
+            </a>
+
+            <nav class="hidden md:flex space-x-10 items-center">
+                <a href="/projects" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <a href="/lab-notes" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
+                <a href="/tools" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden text-brandDark focus:outline-none relative z-50 p-2 -mr-2">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-zinc-200 absolute w-full left-0 top-20 shadow-2xl origin-top transition-all duration-300">
+            <div class="flex flex-col px-6 py-6 space-y-5">
+                <a href="/projects" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <a href="/lab-notes" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
+                <a href="/tools" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24">
+        <div class="container mx-auto px-6 lg:px-12 mb-16">
+            <nav class="flex text-sm text-zinc-500 mb-8 font-medium">
+                <a href="/home" class="hover:text-brandOrange transition-colors" data-vn="Trang chủ" data-en="Home">Trang chủ</a>
+                <span class="mx-3">/</span>
+                <a href="/projects" class="hover:text-brandOrange transition-colors" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <span class="mx-3">/</span>
+                <span class="text-brandDark" data-vn="Robot AI DIY" data-en="DIY AI Robot">Robot AI DIY</span>
+            </nav>
+
+            <div class="flex flex-col lg:flex-row gap-12 lg:items-end">
+                <div class="lg:w-2/3">
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="text-xs font-mono font-medium bg-orange-100 text-brandOrange px-3 py-1 rounded-full uppercase tracking-wider">AI</span>
+                        <span class="text-xs font-mono font-medium bg-zinc-200 text-zinc-700 px-3 py-1 rounded-full uppercase tracking-wider">Robot</span>
+                        <span class="text-xs font-mono font-medium bg-zinc-200 text-zinc-700 px-3 py-1 rounded-full uppercase tracking-wider">3D Print</span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-brandDark tracking-tight mb-6" data-vn="Robot AI DIY" data-en="DIY AI Robot">Robot AI DIY</h1>
+                    <p class="text-xl text-zinc-500 leading-relaxed" data-vn="Một robot AI tự làm lấy cảm hứng từ các mô hình DIY robot: có thân vỏ in 3D, cụm cảm biến/camera, phần điều khiển nhúng và lớp AI để tương tác với người dùng." data-en="A DIY AI robot inspired by maker robot builds: a 3D printed body, sensor/camera module, embedded control layer, and AI interaction layer.">Một robot AI tự làm lấy cảm hứng từ các mô hình DIY robot: có thân vỏ in 3D, cụm cảm biến/camera, phần điều khiển nhúng và lớp AI để tương tác với người dùng.</p>
+                </div>
+                <div class="lg:w-1/3 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3">
+                    <a href="https://www.tiktok.com/@andrem4c/video/7448493368629398789?q=diy%20robot%20ai&t=1778571104410" target="_blank" rel="noopener noreferrer" class="bg-brandDark text-white px-5 py-4 rounded-full font-bold hover:bg-brandOrange transition-colors text-center shadow-lg" data-vn="Video tham khảo" data-en="Reference Video">Video tham khảo</a>
+                    <!-- Thay href="#" bằng link GitHub/source code khi có. -->
+                    <a href="#" class="bg-white border-2 border-zinc-200 text-brandDark px-5 py-4 rounded-full font-bold hover:border-brandDark transition-colors text-center" data-vn="Link code" data-en="Code Link">Link code</a>
+                    <!-- Thay href="#" bằng link file STL/STEP/3MF khi có. -->
+                    <a href="#" class="bg-white border-2 border-zinc-200 text-brandDark px-5 py-4 rounded-full font-bold hover:border-brandDark transition-colors text-center" data-vn="File 3D" data-en="3D Files">File 3D</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 lg:px-12 mb-20">
+            <div class="w-full aspect-video bg-zinc-200 rounded-[40px] overflow-hidden shadow-2xl">
+                <img src="../assets/images/projects/p3-ai-robot/cover.png" onerror="this.src='https://placehold.co/1920x1080/111111/ea580c?text=DIY+AI+Robot'" class="w-full h-full object-cover" alt="Cover Robot AI DIY">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 max-w-4xl prose prose-lg prose-zinc marker:text-brandOrange">
+            <h2 class="text-3xl font-bold text-brandDark mb-6 mt-12" data-vn="Ý tưởng dự án" data-en="Project Idea">Ý tưởng dự án</h2>
+            <p class="text-zinc-600 mb-6" data-vn="Mục tiêu của dự án là tạo một robot để bàn nhỏ gọn có thể quan sát môi trường, phản hồi bằng hành động hoặc âm thanh, và trở thành một nền tảng thực hành cho AI, IoT, cơ khí in 3D và lập trình nhúng." data-en="The goal is to build a compact desktop robot that can observe its environment, respond with movement or sound, and become a practice platform for AI, IoT, 3D printed mechanics, and embedded programming.">Mục tiêu của dự án là tạo một robot để bàn nhỏ gọn có thể quan sát môi trường, phản hồi bằng hành động hoặc âm thanh, và trở thành một nền tảng thực hành cho AI, IoT, cơ khí in 3D và lập trình nhúng.</p>
+
+            <h2 class="text-3xl font-bold text-brandDark mb-6 mt-12" data-vn="Các phần chính" data-en="Core Parts">Các phần chính</h2>
+            <ul class="list-disc pl-6 text-zinc-600 mb-6 space-y-2">
+                <li><strong>Khung cơ khí:</strong> thân vỏ in 3D, thiết kế dễ tháo lắp để thay cảm biến hoặc chỉnh sửa cơ cấu.</li>
+                <li><strong>Điều khiển:</strong> vi điều khiển cho servo, LED, nút bấm, cảm biến và giao tiếp với module AI.</li>
+                <li><strong>Nhận biết:</strong> camera hoặc cảm biến khoảng cách để robot có dữ liệu về môi trường xung quanh.</li>
+                <li><strong>AI:</strong> lớp xử lý để nhận lệnh, phản hồi hội thoại hoặc tạo hành vi thông minh theo ngữ cảnh.</li>
+            </ul>
+
+            <div class="bg-zinc-100 p-8 rounded-3xl my-10 border border-zinc-200">
+                <h3 class="text-xl font-bold text-brandDark mb-3" data-vn="Chỗ gắn tài nguyên" data-en="Resource Placeholders">Chỗ gắn tài nguyên</h3>
+                <p class="text-zinc-500 text-sm mb-4" data-vn="Khi có mã nguồn hoặc file thiết kế 3D, chỉ cần thay href=&quot;#&quot; ở hai nút đầu trang bằng link thật." data-en="When the source code or 3D design files are ready, replace href=&quot;#&quot; in the two top buttons with the real links.">Khi có mã nguồn hoặc file thiết kế 3D, chỉ cần thay href="#" ở hai nút đầu trang bằng link thật.</p>
+                <div class="grid sm:grid-cols-2 gap-3 text-sm font-mono">
+                    <div class="rounded-2xl bg-white border border-zinc-200 p-4">CODE_LINK_HERE</div>
+                    <div class="rounded-2xl bg-white border border-zinc-200 p-4">3D_FILE_LINK_HERE</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-zinc-200 pt-16 md:pt-20 pb-8 md:pb-10">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start mb-12 md:mb-16 gap-10">
+                <div class="md:w-1/3 text-center md:text-left">
+                    <a href="/home" class="flex items-center justify-center md:justify-start gap-2 mb-4 md:mb-6">
+                        <img src="/assets/images/logonho.png" onerror="this.onerror=null;this.src='../assets/images/logonho.png';" alt="HMSlab Logo" class="h-6 md:h-8 w-auto grayscale opacity-90">
+                        <span class="text-xl md:text-2xl font-extrabold tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
+                    </a>
+                    <p class="text-zinc-500 text-sm md:text-base leading-relaxed" data-vn="Xây dựng tại Việt Nam.<br>Làm ra bằng sự tỉ mỉ và đam mê sáng tạo." data-en="Built in Vietnam.<br>Crafted with precision and creative passion.">Xây dựng tại Việt Nam.<br>Làm ra bằng sự tỉ mỉ và đam mê sáng tạo.</p>
+                </div>
+            </div>
+            <div class="border-t border-zinc-200 pt-6 md:pt-8 flex justify-center text-xs md:text-sm font-medium text-zinc-400">
+                <p>&copy; 2026 HMSlab.store.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../assets/js/studio-effects.js"></script>
+</body>
+</html>
