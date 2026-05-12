@@ -3,30 +3,6 @@
 // ==========================================
 const projectsDatabase = [
     {
-        id: "p1",
-        slug: "/coming-soon",
-        file: "he-thong-quan-ly.html",
-        imgFolder: "p1-garage",
-        imgName: "cover.jpg",
-        tags: ["ReactJS", "NodeJS"],
-        title_vn: "Hệ thống quản lý Garage",
-        title_en: "Garage Management System",
-        desc_vn: "Ứng dụng quản lý toàn diện cho các studio sáng tạo, tích hợp tracking tiến độ và tài chính.",
-        desc_en: "Comprehensive management app for creative studios, integrating progress and financial tracking."
-    },
-    {
-        id: "p2",
-        slug: "/builder",
-        file: "portfolio-maker.html",
-        imgFolder: "p2-portfolio",
-        imgName: "cover.png",
-        tags: ["Next.js", "Tailwind"],
-        title_vn: "HMS Portfolio Maker",
-        title_en: "HMS Portfolio Maker",
-        desc_vn: "Công cụ tạo portfolio nhanh chóng cho developer chỉ với file JSON cấu hình đơn giản.",
-        desc_en: "A tool to quickly create developer portfolios with just a simple JSON config file."
-    },
-    {
         id: "p3",
         slug: "/ai-robot",
         file: "ai-robot.html",
