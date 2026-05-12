@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký khóa học | HMSlab</title>
+
+    <link rel="icon" type="image/png" href="../assets/images/logonho.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { brandOrange: '#ea580c', brandDark: '#111111', brandLight: '#fcfcfc' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Fira Code', 'monospace'] },
+                    boxShadow: { 'premium': '0 4px 20px -2px rgba(0, 0, 0, 0.05)', 'premium-hover': '0 20px 40px -4px rgba(0, 0, 0, 0.1)' }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../assets/css/studio-effects.css">
+</head>
+<body class="bg-brandLight text-zinc-800 font-sans antialiased selection:bg-brandOrange selection:text-white">
+
+    <header class="w-full fixed top-0 backdrop-blur-xl bg-brandLight/90 border-b border-zinc-200/50 z-50 transition-all duration-500" id="main-header">
+        <div class="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <a href="/home" class="flex items-center gap-2 md:gap-3 group relative z-50">
+                <img src="/assets/images/logonho.png" onerror="this.onerror=null;this.src='../assets/images/logonho.png';" alt="HMSlab Logo" class="h-8 md:h-10 w-auto group-hover:scale-105 transition-transform duration-300">
+                <span class="text-2xl font-extrabold tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
+            </a>
+
+            <nav class="hidden md:flex space-x-10 items-center">
+                <a href="/projects" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <a href="/lab-notes" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
+                <a href="/tools" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
+                <a href="/courses" class="text-sm font-semibold text-brandDark border-b-2 border-brandOrange pb-1 transition-colors duration-300" data-vn="Khóa học" data-en="Courses">Khóa học</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden text-brandDark focus:outline-none relative z-50 p-2 -mr-2">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-zinc-200 absolute w-full left-0 top-20 shadow-2xl origin-top transition-all duration-300">
+            <div class="flex flex-col px-6 py-6 space-y-5">
+                <a href="/projects" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <a href="/lab-notes" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
+                <a href="/tools" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
+                <a href="/courses" class="mobile-link text-lg font-bold text-brandOrange" data-vn="Khóa học" data-en="Courses">Khóa học</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24">
+        <section class="container mx-auto px-6 lg:px-12">
+            <nav class="flex flex-wrap text-sm text-zinc-500 mb-8 font-medium mt-6">
+                <a href="/home" class="hover:text-brandOrange transition-colors" data-vn="Trang chủ" data-en="Home">Trang chủ</a>
+                <span class="mx-3">/</span>
+                <a href="/courses" class="hover:text-brandOrange transition-colors" data-vn="Khóa học" data-en="Courses">Khóa học</a>
+                <span class="mx-3">/</span>
+                <span class="text-brandDark" data-vn="Đăng ký" data-en="Register">Đăng ký</span>
+            </nav>
+
+            <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-start">
+                <div>
+                    <span class="inline-block px-4 py-1.5 mb-5 rounded-full bg-orange-100 text-brandOrange text-xs font-mono font-bold tracking-widest uppercase" data-vn="Xác nhận đăng ký" data-en="Registration">Xác nhận đăng ký</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-brandDark mb-6 tracking-tight" data-vn="Đăng ký khóa học HMSlab" data-en="Register for an HMSlab course">Đăng ký khóa học HMSlab</h1>
+                    <p class="text-lg md:text-xl text-zinc-500 leading-relaxed mb-8" data-vn="Chọn khóa học, chuyển khoản theo cú pháp, sau đó gửi ảnh bill qua Zalo để HMSlab xác nhận và thêm bạn vào nhóm học." data-en="Choose a course, transfer with the correct note, then send the receipt via Zalo so HMSlab can confirm your registration.">Chọn khóa học, chuyển khoản theo cú pháp, sau đó gửi ảnh bill qua Zalo để HMSlab xác nhận và thêm bạn vào nhóm học.</p>
+
+                    <div class="grid sm:grid-cols-3 gap-3 mb-10">
+                        <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-premium">
+                            <p class="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Zalo</p>
+                            <p class="font-bold text-brandDark">0388484847</p>
+                        </div>
+                        <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-premium">
+                            <p class="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Chủ TK</p>
+                            <p class="font-bold text-brandDark">NGUYEN TAN HAO</p>
+                        </div>
+                        <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-premium">
+                            <p class="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-2">Ngân hàng</p>
+                            <p class="font-bold text-brandDark">BIDV</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-zinc-200 rounded-3xl p-6 md:p-8 shadow-premium">
+                        <h2 class="text-2xl font-bold text-brandDark mb-6" data-vn="Các bước thanh toán" data-en="Payment steps">Các bước thanh toán</h2>
+                        <div class="space-y-5">
+                            <div class="flex gap-4">
+                                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brandDark text-white text-sm font-bold">1</span>
+                                <div>
+                                    <h3 class="font-bold text-brandDark mb-1" data-vn="Chọn khóa học" data-en="Choose a course">Chọn khóa học</h3>
+                                    <p class="text-zinc-500 text-sm" data-vn="Ghi rõ khóa bạn muốn học: IoT cơ bản, Thiết kế hoặc PLC." data-en="Write the course name clearly: Basic IoT, Design, or PLC.">Ghi rõ khóa bạn muốn học: IoT cơ bản, Thiết kế hoặc PLC.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brandDark text-white text-sm font-bold">2</span>
+                                <div>
+                                    <h3 class="font-bold text-brandDark mb-1" data-vn="Quét QR hoặc chuyển khoản" data-en="Scan QR or bank transfer">Quét QR hoặc chuyển khoản</h3>
+                                    <p class="text-zinc-500 text-sm" data-vn="Chuyển đến STK 7301897774 - BIDV - NGUYEN TAN HAO." data-en="Transfer to account 7301897774 - BIDV - NGUYEN TAN HAO.">Chuyển đến STK 7301897774 - BIDV - NGUYEN TAN HAO.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brandDark text-white text-sm font-bold">3</span>
+                                <div>
+                                    <h3 class="font-bold text-brandDark mb-1" data-vn="Gửi xác nhận qua Zalo" data-en="Confirm via Zalo">Gửi xác nhận qua Zalo</h3>
+                                    <p class="text-zinc-500 text-sm" data-vn="Chụp màn hình giao dịch và gửi kèm họ tên, số điện thoại, khóa học muốn đăng ký." data-en="Send the receipt with your name, phone number, and selected course.">Chụp màn hình giao dịch và gửi kèm họ tên, số điện thoại, khóa học muốn đăng ký.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="bg-white border border-zinc-200 rounded-3xl p-6 md:p-8 shadow-premium sticky top-28">
+                    <div class="rounded-3xl bg-zinc-50 border border-zinc-200 p-4 mb-6">
+                        <img src="https://img.vietqr.io/image/BIDV-7301897774-compact2.png?accountName=NGUYEN%20TAN%20HAO&addInfo=HMSLAB%20KHOA%20HOC" onerror="this.src='https://placehold.co/900x900/ffffff/111111?text=QR+HMSlab'" alt="QR chuyển khoản khóa học HMSlab" class="w-full rounded-2xl bg-white">
+                    </div>
+
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-center justify-between gap-4 border-b border-zinc-100 pb-3">
+                            <span class="text-zinc-500 text-sm">Số tài khoản</span>
+                            <span class="font-bold text-brandDark">7301897774</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-4 border-b border-zinc-100 pb-3">
+                            <span class="text-zinc-500 text-sm">Tên tài khoản</span>
+                            <span class="font-bold text-brandDark text-right">NGUYEN TAN HAO</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-4 border-b border-zinc-100 pb-3">
+                            <span class="text-zinc-500 text-sm">Ngân hàng</span>
+                            <span class="font-bold text-brandDark text-right">BIDV - PGD Nguyễn Huệ</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-zinc-100 border border-zinc-200 rounded-2xl p-5 mb-6">
+                        <p class="text-xs font-mono uppercase tracking-widest text-zinc-500 mb-3" data-vn="Cú pháp mẫu" data-en="Payment note examples">Cú pháp mẫu</p>
+                        <div class="space-y-2 text-sm font-mono text-brandDark">
+                            <p>HMSLAB IOT 038xxxxxxx TENBAN</p>
+                            <p>HMSLAB THIETKE 038xxxxxxx TENBAN</p>
+                            <p>HMSLAB PLC 038xxxxxxx TENBAN</p>
+                        </div>
+                    </div>
+
+                    <a href="https://zalo.me/0388484847" target="_blank" rel="noopener noreferrer" class="flex w-full items-center justify-center bg-[#0068ff] text-white px-6 py-4 rounded-full font-bold hover:bg-[#0052cc] transition-colors" data-vn="Gửi bill qua Zalo" data-en="Send receipt via Zalo">Gửi bill qua Zalo</a>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-zinc-200 pt-16 md:pt-20 pb-8 md:pb-10">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="border-t border-zinc-200 pt-6 md:pt-8 flex justify-center text-xs md:text-sm font-medium text-zinc-400">
+                <p>&copy; 2026 HMSlab.store.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../assets/js/studio-effects.js"></script>
+</body>
+</html>
