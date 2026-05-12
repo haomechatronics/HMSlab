@@ -18,6 +18,10 @@
         :root {
             --cursor-x: 50%;
             --cursor-y: 18%;
+            --hero-rotate-x: 0deg;
+            --hero-rotate-y: 0deg;
+            --hero-light-x: 50%;
+            --hero-light-y: 50%;
         }
 
         body {
@@ -41,6 +45,46 @@
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
+        }
+
+        .studio-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 70;
+            width: 100%;
+            height: 3px;
+            transform: scaleX(0);
+            transform-origin: left;
+            background: linear-gradient(90deg, #111111, #ea580c, #f97316);
+            box-shadow: 0 0 22px rgba(234, 88, 12, 0.55);
+        }
+
+        .studio-cursor {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 80;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(234, 88, 12, 0.55);
+            border-radius: 999px;
+            pointer-events: none;
+            opacity: 0;
+            translate: -50% -50%;
+            transition: width 220ms ease, height 220ms ease, border-color 220ms ease, opacity 220ms ease;
+            mix-blend-mode: multiply;
+        }
+
+        .studio-cursor.is-active {
+            opacity: 1;
+        }
+
+        .studio-cursor.is-pressing,
+        .studio-cursor.is-linking {
+            width: 62px;
+            height: 62px;
+            border-color: rgba(17, 17, 17, 0.35);
         }
 
         .loader-mark {
@@ -98,6 +142,13 @@
 
         .studio-title {
             text-wrap: balance;
+            color: transparent;
+            background: linear-gradient(120deg, #111111 0%, #111111 48%, #ea580c 52%, #111111 58%, #111111 100%);
+            background-size: 240% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleShine 5.5s ease-in-out infinite;
         }
 
         .studio-actions a,
@@ -117,6 +168,10 @@
             border-radius: 34px;
             background: #111111;
             box-shadow: 0 32px 90px rgba(17,17,17,0.24);
+            perspective: 1200px;
+            transform: rotateX(var(--hero-rotate-x)) rotateY(var(--hero-rotate-y));
+            transform-style: preserve-3d;
+            transition: transform 420ms cubic-bezier(.2,.8,.2,1), box-shadow 420ms ease;
         }
 
         .studio-hero-frame::before {
@@ -130,14 +185,19 @@
         }
 
         .studio-hero-frame::after {
-            content: "HMS PORTFOLIO MAKER";
+            content: "";
             position: absolute;
-            left: 1.5rem;
-            bottom: 1.35rem;
-            z-index: 3;
-            color: rgba(255,255,255,0.86);
-            font: 600 0.72rem/1 "Fira Code", monospace;
-            letter-spacing: 0.18em;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at var(--hero-light-x) var(--hero-light-y), rgba(255,255,255,0.34), transparent 18rem),
+                linear-gradient(110deg, transparent 0%, transparent 42%, rgba(255,255,255,0.25) 48%, transparent 54%, transparent 100%);
+            background-size: 100% 100%, 240% 100%;
+            mix-blend-mode: screen;
+            opacity: 0;
+            transition: opacity 360ms ease;
+            animation: heroSweep 7s ease-in-out infinite;
         }
 
         .studio-hero-image {
@@ -146,9 +206,67 @@
             filter: saturate(0.96) contrast(1.04);
         }
 
+        .studio-hero-frame:hover {
+            box-shadow: 0 42px 110px rgba(17,17,17,0.28);
+        }
+
+        .studio-hero-frame:hover::after {
+            opacity: 1;
+        }
+
         .studio-hero-frame:hover .studio-hero-image {
             transform: scale(1.085);
             filter: saturate(1.08) contrast(1.08);
+        }
+
+        .studio-hero-chip {
+            position: absolute;
+            z-index: 4;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.92);
+            background: rgba(17,17,17,0.5);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 999px;
+            padding: 0.65rem 0.85rem;
+            font: 600 0.72rem/1 "Fira Code", monospace;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 16px 42px rgba(0,0,0,0.22);
+            transform: translateZ(44px);
+        }
+
+        .studio-hero-chip::before {
+            content: "";
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 999px;
+            background: #ea580c;
+            box-shadow: 0 0 18px rgba(234, 88, 12, 0.9);
+        }
+
+        .studio-hero-chip.top {
+            top: 1.5rem;
+            left: 1.5rem;
+        }
+
+        .studio-hero-chip.bottom {
+            right: 1.5rem;
+            bottom: 1.35rem;
+        }
+
+        .studio-hero-scan {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            pointer-events: none;
+            opacity: 0.2;
+            background-image: linear-gradient(rgba(255,255,255,0.14) 1px, transparent 1px);
+            background-size: 100% 8px;
+            mix-blend-mode: overlay;
+            animation: scanMove 9s linear infinite;
         }
 
         .studio-section {
@@ -176,6 +294,30 @@
             }
         }
 
+        @keyframes titleShine {
+            0%, 55%, 100% {
+                background-position: 100% 0;
+            }
+            75% {
+                background-position: 0 0;
+            }
+        }
+
+        @keyframes heroSweep {
+            0%, 45%, 100% {
+                background-position: 0 0, 120% 0;
+            }
+            65% {
+                background-position: 0 0, -80% 0;
+            }
+        }
+
+        @keyframes scanMove {
+            to {
+                background-position: 0 120px;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
@@ -192,6 +334,10 @@
         }
 
         @media (max-width: 768px) {
+            .studio-cursor {
+                display: none;
+            }
+
             .studio-section {
                 padding: 1.25rem;
                 border-radius: 22px;
@@ -205,10 +351,17 @@
                 inset: 0.7rem;
                 border-radius: 18px;
             }
+
+            .studio-hero-chip {
+                display: none;
+            }
         }
     </style>
 </head>
 <body class="studio-shell bg-brandLight text-zinc-800 font-sans antialiased selection:bg-brandOrange selection:text-white">
+
+    <div class="studio-progress" id="studio-progress" aria-hidden="true"></div>
+    <div class="studio-cursor" id="studio-cursor" aria-hidden="true"></div>
 
     <div class="studio-loader" id="studio-loader" aria-hidden="true">
         <div class="loader-mark text-3xl md:text-5xl">HMSlab.</div>
@@ -282,6 +435,9 @@
         <div class="container mx-auto px-6 lg:px-12 mb-20 studio-reveal">
             <div class="studio-hero-frame w-full aspect-video overflow-hidden">
                 <img src="../assets/images/projects/p2-portfolio/cover.png" onerror="this.src='https://placehold.co/1920x1080/111111/ea580c?text=Hinh+Anh+Du+An+2'" class="studio-hero-image w-full h-full object-cover" alt="Cover HMS Portfolio Maker">
+                <span class="studio-hero-chip top">JSON First</span>
+                <span class="studio-hero-chip bottom">Portfolio System</span>
+                <span class="studio-hero-scan"></span>
             </div>
         </div>
 
@@ -320,10 +476,24 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const loader = document.getElementById('studio-loader');
+            const progress = document.getElementById('studio-progress');
+            const cursor = document.getElementById('studio-cursor');
             window.setTimeout(() => loader && loader.classList.add('is-hidden'), 650);
 
             const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             const revealItems = document.querySelectorAll('.studio-reveal');
+
+            function updateScrollProgress() {
+                if (!progress) return;
+
+                const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+                const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+                progress.style.transform = `scaleX(${Math.min(Math.max(ratio, 0), 1)})`;
+            }
+
+            updateScrollProgress();
+            window.addEventListener('scroll', updateScrollProgress, { passive: true });
+            window.addEventListener('resize', updateScrollProgress);
 
             if ('IntersectionObserver' in window && !reduceMotion) {
                 const observer = new IntersectionObserver((entries) => {
@@ -347,7 +517,20 @@
                 window.addEventListener('pointermove', (event) => {
                     document.documentElement.style.setProperty('--cursor-x', `${event.clientX}px`);
                     document.documentElement.style.setProperty('--cursor-y', `${event.clientY}px`);
+
+                    if (cursor && window.matchMedia('(pointer: fine)').matches) {
+                        cursor.classList.add('is-active');
+                        cursor.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
+                    }
                 }, { passive: true });
+
+                document.addEventListener('pointerdown', () => cursor && cursor.classList.add('is-pressing'));
+                document.addEventListener('pointerup', () => cursor && cursor.classList.remove('is-pressing'));
+
+                document.querySelectorAll('a, button').forEach((item) => {
+                    item.addEventListener('pointerenter', () => cursor && cursor.classList.add('is-linking'));
+                    item.addEventListener('pointerleave', () => cursor && cursor.classList.remove('is-linking'));
+                });
 
                 document.querySelectorAll('.magnetic').forEach((item) => {
                     item.addEventListener('pointermove', (event) => {
@@ -363,11 +546,34 @@
                 });
 
                 const heroImage = document.querySelector('.studio-hero-image');
+                const heroFrame = document.querySelector('.studio-hero-frame');
                 if (heroImage) {
                     window.addEventListener('scroll', () => {
                         const offset = Math.min(window.scrollY * 0.035, 28);
                         heroImage.style.translate = `0 ${offset}px`;
                     }, { passive: true });
+                }
+
+                if (heroFrame) {
+                    heroFrame.addEventListener('pointermove', (event) => {
+                        const rect = heroFrame.getBoundingClientRect();
+                        const x = (event.clientX - rect.left) / rect.width;
+                        const y = (event.clientY - rect.top) / rect.height;
+                        const rotateY = (x - 0.5) * 7;
+                        const rotateX = (0.5 - y) * 5;
+
+                        heroFrame.style.setProperty('--hero-rotate-x', `${rotateX}deg`);
+                        heroFrame.style.setProperty('--hero-rotate-y', `${rotateY}deg`);
+                        heroFrame.style.setProperty('--hero-light-x', `${x * 100}%`);
+                        heroFrame.style.setProperty('--hero-light-y', `${y * 100}%`);
+                    });
+
+                    heroFrame.addEventListener('pointerleave', () => {
+                        heroFrame.style.setProperty('--hero-rotate-x', '0deg');
+                        heroFrame.style.setProperty('--hero-rotate-y', '0deg');
+                        heroFrame.style.setProperty('--hero-light-x', '50%');
+                        heroFrame.style.setProperty('--hero-light-y', '50%');
+                    });
                 }
             }
         });

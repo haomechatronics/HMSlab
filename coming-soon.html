@@ -14,13 +14,14 @@
     <script>
         tailwind.config = { theme: { extend: { colors: { brandOrange: '#ea580c', brandDark: '#111111', brandLight: '#fcfcfc' }, fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Fira Code', 'monospace'] } } } }
     </script>
+    <link rel="stylesheet" href="./assets/css/studio-effects.css">
 </head>
 <body class="min-h-screen bg-brandLight text-zinc-800 font-sans antialiased selection:bg-brandOrange selection:text-white">
     <main class="min-h-screen px-6 py-12 flex items-center justify-center">
         <section class="w-full max-w-2xl text-center">
             <div class="mb-10 flex flex-wrap items-center justify-center gap-3">
                 <a href="/home" class="inline-flex h-10 items-center justify-center gap-2">
-                    <img src="./assets/images/logonho.png" alt="HMSlab Logo" class="h-8 w-auto">
+                    <img src="/assets/images/logonho.png" onerror="this.onerror=null;this.src='./assets/images/logonho.png';" alt="HMSlab Logo" class="h-8 w-auto">
                     <span class="text-2xl font-extrabold leading-none tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
                 </a>
                 <div class="inline-flex h-10 items-center px-4 rounded-full bg-white border border-zinc-200 text-zinc-600 text-xs font-mono font-medium tracking-widest uppercase shadow-sm" data-vn="Sắp ra mắt" data-en="Coming Soon">
@@ -55,5 +56,6 @@
             window.history.replaceState({}, '', `${window.location.origin}/coming-soon`);
         }
     </script>
+    <script src="./assets/js/studio-effects.js"></script>
 </body>
 </html>
