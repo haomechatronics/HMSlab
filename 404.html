@@ -7,7 +7,7 @@
 </head>
 <body>
     <script>
-        const cleanRoutes = ['/home', '/lab-notes', '/join'];
+        const cleanRoutes = ['/home', '/lab-notes', '/tools', '/join'];
         const projectRoutes = {
             '/builder': '/projects/portfolio-maker.html'
         };
@@ -16,7 +16,7 @@
         if (cleanRoutes.includes(path)) {
             sessionStorage.setItem('hms_pending_route', path);
             window.location.replace('/index.html');
-        } else if (path === '/coming-soon' || path === '/tools' || path === '/garage') {
+        } else if (path === '/coming-soon' || path === '/garage') {
             window.location.replace('/coming-soon.html');
         } else if (projectRoutes[path]) {
             sessionStorage.setItem('hms_pending_project_route', path);

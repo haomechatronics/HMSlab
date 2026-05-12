@@ -75,9 +75,10 @@ document.addEventListener('DOMContentLoaded', function() {
         '/home': 'top',
         '/projects': 'projects',
         '/lab-notes': 'lab-notes',
+        '/tools': 'tools',
         '/join': 'course-teaser'
     };
-    const comingSoonRoutes = ['/tools', '/garage'];
+    const comingSoonRoutes = ['/garage'];
     const cleanProjectRoutes = {
         '/projects/he-thong-quan-ly.html': '/coming-soon',
         '/projects/portfolio-maker.html': '/builder'
