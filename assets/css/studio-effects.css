@@ -126,6 +126,33 @@ body.studio-page::before {
     animation: studioTitleShine 5.5s ease-in-out infinite;
 }
 
+.studio-title-effect:has(> span) {
+    color: #111111 !important;
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    animation: none;
+}
+
+.studio-title-effect:has(> span) > span {
+    display: inline-block;
+    color: #111111;
+    background: linear-gradient(120deg, #111111 0%, #111111 48%, #ea580c 52%, #111111 58%, #111111 100%);
+    background-size: 240% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: studioTitleShine 5.5s ease-in-out infinite;
+}
+
+.studio-title-effect:has(> span) > .text-brandOrange {
+    color: #ea580c !important;
+    background: linear-gradient(120deg, #ea580c 0%, #ea580c 48%, #111111 52%, #ea580c 58%, #ea580c 100%);
+    background-size: 240% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .studio-lift,
 .studio-card-effect {
     transform: translateZ(0);
