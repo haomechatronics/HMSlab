@@ -8,11 +8,11 @@ const projectsDatabase = [
         file: "ai-robot.html",
         imgFolder: "p3-ai-robot",
         imgName: "cover.png",
-        tags: ["AI", "Robot", "3D Print"],
-        title_vn: "Robot AI DIY",
-        title_en: "DIY AI Robot",
-        desc_vn: "Dự án robot AI tự làm với thân vỏ in 3D, cảm biến, camera và khả năng tương tác thông minh.",
-        desc_en: "A DIY AI robot project with a 3D printed body, sensors, camera, and intelligent interaction features."
+        tags: ["Arduino", "Robotic Arm", "Servo"],
+        title_vn: "Tay máy Arduino",
+        title_en: "Arduino Robotic Arm",
+        desc_vn: "Dự án tay máy robot dùng Arduino để điều khiển nhiều servo, cơ cấu gắp và các khớp chuyển động theo lệnh.",
+        desc_en: "An Arduino robotic arm project that controls multiple servos, a gripper, and joint movements through commands."
     }
 ];
 
