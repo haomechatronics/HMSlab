@@ -14,8 +14,205 @@
     <script>
         tailwind.config = { theme: { extend: { colors: { brandOrange: '#ea580c', brandDark: '#111111', brandLight: '#fcfcfc' }, fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Fira Code', 'monospace'] } } } }
     </script>
+    <style>
+        :root {
+            --cursor-x: 50%;
+            --cursor-y: 18%;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(234, 88, 12, 0.12), transparent 28rem),
+                linear-gradient(180deg, #fcfcfc 0%, #f4f4f5 46%, #ffffff 100%);
+        }
+
+        .studio-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: grid;
+            place-items: center;
+            background: #111111;
+            color: #ffffff;
+            transition: opacity 700ms ease, visibility 700ms ease;
+        }
+
+        .studio-loader.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-mark {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            transform: translateY(14px);
+            animation: loaderRise 900ms cubic-bezier(.2,.8,.2,1) forwards;
+        }
+
+        .loader-mark::before {
+            content: "";
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 999px;
+            background: #ea580c;
+            box-shadow: 0 0 28px rgba(234, 88, 12, 0.85);
+        }
+
+        .studio-shell {
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .studio-shell::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.36;
+            background-image:
+                linear-gradient(rgba(17, 17, 17, 0.055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(17, 17, 17, 0.055) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: linear-gradient(to bottom, black, transparent 78%);
+        }
+
+        .studio-reveal {
+            opacity: 0;
+            transform: translateY(34px);
+            transition: opacity 800ms ease, transform 800ms cubic-bezier(.2,.8,.2,1);
+        }
+
+        .studio-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .studio-badge {
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.45), 0 12px 30px rgba(17,17,17,0.08);
+        }
+
+        .studio-title {
+            text-wrap: balance;
+        }
+
+        .studio-actions a,
+        .studio-card {
+            transform: translateZ(0);
+            transition: transform 420ms cubic-bezier(.2,.8,.2,1), box-shadow 420ms ease, border-color 420ms ease, background 420ms ease;
+        }
+
+        .studio-actions a:hover,
+        .studio-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .studio-hero-frame {
+            position: relative;
+            isolation: isolate;
+            border-radius: 34px;
+            background: #111111;
+            box-shadow: 0 32px 90px rgba(17,17,17,0.24);
+        }
+
+        .studio-hero-frame::before {
+            content: "";
+            position: absolute;
+            inset: 1rem;
+            z-index: 2;
+            border: 1px solid rgba(255,255,255,0.32);
+            border-radius: 24px;
+            pointer-events: none;
+        }
+
+        .studio-hero-frame::after {
+            content: "HMS PORTFOLIO MAKER";
+            position: absolute;
+            left: 1.5rem;
+            bottom: 1.35rem;
+            z-index: 3;
+            color: rgba(255,255,255,0.86);
+            font: 600 0.72rem/1 "Fira Code", monospace;
+            letter-spacing: 0.18em;
+        }
+
+        .studio-hero-image {
+            transform: scale(1.045);
+            transition: transform 1000ms cubic-bezier(.2,.8,.2,1), filter 700ms ease;
+            filter: saturate(0.96) contrast(1.04);
+        }
+
+        .studio-hero-frame:hover .studio-hero-image {
+            transform: scale(1.085);
+            filter: saturate(1.08) contrast(1.08);
+        }
+
+        .studio-section {
+            position: relative;
+            padding: 2rem;
+            border: 1px solid rgba(228, 228, 231, 0.9);
+            border-radius: 28px;
+            background: rgba(255,255,255,0.72);
+            box-shadow: 0 24px 70px rgba(17,17,17,0.07);
+            backdrop-filter: blur(18px);
+        }
+
+        .studio-section + .studio-section {
+            margin-top: 2rem;
+        }
+
+        .magnetic {
+            will-change: transform;
+        }
+
+        @keyframes loaderRise {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 1ms !important;
+                scroll-behavior: auto !important;
+                transition-duration: 1ms !important;
+            }
+
+            .studio-reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .studio-section {
+                padding: 1.25rem;
+                border-radius: 22px;
+            }
+
+            .studio-hero-frame {
+                border-radius: 24px;
+            }
+
+            .studio-hero-frame::before {
+                inset: 0.7rem;
+                border-radius: 18px;
+            }
+        }
+    </style>
 </head>
-<body class="bg-brandLight text-zinc-800 font-sans antialiased selection:bg-brandOrange selection:text-white">
+<body class="studio-shell bg-brandLight text-zinc-800 font-sans antialiased selection:bg-brandOrange selection:text-white">
+
+    <div class="studio-loader" id="studio-loader" aria-hidden="true">
+        <div class="loader-mark text-3xl md:text-5xl">HMSlab.</div>
+    </div>
 
     <header class="w-full fixed top-0 backdrop-blur-xl bg-brandLight/90 border-b border-zinc-200/50 z-50 transition-all duration-500" id="main-header">
         <div class="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
@@ -57,7 +254,7 @@
     </header>
 
     <main class="pt-32 pb-24">
-        <div class="container mx-auto px-6 lg:px-12 mb-16">
+        <div class="container mx-auto px-6 lg:px-12 mb-16 studio-reveal">
             <nav class="flex text-sm text-zinc-500 mb-8 font-medium">
                 <a href="/home" class="hover:text-brandOrange transition-colors" data-vn="Trang chủ" data-en="Home">Trang chủ</a>
                 <span class="mx-3">/</span>
@@ -69,26 +266,26 @@
             <div class="flex flex-col lg:flex-row gap-12 lg:items-end">
                 <div class="lg:w-2/3">
                     <div class="flex gap-3 mb-6">
-                        <span class="text-xs font-mono font-medium bg-orange-100 text-brandOrange px-3 py-1 rounded-full uppercase tracking-wider">Web App</span>
-                        <span class="text-xs font-mono font-medium bg-zinc-200 text-zinc-700 px-3 py-1 rounded-full uppercase tracking-wider">Next.js</span>
+                        <span class="studio-badge text-xs font-mono font-medium bg-orange-100 text-brandOrange px-3 py-1 rounded-full uppercase tracking-wider">Web App</span>
+                        <span class="studio-badge text-xs font-mono font-medium bg-zinc-200 text-zinc-700 px-3 py-1 rounded-full uppercase tracking-wider">Next.js</span>
                     </div>
-                    <h1 class="text-4xl md:text-6xl font-extrabold text-brandDark tracking-tight mb-6" data-vn="HMS Portfolio Maker" data-en="HMS Portfolio Maker">HMS Portfolio Maker</h1>
+                    <h1 class="studio-title text-4xl md:text-6xl font-extrabold text-brandDark tracking-tight mb-6" data-vn="HMS Portfolio Maker" data-en="HMS Portfolio Maker">HMS Portfolio Maker</h1>
                     <p class="text-xl text-zinc-500 leading-relaxed" data-vn="Công cụ tạo portfolio nhanh chóng cho developer chỉ với một file JSON cấu hình đơn giản." data-en="A tool to quickly create developer portfolios with just a simple JSON config file.">Công cụ tạo portfolio nhanh chóng cho developer chỉ với một file JSON cấu hình đơn giản.</p>
                 </div>
-                <div class="lg:w-1/3 flex gap-4">
-                    <a href="/coming-soon" target="_blank" rel="noopener noreferrer" class="flex-1 bg-brandDark text-white px-6 py-4 rounded-full font-bold hover:bg-brandOrange transition-colors text-center shadow-lg" data-vn="Live Demo" data-en="Live Demo">Live Demo</a>
-                    <a href="/coming-soon" target="_blank" rel="noopener noreferrer" class="flex-1 bg-white border-2 border-zinc-200 text-brandDark px-6 py-4 rounded-full font-bold hover:border-brandDark transition-colors text-center" data-vn="Github" data-en="Github">Github</a>
+                <div class="studio-actions lg:w-1/3 flex gap-4">
+                    <a href="/coming-soon" target="_blank" rel="noopener noreferrer" class="magnetic flex-1 bg-brandDark text-white px-6 py-4 rounded-full font-bold hover:bg-brandOrange transition-colors text-center shadow-lg" data-vn="Live Demo" data-en="Live Demo">Live Demo</a>
+                    <a href="/coming-soon" target="_blank" rel="noopener noreferrer" class="magnetic flex-1 bg-white border-2 border-zinc-200 text-brandDark px-6 py-4 rounded-full font-bold hover:border-brandDark transition-colors text-center" data-vn="Github" data-en="Github">Github</a>
                 </div>
             </div>
         </div>
 
-        <div class="container mx-auto px-6 lg:px-12 mb-20">
-            <div class="w-full aspect-video bg-zinc-200 rounded-[40px] overflow-hidden shadow-2xl">
-                <img src="../assets/images/projects/p2-portfolio/cover.png" onerror="this.src='https://placehold.co/1920x1080/111111/ea580c?text=Hinh+Anh+Du+An+2'" class="w-full h-full object-cover" alt="Cover HMS Portfolio Maker">
+        <div class="container mx-auto px-6 lg:px-12 mb-20 studio-reveal">
+            <div class="studio-hero-frame w-full aspect-video overflow-hidden">
+                <img src="../assets/images/projects/p2-portfolio/cover.png" onerror="this.src='https://placehold.co/1920x1080/111111/ea580c?text=Hinh+Anh+Du+An+2'" class="studio-hero-image w-full h-full object-cover" alt="Cover HMS Portfolio Maker">
             </div>
         </div>
 
-        <div class="container mx-auto px-6 max-w-4xl prose prose-lg prose-zinc marker:text-brandOrange">
+        <div class="container mx-auto px-6 max-w-4xl prose prose-lg prose-zinc marker:text-brandOrange studio-reveal">
             <h2 class="text-3xl font-bold text-brandDark mb-6 mt-12" data-vn="Vấn đề gặp phải" data-en="The Problem">Vấn đề gặp phải</h2>
             <p class="text-zinc-600 mb-6" data-vn="Các lập trình viên thường mất quá nhiều thời gian để code lại một trang web cá nhân từ đầu. Mỗi lần muốn cập nhật thêm 1 dự án mới, họ lại phải mò mẫm mở file code ra sửa rất tốn công." data-en="Developers often spend too much time coding a personal website from scratch. Every time they want to add a new project, they have to open the code files and edit them, which is time-consuming.">Các lập trình viên thường mất quá nhiều thời gian để code lại một trang web cá nhân từ đầu. Mỗi lần muốn cập nhật thêm 1 dự án mới, họ lại phải mò mẫm mở file code ra sửa rất tốn công.</p>
             
@@ -120,6 +317,61 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = document.getElementById('studio-loader');
+            window.setTimeout(() => loader && loader.classList.add('is-hidden'), 650);
+
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const revealItems = document.querySelectorAll('.studio-reveal');
+
+            if ('IntersectionObserver' in window && !reduceMotion) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.14, rootMargin: '0px 0px -60px 0px' });
+
+                revealItems.forEach((item, index) => {
+                    item.style.transitionDelay = `${Math.min(index * 90, 360)}ms`;
+                    observer.observe(item);
+                });
+            } else {
+                revealItems.forEach(item => item.classList.add('is-visible'));
+            }
+
+            if (!reduceMotion) {
+                window.addEventListener('pointermove', (event) => {
+                    document.documentElement.style.setProperty('--cursor-x', `${event.clientX}px`);
+                    document.documentElement.style.setProperty('--cursor-y', `${event.clientY}px`);
+                }, { passive: true });
+
+                document.querySelectorAll('.magnetic').forEach((item) => {
+                    item.addEventListener('pointermove', (event) => {
+                        const rect = item.getBoundingClientRect();
+                        const x = (event.clientX - rect.left - rect.width / 2) * 0.12;
+                        const y = (event.clientY - rect.top - rect.height / 2) * 0.18;
+                        item.style.transform = `translate(${x}px, ${y}px)`;
+                    });
+
+                    item.addEventListener('pointerleave', () => {
+                        item.style.transform = '';
+                    });
+                });
+
+                const heroImage = document.querySelector('.studio-hero-image');
+                if (heroImage) {
+                    window.addEventListener('scroll', () => {
+                        const offset = Math.min(window.scrollY * 0.035, 28);
+                        heroImage.style.translate = `0 ${offset}px`;
+                    }, { passive: true });
+                }
+            }
+        });
+    </script>
     <script src="../js/main.js"></script>
 </body>
 </html>
