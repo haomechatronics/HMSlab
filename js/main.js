@@ -28,7 +28,7 @@ const projectsDatabase = [
     },
     {
         id: "p3",
-        slug: "/projects/ai-robot.html",
+        slug: "/ai-robot",
         file: "ai-robot.html",
         imgFolder: "p3-ai-robot",
         imgName: "cover.png",
@@ -93,7 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const comingSoonRoutes = ['/garage'];
     const cleanProjectRoutes = {
         '/projects/he-thong-quan-ly.html': '/coming-soon',
-        '/projects/portfolio-maker.html': '/builder'
+        '/projects/portfolio-maker.html': '/builder',
+        '/projects/ai-robot.html': '/ai-robot'
     };
 
     function scrollToTarget(targetId) {
