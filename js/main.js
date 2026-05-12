@@ -64,7 +64,8 @@ document.addEventListener('DOMContentLoaded', function() {
         '/projects': 'projects',
         '/lab-notes': 'lab-notes',
         '/tools': 'tools',
-        '/join': 'course-teaser'
+        '/join': 'course-teaser',
+        '/contact': 'contact'
     };
     const comingSoonRoutes = ['/garage'];
     const cleanProjectRoutes = {
