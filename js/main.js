@@ -7,7 +7,7 @@ const projectsDatabase = [
         slug: "/ai-robot",
         file: "ai-robot.html",
         imgFolder: "p3-ai-robot",
-        imgName: "cover.png",
+        imgName: "arm-3d-preview.png",
         tags: ["Arduino", "Robotic Arm", "Servo"],
         title_vn: "Tay máy Arduino",
         title_en: "Arduino Robotic Arm",
