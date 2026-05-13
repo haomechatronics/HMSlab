@@ -16,18 +16,24 @@
     <link rel="stylesheet" href="../assets/css/studio-effects.css">
 </head>
 <body class="bg-brandLight text-zinc-800 font-sans antialiased selection:bg-brandOrange selection:text-white">
-    <header class="w-full fixed top-0 backdrop-blur-xl bg-brandLight/90 border-b border-zinc-200/50 z-50">
+    <header class="w-full fixed top-0 backdrop-blur-xl bg-brandLight/90 border-b border-zinc-200/50 z-50 transition-all duration-500" id="main-header">
         <div class="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
             <a href="/home" class="flex items-center gap-2 md:gap-3">
                 <img src="../assets/images/logonho.png" alt="HMSlab Logo" class="h-8 md:h-10 w-auto">
                 <span class="text-2xl font-extrabold tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
             </a>
             <nav class="hidden md:flex space-x-10 items-center">
-                <a href="/projects" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors">Dự án</a>
-                <a href="/lab-notes" class="text-sm font-medium text-brandDark transition-colors">Bài viết</a>
-                <a href="/tools" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors">Công cụ</a>
-                <a href="/contact" class="bg-brandDark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brandOrange transition-all">Liên hệ</a>
+                <a href="/projects" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <a href="/lab-notes" class="text-sm font-medium text-brandDark transition-colors" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
+                <a href="/tools" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
+                <button class="lang-toggle-btn flex items-center gap-2 text-xs font-bold text-zinc-500 hover:text-brandDark transition-colors bg-zinc-100 hover:bg-zinc-200 px-3 py-1.5 rounded-full cursor-pointer">
+                    <span class="lang-text uppercase tracking-wider">English</span>
+                </button>
+                <a href="/contact" class="bg-brandDark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brandOrange transition-all" data-vn="Liên hệ" data-en="Contact">Liên hệ</a>
             </nav>
+            <button class="lang-toggle-btn md:hidden flex items-center gap-2 text-xs font-bold text-zinc-500 bg-zinc-100 px-3 py-2 rounded-full">
+                <span class="lang-text uppercase tracking-wider">English</span>
+            </button>
         </div>
     </header>
 
@@ -35,19 +41,19 @@
         <article>
             <section class="container mx-auto px-6 lg:px-12 mb-14">
                 <nav class="flex text-sm text-zinc-500 mb-8 font-medium">
-                    <a href="/home" class="hover:text-brandOrange transition-colors">Trang chủ</a>
+                    <a href="/home" class="hover:text-brandOrange transition-colors" data-vn="Trang chủ" data-en="Home">Trang chủ</a>
                     <span class="mx-3">/</span>
-                    <a href="/lab-notes" class="hover:text-brandOrange transition-colors">Bài viết</a>
+                    <a href="/lab-notes" class="hover:text-brandOrange transition-colors" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
                     <span class="mx-3">/</span>
                     <span class="text-brandDark">Process</span>
                 </nav>
                 <div class="max-w-4xl">
                     <span class="text-xs font-mono font-bold text-brandOrange uppercase tracking-[0.25em]">Process</span>
-                    <h1 class="text-4xl md:text-6xl font-extrabold text-brandDark tracking-tight mt-5 mb-6 leading-tight">Cách quản lý dự án cá nhân không bị ngợp</h1>
-                    <p class="text-xl text-zinc-500 leading-relaxed">Một hệ thống nhẹ để giữ ý tưởng, việc cần làm và tiến độ trong tầm mắt, không biến công cụ quản lý thành một dự án mới.</p>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-brandDark tracking-tight mt-5 mb-6 leading-tight" data-vn="Cách quản lý dự án cá nhân không bị ngợp" data-en="How to Manage Personal Projects Without Getting Overwhelmed">Cách quản lý dự án cá nhân không bị ngợp</h1>
+                    <p class="text-xl text-zinc-500 leading-relaxed" data-vn="Một hệ thống nhẹ để giữ ý tưởng, việc cần làm và tiến độ trong tầm mắt, không biến công cụ quản lý thành một dự án mới." data-en="A lightweight system for keeping ideas, tasks, and progress visible without turning the management tool itself into another project.">Một hệ thống nhẹ để giữ ý tưởng, việc cần làm và tiến độ trong tầm mắt, không biến công cụ quản lý thành một dự án mới.</p>
                     <div class="flex flex-wrap gap-4 mt-8 text-sm font-medium text-zinc-500">
                         <span>May 10, 2026</span>
-                        <span>7 phút đọc</span>
+                        <span data-vn="7 phút đọc" data-en="7 min read">7 phút đọc</span>
                         <span>HMSlab Notes</span>
                     </div>
                 </div>
@@ -55,55 +61,55 @@
 
             <section class="container mx-auto px-6 lg:px-12 mb-16">
                 <div class="aspect-[16/9] overflow-hidden rounded-[32px] bg-zinc-100 border border-zinc-200 shadow-2xl">
-                    <img src="../assets/images/lab-notes/personal-project-management.png" alt="Bàn làm việc với bảng quản lý dự án cá nhân và prototype" class="w-full h-full object-cover">
+                    <img src="../assets/images/lab-notes/personal-project-management.png" alt="Personal project management workspace with planning board and prototype" class="w-full h-full object-cover">
                 </div>
             </section>
 
             <section class="container mx-auto px-6 max-w-4xl">
                 <div class="space-y-10 text-lg leading-8 text-zinc-600">
-                    <p>Dự án cá nhân thường không chết vì thiếu ý tưởng. Nó chết vì có quá nhiều ý tưởng, quá ít thời gian và không có một hệ thống đủ nhẹ để quyết định việc tiếp theo. Tôi từng mở nhiều bảng Notion, nhiều file ghi chú, nhiều checklist, rồi cuối cùng vẫn không biết tối nay nên làm gì.</p>
+                    <p data-vn="Dự án cá nhân thường không chết vì thiếu ý tưởng. Nó chết vì có quá nhiều ý tưởng, quá ít thời gian và không có một hệ thống đủ nhẹ để quyết định việc tiếp theo. Tôi từng mở nhiều bảng Notion, nhiều file ghi chú, nhiều checklist, rồi cuối cùng vẫn không biết tối nay nên làm gì." data-en="Personal projects usually do not fail because of a lack of ideas. They fail because there are too many ideas, too little time, and no lightweight system for deciding what to do next. I used to open multiple Notion boards, note files, and checklists, only to end up unsure what to work on that evening.">Dự án cá nhân thường không chết vì thiếu ý tưởng. Nó chết vì có quá nhiều ý tưởng, quá ít thời gian và không có một hệ thống đủ nhẹ để quyết định việc tiếp theo. Tôi từng mở nhiều bảng Notion, nhiều file ghi chú, nhiều checklist, rồi cuối cùng vẫn không biết tối nay nên làm gì.</p>
 
-                    <h2 class="text-3xl font-bold text-brandDark tracking-tight pt-4">Tách ý tưởng khỏi việc cần làm</h2>
-                    <p>Bước đầu tiên là ngừng đối xử mọi ý tưởng như một task. Ý tưởng là nguyên liệu thô, task là cam kết hành động. Trong hệ thống của tôi, ý tưởng nằm ở một inbox riêng. Chỉ khi một ý tưởng có mục tiêu rõ, kết quả kiểm chứng được và đủ nhỏ để làm trong vài buổi, nó mới được kéo sang bảng triển khai.</p>
+                    <h2 class="text-3xl font-bold text-brandDark tracking-tight pt-4" data-vn="Tách ý tưởng khỏi việc cần làm" data-en="Separate Ideas From Tasks">Tách ý tưởng khỏi việc cần làm</h2>
+                    <p data-vn="Bước đầu tiên là ngừng đối xử mọi ý tưởng như một task. Ý tưởng là nguyên liệu thô, task là cam kết hành động. Trong hệ thống của tôi, ý tưởng nằm ở một inbox riêng. Chỉ khi một ý tưởng có mục tiêu rõ, kết quả kiểm chứng được và đủ nhỏ để làm trong vài buổi, nó mới được kéo sang bảng triển khai." data-en="The first step is to stop treating every idea as a task. Ideas are raw material; tasks are commitments to act. In my system, ideas live in a separate inbox. Only when an idea has a clear goal, a testable outcome, and is small enough to complete in a few sessions does it move into the execution board.">Bước đầu tiên là ngừng đối xử mọi ý tưởng như một task. Ý tưởng là nguyên liệu thô, task là cam kết hành động. Trong hệ thống của tôi, ý tưởng nằm ở một inbox riêng. Chỉ khi một ý tưởng có mục tiêu rõ, kết quả kiểm chứng được và đủ nhỏ để làm trong vài buổi, nó mới được kéo sang bảng triển khai.</p>
 
                     <div class="grid md:grid-cols-3 gap-4">
                         <div class="bg-white border border-zinc-200 rounded-2xl p-5">
                             <h3 class="font-bold text-brandDark mb-2">Inbox</h3>
-                            <p class="text-sm leading-6 text-zinc-500">Nơi ghi nhanh ý tưởng, link tham khảo, lỗi phát hiện và câu hỏi cần nghiên cứu.</p>
+                            <p class="text-sm leading-6 text-zinc-500" data-vn="Nơi ghi nhanh ý tưởng, link tham khảo, lỗi phát hiện và câu hỏi cần nghiên cứu." data-en="A place to quickly capture ideas, reference links, discovered bugs, and questions to research.">Nơi ghi nhanh ý tưởng, link tham khảo, lỗi phát hiện và câu hỏi cần nghiên cứu.</p>
                         </div>
                         <div class="bg-white border border-zinc-200 rounded-2xl p-5">
                             <h3 class="font-bold text-brandDark mb-2">Next</h3>
-                            <p class="text-sm leading-6 text-zinc-500">Những việc đã rõ đầu ra, đủ nhỏ và có thể bắt đầu ngay trong phiên làm việc tới.</p>
+                            <p class="text-sm leading-6 text-zinc-500" data-vn="Những việc đã rõ đầu ra, đủ nhỏ và có thể bắt đầu ngay trong phiên làm việc tới." data-en="Work items with clear outcomes, small enough to start in the next session.">Những việc đã rõ đầu ra, đủ nhỏ và có thể bắt đầu ngay trong phiên làm việc tới.</p>
                         </div>
                         <div class="bg-white border border-zinc-200 rounded-2xl p-5">
                             <h3 class="font-bold text-brandDark mb-2">Done</h3>
-                            <p class="text-sm leading-6 text-zinc-500">Nơi lưu kết quả, bài học, ảnh demo và quyết định kỹ thuật đã chốt.</p>
+                            <p class="text-sm leading-6 text-zinc-500" data-vn="Nơi lưu kết quả, bài học, ảnh demo và quyết định kỹ thuật đã chốt." data-en="A log of results, lessons learned, demo screenshots, and technical decisions that have been settled.">Nơi lưu kết quả, bài học, ảnh demo và quyết định kỹ thuật đã chốt.</p>
                         </div>
                     </div>
 
-                    <h2 class="text-3xl font-bold text-brandDark tracking-tight pt-4">Chạy sprint nhỏ thay vì kế hoạch khổng lồ</h2>
-                    <p>Tôi chia dự án cá nhân thành sprint 3 đến 5 ngày. Mỗi sprint chỉ có một mục tiêu chính, ví dụ: “robot arm nhận lệnh từ joystick”, “trang portfolio xuất bản được bản đầu”, hoặc “API lưu được dữ liệu thiết bị”. Nếu mục tiêu không thể diễn đạt trong một câu, nó còn quá rộng.</p>
-                    <p>Cách này tạo cảm giác tiến độ thật. Bạn không cần hoàn thành toàn bộ sản phẩm để thấy mình đang đi đúng hướng. Chỉ cần mỗi sprint tạo ra một bản chạy được, một video demo ngắn hoặc một quyết định rõ ràng.</p>
+                    <h2 class="text-3xl font-bold text-brandDark tracking-tight pt-4" data-vn="Chạy sprint nhỏ thay vì kế hoạch khổng lồ" data-en="Run Small Sprints Instead of Giant Plans">Chạy sprint nhỏ thay vì kế hoạch khổng lồ</h2>
+                    <p data-vn="Tôi chia dự án cá nhân thành sprint 3 đến 5 ngày. Mỗi sprint chỉ có một mục tiêu chính, ví dụ: “robot arm nhận lệnh từ joystick”, “trang portfolio xuất bản được bản đầu”, hoặc “API lưu được dữ liệu thiết bị”. Nếu mục tiêu không thể diễn đạt trong một câu, nó còn quá rộng." data-en="I split personal projects into 3 to 5 day sprints. Each sprint has one main goal, such as “the robot arm receives joystick commands,” “the portfolio page can publish a first version,” or “the API can store device data.” If the goal cannot be described in one sentence, it is still too broad.">Tôi chia dự án cá nhân thành sprint 3 đến 5 ngày. Mỗi sprint chỉ có một mục tiêu chính, ví dụ: “robot arm nhận lệnh từ joystick”, “trang portfolio xuất bản được bản đầu”, hoặc “API lưu được dữ liệu thiết bị”. Nếu mục tiêu không thể diễn đạt trong một câu, nó còn quá rộng.</p>
+                    <p data-vn="Cách này tạo cảm giác tiến độ thật. Bạn không cần hoàn thành toàn bộ sản phẩm để thấy mình đang đi đúng hướng. Chỉ cần mỗi sprint tạo ra một bản chạy được, một video demo ngắn hoặc một quyết định rõ ràng." data-en="This creates a real sense of progress. You do not need to finish the whole product to know you are moving in the right direction. Each sprint only needs to produce a working slice, a short demo video, or a clear decision.">Cách này tạo cảm giác tiến độ thật. Bạn không cần hoàn thành toàn bộ sản phẩm để thấy mình đang đi đúng hướng. Chỉ cần mỗi sprint tạo ra một bản chạy được, một video demo ngắn hoặc một quyết định rõ ràng.</p>
 
-                    <h2 class="text-3xl font-bold text-brandDark tracking-tight pt-4">Mỗi task phải có định nghĩa hoàn thành</h2>
-                    <p>Một task như “làm giao diện dashboard” rất dễ kéo dài vô hạn. Tôi đổi thành các task có điều kiện hoàn thành cụ thể: “hiển thị danh sách dự án từ dữ liệu mẫu”, “thêm trạng thái empty state”, “responsive ở mobile dưới 390px”. Khi task có điểm dừng, bạn bớt bị ngợp vì biết chính xác lúc nào được chuyển sang việc tiếp theo.</p>
+                    <h2 class="text-3xl font-bold text-brandDark tracking-tight pt-4" data-vn="Mỗi task phải có định nghĩa hoàn thành" data-en="Every Task Needs a Definition of Done">Mỗi task phải có định nghĩa hoàn thành</h2>
+                    <p data-vn="Một task như “làm giao diện dashboard” rất dễ kéo dài vô hạn. Tôi đổi thành các task có điều kiện hoàn thành cụ thể: “hiển thị danh sách dự án từ dữ liệu mẫu”, “thêm trạng thái empty state”, “responsive ở mobile dưới 390px”. Khi task có điểm dừng, bạn bớt bị ngợp vì biết chính xác lúc nào được chuyển sang việc tiếp theo." data-en="A task like “build the dashboard UI” can stretch forever. I rewrite it into concrete completion conditions: “render the project list from sample data,” “add an empty state,” or “make it responsive below 390px.” When a task has a stopping point, you feel less overwhelmed because you know exactly when to move on.">Một task như “làm giao diện dashboard” rất dễ kéo dài vô hạn. Tôi đổi thành các task có điều kiện hoàn thành cụ thể: “hiển thị danh sách dự án từ dữ liệu mẫu”, “thêm trạng thái empty state”, “responsive ở mobile dưới 390px”. Khi task có điểm dừng, bạn bớt bị ngợp vì biết chính xác lúc nào được chuyển sang việc tiếp theo.</p>
 
                     <div class="border-l-4 border-brandOrange bg-white px-6 py-5 rounded-r-2xl shadow-sm">
-                        <p class="text-brandDark font-semibold">Câu hỏi kiểm tra: sau 45 phút, mình có thể chụp màn hình hoặc quay video chứng minh task này tiến triển không?</p>
+                        <p class="text-brandDark font-semibold" data-vn="Câu hỏi kiểm tra: sau 45 phút, mình có thể chụp màn hình hoặc quay video chứng minh task này tiến triển không?" data-en="Check question: after 45 minutes, can I take a screenshot or record a short video proving that this task has moved forward?">Câu hỏi kiểm tra: sau 45 phút, mình có thể chụp màn hình hoặc quay video chứng minh task này tiến triển không?</p>
                     </div>
 
-                    <h2 class="text-3xl font-bold text-brandDark tracking-tight pt-4">Review ngắn, đều, không tự phạt</h2>
-                    <p>Cuối tuần, tôi review bằng ba câu hỏi: việc nào đã xong, việc nào đang kẹt, việc nào nên bỏ. Phần “nên bỏ” rất quan trọng. Dự án cá nhân có sức sống khi bạn dám cắt bớt tính năng, cắt bớt kỳ vọng và giữ lại phần tạo giá trị nhiều nhất.</p>
-                    <p>Tôi cũng lưu lại ảnh demo, lỗi thú vị và quyết định kỹ thuật. Sau vài tháng, phần log này trở thành tài liệu học tập tốt hơn rất nhiều so với một checklist đã tick xong rồi bị quên.</p>
+                    <h2 class="text-3xl font-bold text-brandDark tracking-tight pt-4" data-vn="Review ngắn, đều, không tự phạt" data-en="Review Briefly, Consistently, and Without Self-Punishment">Review ngắn, đều, không tự phạt</h2>
+                    <p data-vn="Cuối tuần, tôi review bằng ba câu hỏi: việc nào đã xong, việc nào đang kẹt, việc nào nên bỏ. Phần “nên bỏ” rất quan trọng. Dự án cá nhân có sức sống khi bạn dám cắt bớt tính năng, cắt bớt kỳ vọng và giữ lại phần tạo giá trị nhiều nhất." data-en="At the end of the week, I review with three questions: what is done, what is stuck, and what should be dropped. The “drop” part matters. A personal project stays alive when you are willing to cut features, cut expectations, and keep the parts that create the most value.">Cuối tuần, tôi review bằng ba câu hỏi: việc nào đã xong, việc nào đang kẹt, việc nào nên bỏ. Phần “nên bỏ” rất quan trọng. Dự án cá nhân có sức sống khi bạn dám cắt bớt tính năng, cắt bớt kỳ vọng và giữ lại phần tạo giá trị nhiều nhất.</p>
+                    <p data-vn="Tôi cũng lưu lại ảnh demo, lỗi thú vị và quyết định kỹ thuật. Sau vài tháng, phần log này trở thành tài liệu học tập tốt hơn rất nhiều so với một checklist đã tick xong rồi bị quên." data-en="I also save demo images, interesting bugs, and technical decisions. After a few months, that log becomes far more useful learning material than a completed checklist that gets forgotten.">Tôi cũng lưu lại ảnh demo, lỗi thú vị và quyết định kỹ thuật. Sau vài tháng, phần log này trở thành tài liệu học tập tốt hơn rất nhiều so với một checklist đã tick xong rồi bị quên.</p>
 
-                    <h2 class="text-3xl font-bold text-brandDark tracking-tight pt-4">Công cụ chỉ là khung đỡ</h2>
-                    <p>Bạn có thể dùng Notion, Trello, GitHub Projects hoặc một cuốn sổ. Điều quan trọng là hệ thống phải đủ nhẹ để mở lên trong 10 giây và trả lời được câu hỏi: “Bây giờ làm gì?”. Nếu công cụ yêu cầu quá nhiều trang, nhiều tag và nhiều nghi thức cập nhật, nó sẽ trở thành gánh nặng.</p>
-                    <p>Với HMSlab, tôi giữ hệ thống đơn giản: inbox ý tưởng, bảng sprint, log quyết định và thư viện tài nguyên. Bốn phần đó đủ để đưa một ý tưởng từ ghi chú rời rạc thành sản phẩm có thể demo.</p>
+                    <h2 class="text-3xl font-bold text-brandDark tracking-tight pt-4" data-vn="Công cụ chỉ là khung đỡ" data-en="Tools Are Only Scaffolding">Công cụ chỉ là khung đỡ</h2>
+                    <p data-vn="Bạn có thể dùng Notion, Trello, GitHub Projects hoặc một cuốn sổ. Điều quan trọng là hệ thống phải đủ nhẹ để mở lên trong 10 giây và trả lời được câu hỏi: “Bây giờ làm gì?”. Nếu công cụ yêu cầu quá nhiều trang, nhiều tag và nhiều nghi thức cập nhật, nó sẽ trở thành gánh nặng." data-en="You can use Notion, Trello, GitHub Projects, or a notebook. The important thing is that the system is light enough to open in 10 seconds and answer one question: “What should I do now?” If the tool demands too many pages, tags, and update rituals, it becomes a burden.">Bạn có thể dùng Notion, Trello, GitHub Projects hoặc một cuốn sổ. Điều quan trọng là hệ thống phải đủ nhẹ để mở lên trong 10 giây và trả lời được câu hỏi: “Bây giờ làm gì?”. Nếu công cụ yêu cầu quá nhiều trang, nhiều tag và nhiều nghi thức cập nhật, nó sẽ trở thành gánh nặng.</p>
+                    <p data-vn="Với HMSlab, tôi giữ hệ thống đơn giản: inbox ý tưởng, bảng sprint, log quyết định và thư viện tài nguyên. Bốn phần đó đủ để đưa một ý tưởng từ ghi chú rời rạc thành sản phẩm có thể demo." data-en="For HMSlab, I keep the system simple: idea inbox, sprint board, decision log, and resource library. Those four parts are enough to move an idea from scattered notes into something that can be demoed.">Với HMSlab, tôi giữ hệ thống đơn giản: inbox ý tưởng, bảng sprint, log quyết định và thư viện tài nguyên. Bốn phần đó đủ để đưa một ý tưởng từ ghi chú rời rạc thành sản phẩm có thể demo.</p>
                 </div>
 
                 <div class="mt-14 border-t border-zinc-200 pt-8 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
-                    <p class="text-sm text-zinc-500">Tiếp tục tối ưu môi trường làm việc của bạn.</p>
-                    <a href="/lab-notes/workspace-setup-2026" class="inline-flex items-center justify-center bg-brandDark text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-brandOrange transition-colors">Đọc bài về setup</a>
+                    <p class="text-sm text-zinc-500" data-vn="Tiếp tục tối ưu môi trường làm việc của bạn." data-en="Keep refining the environment you build in.">Tiếp tục tối ưu môi trường làm việc của bạn.</p>
+                    <a href="/lab-notes/workspace-setup-2026" class="inline-flex items-center justify-center bg-brandDark text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-brandOrange transition-colors" data-vn="Đọc bài về setup" data-en="Read the setup article">Đọc bài về setup</a>
                 </div>
             </section>
         </article>
@@ -114,6 +120,7 @@
             <p>&copy; 2026 HMSlab.store.</p>
         </div>
     </footer>
+    <script src="../js/main.js"></script>
     <script src="../assets/js/studio-effects.js"></script>
 </body>
 </html>
