@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -88,7 +89,7 @@
                     <!-- Thay href="#" bằng link GitHub/source code khi có. -->
                     <a href="#" class="bg-white border-2 border-zinc-200 text-brandDark px-5 py-4 rounded-full font-bold hover:border-brandDark transition-colors text-center" data-vn="Link code" data-en="Code Link">Link code</a>
                     <!-- Thay href="#" bằng link file STL/STEP/3MF khi có nơi lưu trữ ngoài repo. -->
-                    <a href="#" class="bg-white border-2 border-zinc-200 text-brandDark px-5 py-4 rounded-full font-bold hover:border-brandDark transition-colors text-center" data-vn="Bản thiết kế" data-en="Design Files">Bản thiết kế</a>
+                    <a href="#robot-3d-model" class="bg-white border-2 border-zinc-200 text-brandDark px-5 py-4 rounded-full font-bold hover:border-brandDark transition-colors text-center" data-vn="Bản thiết kế" data-en="Design Files">Bản thiết kế</a>
                 </div>
             </div>
         </div>
@@ -98,6 +99,32 @@
                 <img src="../assets/images/projects/p3-ai-robot/cover-card.jpg" onerror="this.src='../assets/images/projects/p3-ai-robot/cover.png';" class="w-full h-full object-cover" alt="Tay máy Arduino trong studio">
             </div>
         </div>
+
+        <!-- Template section cho cac du an co file GLB: doi id, src, tieu de va mo ta. -->
+        <section id="robot-3d-model" class="container mx-auto px-6 lg:px-12 mb-20">
+            <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-center border-y border-zinc-200 py-14 md:py-20">
+                <div>
+                    <span class="text-xs font-mono font-bold text-brandOrange uppercase tracking-widest" data-vn="Mô hình tương tác" data-en="Interactive Model">Mô hình tương tác</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brandDark mt-3 mb-5" data-vn="Mô hình 3D Robot Arm" data-en="3D Robot Arm Model">Mô hình 3D Robot Arm</h2>
+                    <p class="text-zinc-500 leading-relaxed text-lg" data-vn="Xoay, phóng to và quan sát trực tiếp cấu trúc tay máy robot trong trình duyệt. Mô hình giúp nhìn rõ form tổng thể, các khớp chuyển động và cơ cấu cơ điện tử trước khi đi vào chi tiết thiết kế." data-en="Rotate, zoom, and inspect the robotic arm structure directly in the browser. The model helps reveal the overall form, moving joints, and mechatronic mechanism before diving into the design details.">Xoay, phóng to và quan sát trực tiếp cấu trúc tay máy robot trong trình duyệt. Mô hình giúp nhìn rõ form tổng thể, các khớp chuyển động và cơ cấu cơ điện tử trước khi đi vào chi tiết thiết kế.</p>
+                </div>
+
+                <div class="rounded-[32px] md:rounded-[40px] bg-zinc-950 shadow-2xl border border-zinc-200 overflow-hidden">
+                    <model-viewer
+                        src="../assets/models/Arm_robot_v2.glb"
+                        class="block w-full h-[360px] md:h-[520px]"
+                        camera-controls
+                        auto-rotate
+                        shadow-intensity="1"
+                        exposure="1"
+                        loading="lazy"
+                        camera-orbit="45deg 68deg auto"
+                        environment-image="neutral"
+                        alt="Mô hình 3D Robot Arm">
+                    </model-viewer>
+                </div>
+            </div>
+        </section>
 
         <section class="container mx-auto px-6 lg:px-12 mb-20">
             <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-center border-y border-zinc-200 py-14 md:py-20">
