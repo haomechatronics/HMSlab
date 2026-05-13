@@ -203,10 +203,57 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // ==========================================
+    // 5. REUSABLE PROJECT IMAGE GALLERY
+    // ==========================================
+    document.querySelectorAll('[data-gallery]').forEach(gallery => {
+        const mainImage = gallery.querySelector('[data-gallery-main]');
+        const label = gallery.querySelector('[data-gallery-label]');
+        const thumbs = gallery.querySelectorAll('[data-gallery-thumb]');
+
+        if (!mainImage || !thumbs.length) {
+            return;
+        }
+
+        function setActiveThumb(activeThumb) {
+            thumbs.forEach(thumb => {
+                const isActive = thumb === activeThumb;
+                thumb.classList.toggle('ring-4', isActive);
+                thumb.classList.toggle('ring-0', !isActive);
+                thumb.classList.toggle('border-brandOrange', isActive);
+                thumb.classList.toggle('border-zinc-200', !isActive);
+                thumb.setAttribute('aria-pressed', String(isActive));
+            });
+        }
+
+        thumbs.forEach(thumb => {
+            thumb.setAttribute('aria-pressed', 'false');
+            thumb.addEventListener('click', () => {
+                const nextSrc = thumb.dataset.full;
+                if (!nextSrc) {
+                    return;
+                }
+
+                mainImage.classList.add('opacity-0');
+                window.setTimeout(() => {
+                    mainImage.src = nextSrc;
+                    mainImage.alt = thumb.querySelector('img')?.alt || mainImage.alt;
+                    mainImage.classList.toggle('object-contain', thumb.dataset.fit === 'contain');
+                    mainImage.classList.toggle('object-cover', thumb.dataset.fit !== 'contain');
+                    if (label && thumb.dataset.label) {
+                        label.textContent = thumb.dataset.label;
+                    }
+                    mainImage.classList.remove('opacity-0');
+                    setActiveThumb(thumb);
+                }, 160);
+            });
+        });
+    });
 });
 
 // ==========================================
-// 5. CHONG COPY VA F12 (CO BAN)
+// 6. CHONG COPY VA F12 (CO BAN)
 // ==========================================
 
 // Chan click chuot phai

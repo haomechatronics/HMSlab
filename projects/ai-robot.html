@@ -134,21 +134,21 @@
                     <p class="text-zinc-500 leading-relaxed text-lg" data-vn="Thay vì nhúng trực tiếp file 3MF nặng vào website, phần này dùng ảnh preview được trích từ chính file thiết kế. Người xem vẫn thấy được form tổng thể, cụm khớp servo và các plate in mà trang vẫn nhẹ." data-en="Instead of embedding the heavy 3MF file directly, this section uses preview images extracted from the actual design file. Viewers can still see the overall form, servo joints, and print plates while the page stays lightweight.">Thay vì nhúng trực tiếp file 3MF nặng vào website, phần này dùng ảnh preview được trích từ chính file thiết kế. Người xem vẫn thấy được form tổng thể, cụm khớp servo và các plate in mà trang vẫn nhẹ.</p>
                 </div>
 
-                <div class="grid gap-4">
+                <div class="grid gap-4" data-gallery>
                     <div class="relative overflow-hidden rounded-[36px] bg-brandDark border border-zinc-200 shadow-2xl aspect-[4/3]">
-                        <img src="../assets/images/projects/p3-ai-robot/cover-card.jpg" class="w-full h-full object-cover" alt="Tay máy Arduino trong studio">
-                        <div class="absolute left-6 top-6 rounded-full bg-white/95 px-4 py-2 text-xs font-mono font-bold uppercase tracking-widest text-brandDark">Model Render</div>
+                        <img src="../assets/images/projects/p3-ai-robot/cover-card.jpg" class="w-full h-full object-cover transition-opacity duration-200" alt="Tay máy Arduino trong studio" data-gallery-main>
+                        <div class="absolute left-6 top-6 rounded-full bg-white/95 px-4 py-2 text-xs font-mono font-bold uppercase tracking-widest text-brandDark" data-gallery-label>Model Render</div>
                     </div>
                     <div class="grid grid-cols-3 gap-4">
-                        <div class="overflow-hidden rounded-2xl bg-brandDark border border-zinc-200 aspect-square">
-                            <img src="../assets/images/projects/p3-ai-robot/arm-plate-1.png" class="w-full h-full object-cover" alt="Plate in 3D tay máy Arduino 1">
-                        </div>
-                        <div class="overflow-hidden rounded-2xl bg-brandDark border border-zinc-200 aspect-square">
-                            <img src="../assets/images/projects/p3-ai-robot/arm-plate-2.png" class="w-full h-full object-cover" alt="Plate in 3D tay máy Arduino 2">
-                        </div>
-                        <div class="overflow-hidden rounded-2xl bg-brandDark border border-zinc-200 aspect-square">
-                            <img src="../assets/images/projects/p3-ai-robot/arm-plate-3.png" class="w-full h-full object-cover" alt="Plate in 3D tay máy Arduino 3">
-                        </div>
+                        <button type="button" class="group overflow-hidden rounded-2xl bg-brandDark border border-zinc-200 aspect-square ring-0 ring-brandOrange transition-all hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4" data-gallery-thumb data-full="../assets/images/projects/p3-ai-robot/arm-plate-1.png" data-label="Plate 01" data-fit="contain" aria-label="Xem plate in 3D tay máy Arduino 1">
+                            <img src="../assets/images/projects/p3-ai-robot/arm-plate-1.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Plate in 3D tay máy Arduino 1">
+                        </button>
+                        <button type="button" class="group overflow-hidden rounded-2xl bg-brandDark border border-zinc-200 aspect-square ring-0 ring-brandOrange transition-all hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4" data-gallery-thumb data-full="../assets/images/projects/p3-ai-robot/arm-plate-2.png" data-label="Plate 02" data-fit="contain" aria-label="Xem plate in 3D tay máy Arduino 2">
+                            <img src="../assets/images/projects/p3-ai-robot/arm-plate-2.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Plate in 3D tay máy Arduino 2">
+                        </button>
+                        <button type="button" class="group overflow-hidden rounded-2xl bg-brandDark border border-zinc-200 aspect-square ring-0 ring-brandOrange transition-all hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4" data-gallery-thumb data-full="../assets/images/projects/p3-ai-robot/arm-plate-3.png" data-label="Plate 03" data-fit="contain" aria-label="Xem plate in 3D tay máy Arduino 3">
+                            <img src="../assets/images/projects/p3-ai-robot/arm-plate-3.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Plate in 3D tay máy Arduino 3">
+                        </button>
                     </div>
                 </div>
             </div>
