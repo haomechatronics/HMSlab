@@ -139,7 +139,15 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentLang = localStorage.getItem('hms_lang') || 'vn'; 
 
     function updateLanguage(lang) {
-        langTexts.forEach(text => text.innerText = (lang === 'vn') ? 'English' : 'Tiếng Việt');
+        const nextLang = lang === 'vn'
+            ? { flag: '🇬🇧', label: 'English' }
+            : { flag: '🇻🇳', label: 'Tiếng Việt' };
+
+        langTexts.forEach(text => {
+            text.classList.add('inline-flex', 'items-center', 'gap-1.5');
+            text.innerHTML = `<span class="text-sm leading-none" aria-hidden="true">${nextLang.flag}</span><span>${nextLang.label}</span>`;
+        });
+
         const elements = document.querySelectorAll('[data-vn][data-en]');
         elements.forEach(el => {
             const value = el.getAttribute('data-' + lang);
