@@ -263,6 +263,11 @@ document.addEventListener('DOMContentLoaded', function() {
             thumb.addEventListener('click', () => showThumb(thumb));
         });
 
+        const initialThumb = thumbs.find(thumb => thumb.dataset.full === mainImage.getAttribute('src'));
+        if (initialThumb) {
+            setActiveThumb(initialThumb);
+        }
+
         prevButton?.addEventListener('click', () => stepGallery(-1));
         nextButton?.addEventListener('click', () => stepGallery(1));
     });
