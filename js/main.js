@@ -137,15 +137,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const langToggleBtns = document.querySelectorAll('.lang-toggle-btn');
     const langTexts = document.querySelectorAll('.lang-text');
     let currentLang = localStorage.getItem('hms_lang') || 'vn'; 
+    const langFlags = {
+        vn: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'%3E%3Cpath fill='%23da251d' d='M0 0h30v20H0z'/%3E%3Cpath fill='%23ffff00' d='m15 3 2.7 8.2 8.7.1-7 5.1 2.6 8.3-7-5.1-7 5.1 2.6-8.3-7-5.1 8.7-.1z' transform='scale(.62) translate(9.2 3)'/%3E%3C/svg%3E",
+        en: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'%3E%3Cpath fill='%23012169' d='M0 0h60v40H0z'/%3E%3Cpath stroke='%23fff' stroke-width='8' d='m0 0 60 40M60 0 0 40'/%3E%3Cpath stroke='%23c8102e' stroke-width='4.8' d='m0 0 60 40M60 0 0 40'/%3E%3Cpath fill='%23fff' d='M24 0h12v40H24zM0 14h60v12H0z'/%3E%3Cpath fill='%23c8102e' d='M27 0h6v40h-6zM0 17h60v6H0z'/%3E%3C/svg%3E"
+    };
 
     function updateLanguage(lang) {
         const nextLang = lang === 'vn'
-            ? { flag: '🇬🇧', label: 'English' }
-            : { flag: '🇻🇳', label: 'Tiếng Việt' };
+            ? { code: 'en', label: 'English', aria: 'Switch to English' }
+            : { code: 'vn', label: 'Tiếng Việt', aria: 'Chuyển sang tiếng Việt' };
 
         langTexts.forEach(text => {
             text.classList.add('inline-flex', 'items-center', 'gap-1.5');
-            text.innerHTML = `<span class="text-sm leading-none" aria-hidden="true">${nextLang.flag}</span><span>${nextLang.label}</span>`;
+            text.innerHTML = `<img src="${langFlags[nextLang.code]}" alt="" class="h-3.5 w-5 rounded-[2px] object-cover ring-1 ring-black/10" loading="lazy"><span>${nextLang.label}</span>`;
+        });
+
+        langToggleBtns.forEach(btn => {
+            btn.classList.add('border', 'border-zinc-200/80', 'shadow-sm', 'whitespace-nowrap');
+            btn.setAttribute('aria-label', nextLang.aria);
+            btn.setAttribute('title', nextLang.aria);
         });
 
         const elements = document.querySelectorAll('[data-vn][data-en]');
