@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đế xoay Servo ESP32 | HMSlab</title>
+    <link rel="icon" type="image/png" href="../assets/images/logonho.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { brandOrange: '#ea580c', brandDark: '#111111', brandLight: '#fcfcfc' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Fira Code', 'monospace'] },
+                    boxShadow: { 'premium': '0 4px 20px -2px rgba(0, 0, 0, 0.05)', 'premium-hover': '0 20px 40px -4px rgba(0, 0, 0, 0.1)' }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../assets/css/studio-effects.css">
+</head>
+<body class="bg-brandLight text-zinc-800 font-sans antialiased selection:bg-brandOrange selection:text-white">
+
+    <header class="w-full fixed top-0 backdrop-blur-xl bg-brandLight/90 border-b border-zinc-200/50 z-50 transition-all duration-500" id="main-header">
+        <div class="container mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+            <a href="/home" class="flex items-center gap-2 md:gap-3 group relative z-50">
+                <img src="/assets/images/logonho.png" onerror="this.onerror=null;this.src='../assets/images/logonho.png';" alt="HMSlab Logo" class="h-8 md:h-10 w-auto group-hover:scale-105 transition-transform duration-300">
+                <span class="text-2xl font-extrabold tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
+            </a>
+
+            <nav class="hidden md:flex space-x-10 items-center">
+                <a href="/projects" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <a href="/lab-notes" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
+                <a href="/tools" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
+                <a href="/coming-soon" class="text-sm font-medium text-zinc-500 hover:text-brandDark transition-colors duration-300" data-vn="Khóa học" data-en="Courses">Khóa học</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-6">
+                <button class="lang-toggle-btn flex items-center gap-2 text-xs font-bold text-zinc-500 hover:text-brandDark transition-colors bg-zinc-100 hover:bg-zinc-200 px-3 py-1.5 rounded-full cursor-pointer border border-transparent hover:border-zinc-300 duration-300">
+                    <span class="lang-text uppercase tracking-wider">English</span>
+                </button>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-brandDark focus:outline-none relative z-50 p-2 -mr-2">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-zinc-200 absolute w-full left-0 top-20 shadow-2xl origin-top transition-all duration-300">
+            <div class="flex flex-col px-6 py-6 space-y-5">
+                <a href="/projects" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <a href="/lab-notes" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Bài viết" data-en="Lab Notes">Bài viết</a>
+                <a href="/tools" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Công cụ" data-en="Gear & Tools">Công cụ</a>
+                <a href="/coming-soon" class="mobile-link text-lg font-bold text-zinc-700 hover:text-brandOrange" data-vn="Khóa học" data-en="Courses">Khóa học</a>
+                <div class="h-px w-full bg-zinc-100 my-2"></div>
+                <button class="lang-toggle-btn flex items-center justify-center gap-2 text-sm font-bold text-zinc-600 bg-zinc-100 px-4 py-3.5 rounded-xl active:bg-zinc-200 transition-colors">
+                    <span class="lang-text uppercase tracking-wider">English</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24">
+        <div class="container mx-auto px-6 lg:px-12 mb-16">
+            <nav class="flex text-sm text-zinc-500 mb-8 font-medium">
+                <a href="/home" class="hover:text-brandOrange transition-colors" data-vn="Trang chủ" data-en="Home">Trang chủ</a>
+                <span class="mx-3">/</span>
+                <a href="/projects" class="hover:text-brandOrange transition-colors" data-vn="Dự án" data-en="Projects">Dự án</a>
+                <span class="mx-3">/</span>
+                <span class="text-brandDark" data-vn="Đế xoay Servo ESP32" data-en="ESP32 Servo Turntable">Đế xoay Servo ESP32</span>
+            </nav>
+
+            <div class="flex flex-col lg:flex-row gap-12 lg:items-end">
+                <div class="lg:w-2/3">
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <span class="text-xs font-mono font-medium bg-orange-100 text-brandOrange px-3 py-1 rounded-full uppercase tracking-wider">ESP32</span>
+                        <span class="text-xs font-mono font-medium bg-zinc-200 text-zinc-700 px-3 py-1 rounded-full uppercase tracking-wider">Servo</span>
+                        <span class="text-xs font-mono font-medium bg-zinc-200 text-zinc-700 px-3 py-1 rounded-full uppercase tracking-wider">3D Print</span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-brandDark tracking-tight mb-6" data-vn="Đế xoay Servo ESP32" data-en="ESP32 Servo Turntable">Đế xoay Servo ESP32</h1>
+                    <p class="text-xl text-zinc-500 leading-relaxed" data-vn="Dự án ghi lại quá trình lắp module ESP32, đi dây gọn trong thân in 3D và cố định servo để tạo một cơ cấu xoay nhỏ gọn dùng cho demo TikTok của HMSlab." data-en="A build log showing the ESP32 module, tidy wiring inside a 3D printed body, and a mounted servo for a compact rotating mechanism featured on HMSlab TikTok.">Dự án ghi lại quá trình lắp module ESP32, đi dây gọn trong thân in 3D và cố định servo để tạo một cơ cấu xoay nhỏ gọn dùng cho demo TikTok của HMSlab.</p>
+                </div>
+                <div class="lg:w-1/3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+                    <a href="https://www.tiktok.com/@haomechatronics" target="_blank" rel="noopener noreferrer" class="bg-brandDark text-white px-5 py-4 rounded-full font-bold hover:bg-brandOrange transition-colors text-center shadow-lg" data-vn="Xem TikTok" data-en="Watch TikTok">Xem TikTok</a>
+                    <a href="#build-gallery" class="bg-white border-2 border-zinc-200 text-brandDark px-5 py-4 rounded-full font-bold hover:border-brandDark transition-colors text-center" data-vn="Ảnh lắp ráp" data-en="Build Photos">Ảnh lắp ráp</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 lg:px-12 mb-20">
+            <div class="w-full aspect-video bg-zinc-200 rounded-[40px] overflow-hidden shadow-2xl">
+                <img src="../assets/images/projects/p4-tiktok-video/cover-card.jpg" class="w-full h-full object-cover" alt="Lắp ESP32 vào cơ cấu servo in 3D">
+            </div>
+        </div>
+
+        <section id="build-gallery" class="container mx-auto px-6 lg:px-12 mb-20">
+            <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-center border-y border-zinc-200 py-14 md:py-20">
+                <div>
+                    <span class="text-xs font-mono font-bold text-brandOrange uppercase tracking-widest" data-vn="Từ video TikTok" data-en="From TikTok Video">Từ video TikTok</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brandDark mt-3 mb-5" data-vn="Các bước lắp chính" data-en="Main Assembly Steps">Các bước lắp chính</h2>
+                    <p class="text-zinc-500 leading-relaxed text-lg" data-vn="Các frame được trích từ video gốc để người xem thấy rõ quá trình đặt servo, căn tay đòn, cố định ốc và lắp bo ESP32 vào thân cơ khí. Trang này giữ form giống các dự án trước để sau này dễ bổ sung link code, sơ đồ đấu dây hoặc file thiết kế." data-en="Frames from the source video show the servo placement, horn alignment, screw fastening, and ESP32 board installation. This page follows the existing project format so code links, wiring diagrams, or design files can be added later.">Các frame được trích từ video gốc để người xem thấy rõ quá trình đặt servo, căn tay đòn, cố định ốc và lắp bo ESP32 vào thân cơ khí. Trang này giữ form giống các dự án trước để sau này dễ bổ sung link code, sơ đồ đấu dây hoặc file thiết kế.</p>
+                </div>
+
+                <div class="grid gap-4" data-gallery>
+                    <div class="relative overflow-hidden rounded-[36px] bg-brandDark border border-zinc-200 shadow-2xl aspect-[4/3]">
+                        <img src="../assets/images/projects/p4-tiktok-video/cover-card.jpg" class="w-full h-full object-cover transition-opacity duration-200" alt="Lắp bo ESP32 vào thân cơ khí" data-gallery-main>
+                        <div class="absolute left-6 top-6 rounded-full bg-white/95 px-4 py-2 text-xs font-mono font-bold uppercase tracking-widest text-brandDark" data-gallery-label>ESP32</div>
+                        <button type="button" class="absolute left-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-brandDark shadow-lg ring-1 ring-black/10 backdrop-blur transition-all hover:bg-brandOrange hover:text-white focus:outline-none focus:ring-4 focus:ring-orange-200" data-gallery-prev aria-label="Xem hình trước">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <button type="button" class="absolute right-4 top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-brandDark shadow-lg ring-1 ring-black/10 backdrop-blur transition-all hover:bg-brandOrange hover:text-white focus:outline-none focus:ring-4 focus:ring-orange-200" data-gallery-next aria-label="Xem hình tiếp theo">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <button type="button" class="group overflow-hidden rounded-2xl bg-brandDark border border-zinc-200 aspect-square ring-0 ring-brandOrange transition-all hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4" data-gallery-thumb data-full="../assets/images/projects/p4-tiktok-video/cover-card.jpg" data-label="ESP32" aria-label="Xem frame lắp ESP32">
+                            <img src="../assets/images/projects/p4-tiktok-video/cover-card.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Lắp bo ESP32 vào thân cơ khí">
+                        </button>
+                        <button type="button" class="group overflow-hidden rounded-2xl bg-brandDark border border-zinc-200 aspect-square ring-0 ring-brandOrange transition-all hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4" data-gallery-thumb data-full="../assets/images/projects/p4-tiktok-video/frame-5.jpg" data-label="Servo Fit" aria-label="Xem frame đặt servo">
+                            <img src="../assets/images/projects/p4-tiktok-video/frame-5.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Đặt servo vào thân in 3D">
+                        </button>
+                        <button type="button" class="group overflow-hidden rounded-2xl bg-brandDark border border-zinc-200 aspect-square ring-0 ring-brandOrange transition-all hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4" data-gallery-thumb data-full="../assets/images/projects/p4-tiktok-video/frame-20.jpg" data-label="Horn Align" aria-label="Xem frame căn tay đòn servo">
+                            <img src="../assets/images/projects/p4-tiktok-video/frame-20.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Căn tay đòn servo">
+                        </button>
+                        <button type="button" class="group overflow-hidden rounded-2xl bg-brandDark border border-zinc-200 aspect-square ring-0 ring-brandOrange transition-all hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4" data-gallery-thumb data-full="../assets/images/projects/p4-tiktok-video/frame-32.jpg" data-label="Fasten" aria-label="Xem frame siết ốc servo">
+                            <img src="../assets/images/projects/p4-tiktok-video/frame-32.jpg" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Siết ốc tay đòn servo">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container mx-auto px-6 max-w-4xl prose prose-lg prose-zinc marker:text-brandOrange">
+            <h2 class="text-3xl font-bold text-brandDark mb-6 mt-12" data-vn="Ý tưởng dự án" data-en="Project Idea">Ý tưởng dự án</h2>
+            <p class="text-zinc-600 mb-6" data-vn="Mục tiêu là biến một cụm cơ khí nhỏ thành demo dễ quay: thân in 3D chứa dây và bo điều khiển, servo nằm gọn ở mép ngoài, tay đòn có thể truyền chuyển động xoay cho phần gá phía trên." data-en="The goal is to turn a small mechanism into a clean filming demo: a 3D printed body hides the wiring and controller, the servo sits neatly on the side, and the horn transfers rotation to the upper mount.">Mục tiêu là biến một cụm cơ khí nhỏ thành demo dễ quay: thân in 3D chứa dây và bo điều khiển, servo nằm gọn ở mép ngoài, tay đòn có thể truyền chuyển động xoay cho phần gá phía trên.</p>
+
+            <h2 class="text-3xl font-bold text-brandDark mb-6 mt-12" data-vn="Các phần chính" data-en="Core Parts">Các phần chính</h2>
+            <ul class="list-disc pl-6 text-zinc-600 mb-6 space-y-2">
+                <li><strong>Bo điều khiển:</strong> ESP32 dùng để nhận lệnh và xuất tín hiệu điều khiển servo.</li>
+                <li><strong>Cơ cấu chấp hành:</strong> servo micro với tay đòn được bắt vít để truyền chuyển động xoay.</li>
+                <li><strong>Thân cơ khí:</strong> chi tiết in 3D giúp giữ module, giấu dây và tạo form gọn khi quay video.</li>
+                <li><strong>Nội dung TikTok:</strong> video tập trung vào thao tác lắp ráp thật, phù hợp để người xem thấy dự án đang được hoàn thiện từng bước.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-zinc-200 pt-16 md:pt-20 pb-8 md:pb-10">
+        <div class="container mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start mb-12 md:mb-16 gap-10">
+                <div class="md:w-1/3 text-center md:text-left">
+                    <a href="/home" class="flex items-center justify-center md:justify-start gap-2 mb-4 md:mb-6">
+                        <img src="/assets/images/logonho.png" onerror="this.onerror=null;this.src='../assets/images/logonho.png';" alt="HMSlab Logo" class="h-6 md:h-8 w-auto grayscale opacity-90">
+                        <span class="text-xl md:text-2xl font-extrabold tracking-tighter text-brandDark">HMS<span class="text-brandOrange">lab</span>.</span>
+                    </a>
+                    <p class="text-zinc-500 text-sm md:text-base leading-relaxed" data-vn="Xây dựng tại Việt Nam.<br>Làm ra bằng sự tỉ mỉ và đam mê sáng tạo." data-en="Built in Vietnam.<br>Crafted with precision and creative passion.">Xây dựng tại Việt Nam.<br>Làm ra bằng sự tỉ mỉ và đam mê sáng tạo.</p>
+                    <a href="mailto:haomechatronics@gmail.com" class="mt-3 inline-block text-sm font-semibold text-brandDark hover:text-brandOrange transition-colors">haomechatronics@gmail.com</a>
+                </div>
+            </div>
+            <div class="border-t border-zinc-200 pt-6 md:pt-8 flex justify-center text-xs md:text-sm font-medium text-zinc-400">
+                <p>&copy; 2026 HMSlab.store.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../assets/js/studio-effects.js"></script>
+</body>
+</html>

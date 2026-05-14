@@ -3,6 +3,18 @@
 // ==========================================
 const projectsDatabase = [
     {
+        id: "p4",
+        slug: "/servo-tiktok",
+        file: "servo-tiktok.html",
+        imgFolder: "p4-tiktok-video",
+        imgName: "cover-card.jpg",
+        tags: ["ESP32", "Servo", "3D Print"],
+        title_vn: "Đế xoay Servo ESP32",
+        title_en: "ESP32 Servo Turntable",
+        desc_vn: "Dự án lắp ESP32, servo và thân in 3D thành một cơ cấu xoay nhỏ gọn đã được đăng lên TikTok HMSlab.",
+        desc_en: "A compact rotating mechanism built with ESP32, a servo, and a 3D printed body, featured on HMSlab TikTok."
+    },
+    {
         id: "p3",
         slug: "/ai-robot",
         file: "ai-robot.html",
@@ -72,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         '/projects/he-thong-quan-ly.html': '/coming-soon',
         '/projects/portfolio-maker.html': '/builder',
         '/projects/ai-robot.html': '/ai-robot',
+        '/projects/servo-tiktok.html': '/servo-tiktok',
         '/courses/index.html': '/coming-soon',
         '/courses/register.html': '/coming-soon'
     };
