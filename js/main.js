@@ -7,7 +7,7 @@ const projectsDatabase = [
         slug: "/servo-tiktok",
         file: "servo-tiktok.html",
         imgFolder: "p4-tiktok-video",
-        imgName: "cover-card.jpg",
+        imgName: "servo-thumbnail.jpg",
         tags: ["ESP32", "Servo", "3D Print"],
         title_vn: "Đế xoay Servo ESP32",
         title_en: "ESP32 Servo Turntable",
