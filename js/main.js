@@ -7,12 +7,12 @@ const projectsDatabase = [
         slug: "/servo-tiktok",
         file: "servo-tiktok.html",
         imgFolder: "p4-tiktok-video",
-        imgName: "servo-thumbnail.jpg",
-        tags: ["ESP32", "Servo", "3D Print"],
-        title_vn: "Đế xoay Servo ESP32",
-        title_en: "ESP32 Servo Turntable",
-        desc_vn: "Dự án lắp ESP32, servo và thân in 3D thành một cơ cấu xoay nhỏ gọn đã được đăng lên TikTok HMSlab.",
-        desc_en: "A compact rotating mechanism built with ESP32, a servo, and a 3D printed body, featured on HMSlab TikTok."
+        imgName: "pet-feeder-thumbnail.jpg",
+        tags: ["ESP32", "Pet Feeder", "Servo"],
+        title_vn: "Máy cho thú cưng ăn tự động ESP32",
+        title_en: "ESP32 Automatic Pet Feeder",
+        desc_vn: "Dự án máy cho thú cưng ăn tự động dùng ESP32, servo và thân in 3D để điều khiển cơ cấu nhả thức ăn gọn gàng.",
+        desc_en: "An automatic pet feeder project using ESP32, a servo, and a 3D printed body to control a compact food dispensing mechanism."
     },
     {
         id: "p3",
