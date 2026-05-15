@@ -11,11 +11,17 @@
         const projectRoutes = {
             '/builder': '/projects/portfolio-maker.html',
             '/ai-robot': '/projects/ai-robot.html',
-            '/servo-tiktok': '/projects/servo-tiktok.html',
+            '/pet_feeder': '/projects/pet_feeder.html',
+            '/servo-tiktok': '/projects/pet_feeder.html',
+            '/projects/servo-tiktok.html': '/projects/pet_feeder.html',
             '/lab-notes/workspace-setup-2026': '/lab-notes/workspace-setup-2026.html',
             '/lab-notes/quan-ly-du-an-ca-nhan': '/lab-notes/quan-ly-du-an-ca-nhan.html',
             '/courses': '/coming-soon.html',
             '/dang-ky-khoa-hoc': '/coming-soon.html'
+        };
+        const canonicalProjectRoutes = {
+            '/servo-tiktok': '/pet_feeder',
+            '/projects/servo-tiktok.html': '/pet_feeder'
         };
         const path = window.location.pathname.replace(/\/$/, '');
 
@@ -25,7 +31,7 @@
         } else if (path === '/coming-soon' || path === '/garage') {
             window.location.replace('/coming-soon.html');
         } else if (projectRoutes[path]) {
-            sessionStorage.setItem('hms_pending_project_route', path);
+            sessionStorage.setItem('hms_pending_project_route', canonicalProjectRoutes[path] || path);
             window.location.replace(projectRoutes[path]);
         } else {
             document.body.innerHTML = '<main style="font-family: sans-serif; padding: 48px;"><h1>404</h1><p>Trang không tồn tại.</p><a href="/home">Về trang chủ</a></main>';

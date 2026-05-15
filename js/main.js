@@ -4,8 +4,8 @@
 const projectsDatabase = [
     {
         id: "p4",
-        slug: "/servo-tiktok",
-        file: "servo-tiktok.html",
+        slug: "/pet_feeder",
+        file: "pet_feeder.html",
         imgFolder: "p4-tiktok-video",
         imgName: "pet-feeder-thumbnail.jpg",
         tags: ["ESP32", "Pet Feeder", "Servo"],
@@ -84,7 +84,8 @@ document.addEventListener('DOMContentLoaded', function() {
         '/projects/he-thong-quan-ly.html': '/coming-soon',
         '/projects/portfolio-maker.html': '/builder',
         '/projects/ai-robot.html': '/ai-robot',
-        '/projects/servo-tiktok.html': '/servo-tiktok',
+        '/projects/pet_feeder.html': '/pet_feeder',
+        '/projects/servo-tiktok.html': '/pet_feeder',
         '/courses/index.html': '/coming-soon',
         '/courses/register.html': '/coming-soon'
     };
