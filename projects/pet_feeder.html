@@ -165,13 +165,29 @@
             <h2 class="text-3xl font-bold text-brandDark mb-6 mt-12" data-vn="Ý tưởng dự án" data-en="Project Idea">Ý tưởng dự án</h2>
             <p class="text-zinc-600 mb-6" data-vn="Mục tiêu là tạo một bộ cho ăn nhỏ gọn: thân in 3D chứa dây và bo điều khiển, servo đóng mở cơ cấu nhả thức ăn, còn ESP32 nhận lệnh từ giao diện để cho ăn đúng lúc." data-en="The goal is to build a compact feeder: the 3D printed body hides the wiring and controller, the servo opens the dispensing mechanism, and the ESP32 receives commands from the interface.">Mục tiêu là tạo một bộ cho ăn nhỏ gọn: thân in 3D chứa dây và bo điều khiển, servo đóng mở cơ cấu nhả thức ăn, còn ESP32 nhận lệnh từ giao diện để cho ăn đúng lúc.</p>
 
-            <h2 class="text-3xl font-bold text-brandDark mb-6 mt-12" data-vn="Các phần chính" data-en="Core Parts">Các phần chính</h2>
-            <ul class="list-disc pl-6 text-zinc-600 mb-6 space-y-2">
-                <li><strong>Bo điều khiển:</strong> ESP32 dùng để nhận lệnh và xuất tín hiệu điều khiển servo.</li>
-                <li><strong>Cơ cấu nhả thức ăn:</strong> servo micro điều khiển cửa nhả để định lượng phần ăn nhỏ.</li>
-                <li><strong>Thân máy:</strong> chi tiết in 3D giúp giữ hộp thức ăn, module điều khiển và dây nối gọn bên trong.</li>
-                <li><strong>Kiểm thử vận hành:</strong> cơ cấu được kiểm tra qua thao tác nhả thức ăn, độ phản hồi của servo và khả năng đóng mở ổn định theo lệnh điều khiển.</li>
-            </ul>
+            <h2 class="text-3xl font-bold text-brandDark mb-6 mt-12" data-vn="Linh kiện chính" data-en="Main Components">Linh kiện chính</h2>
+            <div class="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-premium">
+                    <h3 class="text-lg font-bold text-brandDark mb-2" data-vn="ESP32 DevKit" data-en="ESP32 DevKit">ESP32 DevKit</h3>
+                    <p class="text-sm text-zinc-500 leading-relaxed mb-5" data-vn="Bo điều khiển trung tâm, nhận lệnh và xuất tín hiệu PWM để điều khiển servo nhả thức ăn." data-en="The central controller that receives commands and outputs PWM signals to drive the dispensing servo.">Bo điều khiển trung tâm, nhận lệnh và xuất tín hiệu PWM để điều khiển servo nhả thức ăn.</p>
+                    <a href="/coming-soon" class="inline-flex items-center justify-center rounded-full bg-brandDark px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-brandOrange" data-vn="Mua ngay" data-en="Buy now">Mua ngay</a>
+                </div>
+                <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-premium">
+                    <h3 class="text-lg font-bold text-brandDark mb-2" data-vn="Servo micro" data-en="Micro Servo">Servo micro</h3>
+                    <p class="text-sm text-zinc-500 leading-relaxed mb-5" data-vn="Cơ cấu chấp hành dùng để đóng mở cửa nhả, giúp định lượng phần ăn theo từng lần kích hoạt." data-en="The actuator that opens and closes the outlet, helping portion food on each trigger.">Cơ cấu chấp hành dùng để đóng mở cửa nhả, giúp định lượng phần ăn theo từng lần kích hoạt.</p>
+                    <a href="/coming-soon" class="inline-flex items-center justify-center rounded-full bg-brandDark px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-brandOrange" data-vn="Mua ngay" data-en="Buy now">Mua ngay</a>
+                </div>
+                <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-premium">
+                    <h3 class="text-lg font-bold text-brandDark mb-2" data-vn="Thân in 3D" data-en="3D Printed Body">Thân in 3D</h3>
+                    <p class="text-sm text-zinc-500 leading-relaxed mb-5" data-vn="Khung cơ khí giữ phễu chứa, bo điều khiển và dây nối gọn bên trong một thân máy nhỏ gọn." data-en="The mechanical frame that holds the hopper, controller, and wiring inside a compact body.">Khung cơ khí giữ phễu chứa, bo điều khiển và dây nối gọn bên trong một thân máy nhỏ gọn.</p>
+                    <a href="/coming-soon" class="inline-flex items-center justify-center rounded-full bg-brandDark px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-brandOrange" data-vn="Mua ngay" data-en="Buy now">Mua ngay</a>
+                </div>
+                <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-premium">
+                    <h3 class="text-lg font-bold text-brandDark mb-2" data-vn="Nguồn cấp 5V" data-en="5V Power Supply">Nguồn cấp 5V</h3>
+                    <p class="text-sm text-zinc-500 leading-relaxed mb-5" data-vn="Cấp điện ổn định cho ESP32 và servo, giảm lỗi reset hoặc hụt lực khi cơ cấu nhả hoạt động." data-en="Provides stable power for the ESP32 and servo, reducing resets or torque drops during dispensing.">Cấp điện ổn định cho ESP32 và servo, giảm lỗi reset hoặc hụt lực khi cơ cấu nhả hoạt động.</p>
+                    <a href="/coming-soon" class="inline-flex items-center justify-center rounded-full bg-brandDark px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-brandOrange" data-vn="Mua ngay" data-en="Buy now">Mua ngay</a>
+                </div>
+            </div>
         </div>
     </main>
 
