@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const comingSoonRoutes = ['/garage'];
     const cleanProjectRoutes = {
         '/projects/he-thong-quan-ly.html': '/coming-soon',
-        '/projects/portfolio-maker.html': '/builder',
+        '/projects/portfolio-maker.html': '/coming-soon',
         '/projects/ai-robot.html': '/ai-robot',
         '/projects/pet_feeder.html': '/pet_feeder',
         '/projects/servo-tiktok.html': '/pet_feeder',
